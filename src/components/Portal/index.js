@@ -19,6 +19,7 @@ const Portal = () => {
           <button className="button is-primary">Admin</button>
         </a>
       </div>
+       This is the Portal for Staff/Mgmt/Admin
       <Switch>
         <Route path="/portal/staff" component={Staff} />
         <Route path="/portal/management" component={Management} />
