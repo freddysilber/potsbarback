@@ -1,11 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 import {Switch, Route} from 'react-router-dom'
-import Staff from '../Staff'
-import Management from '../Management'
-import Admin from '../Admin'
+import Staff from './Staff'
+import Management from './Management'
+import Admin from './Admin'
 import './Portal.scss'
+import Checkout from "./Checkout";
 
 const Portal = () => {
+    
   return (
     <div className="container">
       <div className="nav-bar">
@@ -19,11 +21,11 @@ const Portal = () => {
           <button className="button is-primary">Admin</button>
         </a>
       </div>
-       This is the Portal for Staff/Mgmt/Admin
       <Switch>
         <Route path="/portal/staff" component={Staff} />
         <Route path="/portal/management" component={Management} />
         <Route path="/portal/admin" component={Admin} />
+        <Route path="/portal/checkout" component={Checkout} />
       </Switch>
     </div>
   );

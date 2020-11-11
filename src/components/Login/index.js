@@ -8,7 +8,7 @@ const Login = () => {
       <div className="card login-input-form">
         <span className="login-form-head">Email:</span>
         <input
-          class="input login-input is-primary is-medium"
+          className="input login-input is-primary is-medium"
           type="email"
           placeholder="example@email.com"
         />
@@ -19,7 +19,7 @@ const Login = () => {
           placeholder="password"
         />
         <div className="login-button-div">
-          <a href="/portal">
+          <a href="/portal/staff">
             <button className="button login-button is-primary">Login</button>
           </a>
         </div>
