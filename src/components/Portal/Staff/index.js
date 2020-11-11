@@ -12,14 +12,37 @@ const Staff = () => {
   return (
     <div className="container">
       {shiftStarted ? (
-        <div>Hellow World </div>
+        <>
+          <div className="staff-title">Your shift has been started.</div>
+          <div className="card staff-input-form">
+            <span className="staff-form-head">
+              To End your workday complete the task below:
+            </span>
+            <ul className="staff-list">
+              <li>1. Preform checkout @ Cost Center</li>
+              <li>2. Preform checkout in Bak||Bar</li>
+              <li>3. Have Manager verify both checkouts</li>
+              <li>4. Deliver funds to comptroller for verification</li>
+            </ul>
+            <div className="staff-button-div">
+              <a href="/portal/checkout">
+                <button
+                  className="button login-button is-primary"
+                  onClick={console.log("REROUTE")}
+                >
+                  Daily Checkout
+                </button>
+              </a>
+            </div>
+          </div>
+        </>
       ) : (
         <>
-          <div className="staff-title">
-            Hello [user.name] please verify your postition, cost center, and
-            starting cash to "Start Shift".
-          </div>
-
+          <div className="staff-title">Hello [user.name]!</div>
+          <span>
+            Please verify your postition, cost center, and starting cash to
+            "Start Shift".
+          </span>
           <div className="card staff-input-form">
             <span className="staff-form-head">Position:</span>
             <div class="field">
