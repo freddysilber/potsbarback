@@ -21,8 +21,9 @@ const Modal = ({ children, closeModal, modalState, title }) => {
           </div>
         </section>
         <footer className="modal-card-foot">
-          <button className="button is-primary" onClick={closeModal}>Cancel</button>
-          <button className="button is-primary" onClick={closeModal}>Do something</button>
+          <closeModal />
+          {/* <button className="button is-primary" onClick={closeModal}>Cancel</button>
+          <button className="button is-primary" onClick={closeModal}>Do something</button> */}
         </footer>
       </div>
     </div>
