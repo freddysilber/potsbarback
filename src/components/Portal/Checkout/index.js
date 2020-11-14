@@ -3,11 +3,11 @@ import "./Checkout.scss";
 
 
 const Modal = ({ children, closeModal, modalState, title }) => {
-  if(!modalState) {
+  if (!modalState) {
     return null;
   }
-  
-  return(
+
+  return (
     <div className="modal is-active">
       <div className="modal-background" onClick={closeModal} />
       <div className="modal-card">
@@ -39,18 +39,18 @@ Modal.propTypes = {
 class Checkout extends React.Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
       modalState: false
     };
-    
+
     this.toggleModal = this.toggleModal.bind(this);
   }
-  
-  toggleModal() {    
+
+  toggleModal() {
     this.setState((prev, props) => {
       const newState = !prev.modalState;
-      
+
       return { modalState: newState };
     });
   }
@@ -90,9 +90,9 @@ class Checkout extends React.Component {
               <button className="button login-button is-primary" onClick={this.toggleModal}>Verify</button>
             </a>
           </div>
-          <Modal 
-            closeModal={this.toggleModal} 
-            modalState={this.state.modalState} 
+          <Modal
+            closeModal={this.toggleModal}
+            modalState={this.state.modalState}
             title="Closeout Summary"
           >
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet justo in arcu efficitur malesuada nec ut diam. Aenean a iaculis eros. Proin nec purus congue, rutrum sapien id, sodales ante. Nam imperdiet sapien pretium leo dapibus euismod. Ut ac venenatis nunc. Praesent viverra purus vel lacus ullamcorper porta a a augue. Proin rhoncus tempus leo sed ultricies. In luctus aliquam placerat. Cras efficitur enim vitae vulputate consequat. Nulla tellus est, fringilla quis nisi eu, aliquam finibus eros.</p>
