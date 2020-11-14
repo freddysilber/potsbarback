@@ -8,7 +8,7 @@ import Portal from "./components/Portal"
 function App() {
   return (
     <div className="App column">
-      <div className="nav-bar">
+      {/* <div className="nav-bar">
         <a href="/">
           <button className="button is-primary">Login</button>
         </a>
@@ -18,7 +18,7 @@ function App() {
         <a href="/about">
           <button className="button is-primary">About</button>
         </a>
-      </div>
+      </div> */}
       <Switch>
         <Route exact path="/" component={Login} />
         <Route path="/portal" component={Portal} />

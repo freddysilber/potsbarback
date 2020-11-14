@@ -87,15 +87,9 @@ class Checkout extends React.Component {
           />
           <div className="checkout-button-div">
             <a href="/portal/management">
-              <button className="button login-button is-primary">Verify</button>
+              <button className="button login-button is-primary" onClick={this.toggleModal}>Verify</button>
             </a>
           </div>
-            <h1 className="title">React + Bulma modal example</h1>
-            <hr />
-            <button className="button is-primary" onClick={this.toggleModal}>
-              Open Modal
-            </button>
-    
           <Modal 
             closeModal={this.toggleModal} 
             modalState={this.state.modalState} 
