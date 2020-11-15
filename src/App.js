@@ -5,9 +5,12 @@ import Login from "./components/Login"
 import About from "./components/About"
 import Portal from "./components/Portal"
 
+import token from './components/Util/constants'
+
 function App() {
   return (
     <div className="App column">
+      {token}
       {/* <div className="nav-bar">
         <a href="/">
           <button className="button is-primary">Login</button>
