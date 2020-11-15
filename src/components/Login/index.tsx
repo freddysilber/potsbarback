@@ -80,7 +80,6 @@
 // export default Login
 import React from 'react'
 import { Formik, Form, Field, FormikProps, InjectedFormikProps, withFormik } from 'formik'
-import * as React from 'react';
 import * as Yup from 'yup';
 
 interface FormValues {
@@ -95,17 +94,19 @@ interface FormProps {
 
 const Login: React.SFC<InjectedFormikProps<FormProps, FormValues>> = (props) => (
   <Formik onSubmit={props.handleSubmit}>
-    <input
-      id="email"
-      placeholder="Enter your email"
-      type="text"
-      onChange={props.handleChange}
-      value={props.values.email}
-    />
-    {props.touched.email && props.errors.email && <div>{props.errors.email}</div>}
-    <button type="submit" disabled={props.isSubmitting}>
-      Submit
+    <Form>
+      <input
+        id="email"
+        placeholder="Enter your email"
+        type="text"
+        onChange={props.handleChange}
+        value={props.values.email}
+      />
+      {props.touched.email && props.errors.email && <div>{props.errors.email}</div>}
+      <button type="submit" disabled={props.isSubmitting}>
+        Submit
     </button>
+    </Form>
   </Formik>
 );
 
