@@ -1,10 +1,6 @@
 interface TouchedProps {
-	firstName: boolean,
-	lastName: boolean,
 	email: boolean,
-	confirmEmail: boolean,
-	password: boolean,
-	confirmPassword: boolean
+	password: boolean
 }
 
 export interface InitialValues {
