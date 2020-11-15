@@ -2,11 +2,7 @@ import React from 'react'
 import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
 import './Login.scss'
-
-interface InitialValues {
-	email: string,
-	password: string
-}
+import { InitialValues, FormState, FormData } from '../interfaces/login'
 
 const initialValues: InitialValues = {
 	email: '',
@@ -23,7 +19,8 @@ const loginValidators = Yup.object().shape({
 		.required('Required'),
 })
 
-const handleSubmit = (actions: any, values: any) => {
+const handleSubmit = (data: FormData) => {
+	const { actions, values } = data
 	console.log('actions', actions)
 	console.log('values', values)
 	alert(JSON.stringify(values, null, 2));
@@ -34,11 +31,12 @@ const Login = () => (
 	<Formik
 		initialValues={initialValues}
 		validationSchema={loginValidators}
-		onSubmit={(values, actions) => {
-			handleSubmit(actions, values)
+		onSubmit={(values: any, actions: any) => {
+			const data: FormData = { actions, values }
+			handleSubmit(data)
 		}}
 	>
-		{({ errors, touched, isSubmitting }) => (
+		{({ errors, touched, isSubmitting }: FormState) => (
 			<div className="container">
 				<div className="login-title">Bak||Bar Login</div>
 				<div className="card login-input-form">
