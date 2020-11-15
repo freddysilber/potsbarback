@@ -59,7 +59,7 @@ class Checkout extends React.Component {
     return (
       <div className="container">
         <div className="checkout-title">
-          [user.name], please complete this form for you checkout process.
+          [user.name], please complete this form for your checkout process.
         </div>
         <div className="card checkout-input-form">
           <div className="checkout-user-static">

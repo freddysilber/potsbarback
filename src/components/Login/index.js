@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import "./Login.scss";
+import React from "react"
+import "./Login.scss"
 
 const Login = () => {
   return (
@@ -25,6 +25,6 @@ const Login = () => {
         </div>
       </div>
     </div>
-  );
-};
-export default Login;
+  )
+}
+export default Login
