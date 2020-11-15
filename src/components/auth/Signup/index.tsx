@@ -71,7 +71,7 @@ const Signup = () => (
 						{touched.email && errors.email && <p className="fieldError">{errors.email}</p>}
 
 						<label htmlFor="confirmEmail">Confirm Email</label>
-						<Field className="input login-input is-primary is-medium" id="confirmEmail" name="confirmEmail" type="confirmEmail" placeholder="Enter your confirmEmail" />
+						<Field className="input login-input is-primary is-medium" id="confirmEmail" name="confirmEmail" type="email" placeholder="Enter your confirmEmail" />
 						{touched.confirmEmail && errors.confirmEmail && <p className="fieldError">{errors.confirmEmail}</p>}
 
 						<label htmlFor="password">Password</label>
