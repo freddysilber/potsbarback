@@ -18,8 +18,8 @@ const loginValidators = Yup.object().shape({
 		.email('Invalid email')
 		.required('Required'),
 	password: Yup.string()
-		.min(2, 'Too Short!')
-		.max(50, 'Too Long!')
+		.min(2, 'Your password is too short!')
+		.max(50, 'Your password is too long')
 		.required('Required'),
 })
 
