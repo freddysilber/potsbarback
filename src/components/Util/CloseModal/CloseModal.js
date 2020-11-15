@@ -1,4 +1,3 @@
-import { useState } from "react"
 import React, { useState } from 'react'
 
 export const CloseModal = () => {
