@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import "./Staff.scss";
+import React, { useState } from 'react'
+import './Staff.scss'
 
 const Staff = () => {
   const [shiftStarted, _isShiftStarted] = useState(false);
@@ -8,7 +8,7 @@ const Staff = () => {
     // and Verify/Send Position, Cost Center, and Cash Started
     console.log("Employee Shift Started");
     _isShiftStarted(true);
-  };
+  }
   return (
     <div className="container">
       {shiftStarted ? (
@@ -28,7 +28,7 @@ const Staff = () => {
               <a href="/portal/checkout">
                 <button
                   className="button login-button is-primary"
-                  onClick={console.log("REROUTE")}
+                  onClick={() => console.log("REROUTE")}
                 >
                   Daily Checkout
                 </button>
@@ -45,9 +45,9 @@ const Staff = () => {
           </span>
             <div className="card staff-input-form">
               <span className="staff-form-head">Position:</span>
-              <div class="field">
-                <div class="control">
-                  <div class="select is-primary">
+              <div className="field">
+                <div className="control">
+                  <div className="select is-primary">
                     <select>
                       <option disabled>Select dropdown</option>
                       <option>Wait Staff</option>
@@ -59,9 +59,9 @@ const Staff = () => {
                 </div>
               </div>
               <span className="staff-form-head">Cost Center:</span>
-              <div class="field">
-                <div class="control">
-                  <div class="select is-primary">
+              <div className="field">
+                <div className="control">
+                  <div className="select is-primary">
                     <select>
                       <option disabled>Select dropdown</option>
                       <option>Main Bar</option>
@@ -88,8 +88,9 @@ const Staff = () => {
               </div>
             </div>
           </>
-        )}
-    </div>
+        )
+      }
+    </div >
   );
 };
 

@@ -7,9 +7,6 @@ import "./App.scss"
 import "bulma/css/bulma.css"
 // Components
 import { Login, About, Portal } from './components'
-// import Login from "./components/Login"
-// import About from "./components/About"
-// import Portal from "./components/Portal"
 
 function App() {
   return (
