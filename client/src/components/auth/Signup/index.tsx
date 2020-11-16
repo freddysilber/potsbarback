@@ -3,6 +3,7 @@ import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
 import User from '../../../models/User'
 import { InitialValues, FormState, FormData } from '../interfaces/signup'
+import axios from 'axios'
 
 const initialValues: InitialValues = {
 	firstName: '',
@@ -37,11 +38,15 @@ const loginValidators = Yup.object().shape({
 const handleSubmit = (data: FormData) => {
 	const { actions, values } = data
 	const user: User = values
-	console.log('user', user)
-	console.log('actions', actions)
-	console.log('values', values)
-	alert(JSON.stringify(values, null, 2));
-	actions.setSubmitting(false);
+	console.log(user)
+	axios.post('/api/users/register', user)
+		.then((response: any) => console.log(response))
+		.catch((error: any) => console.log(error))
+	// console.log('user', user)
+	// console.log('actions', actions)
+	// console.log('values', values)
+	// alert(JSON.stringify(values, null, 2));
+	// actions.setSubmitting(false);
 }
 
 const Signup = () => (

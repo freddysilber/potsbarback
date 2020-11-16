@@ -1,9 +1,13 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const Checkout = require('./Checkout')
+// const Checkout = require('./Checkout')
 // Create Schema for a user object
 const UserSchema = new Schema({
-	name: {
+	firstName: {
+		type: String,
+		required: true
+	},
+	lastName: {
 		type: String,
 		required: true
 	},
