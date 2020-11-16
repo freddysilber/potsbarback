@@ -2,10 +2,9 @@ const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const passport = require('passport')
-
 const users = require('./routes/api/users')
-
 const app = express()
+const colors = require('colors')
 
 // Bodyparser middleware
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -16,12 +15,14 @@ const db = require('./config/keys').mongoURI
 
 // Connect to MongoDB
 mongoose
-	.connect(
-		db,
-		{ useNewUrlParser: true }
-	)
-	.then(() => console.log('MongoDB successfully connected'))
-	.catch(err => console.log(err))
+	.connect(db, { useNewUrlParser: true })
+	// .then((res: any) => console.log(res.connections[0].db))
+	.then(() => console.log(colors.america('MongoDB successfully connected')))
+	.catch((err: any) => {
+		console.log(colors.rainbow('----------------- ERROR! -------------------'))
+		console.log(err)
+		console.log(colors.rainbow('------------------------------------------------'))
+	})
 
 // Passport middleware
 app.use(passport.initialize())
@@ -34,4 +35,4 @@ app.use('/api/users', users)
 
 const port = process.env.PORT || 5000
 
-app.listen(port, () => console.log(`Death to all but metal. http://localhost:${port} !`))
+app.listen(port, () => console.log(colors.blue(`Death to all but metal. http://localhost:${port} !`)))

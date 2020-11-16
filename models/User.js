@@ -1,7 +1,7 @@
-
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-// Create Schema
+const Checkout = require('./Checkout')
+// Create Schema for a user object
 const UserSchema = new Schema({
 	name: {
 		type: String,
@@ -15,10 +15,29 @@ const UserSchema = new Schema({
 		type: String,
 		required: true
 	},
-	date: {
+	date: { // Creation timestamp
 		type: Date,
 		default: Date.now
-	}
+	},
+	phone: {
+		type: String,
+		required: true
+	},
+	isActive: {
+		type: Boolean
+	},
+	jobRole: {
+		type: Number
+	},
+	accessLevel: {
+		type: Number
+	},
+	activeShift: {
+		type: Boolean
+	},
+	// checkouts: {
+	// 	type: [Checkout]
+	// }
 })
 
 module.exports = User = mongoose.model('users', UserSchema)
