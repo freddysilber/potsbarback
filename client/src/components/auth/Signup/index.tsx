@@ -58,35 +58,73 @@ const Signup = () => (
 		onSubmit={(values: any, actions: any) => {
 			const data: FormData = { actions, values }
 			handleSubmit(data)
-		}}
-	>
+		}}>
 		{({ errors, touched, isSubmitting }: FormState) => (
 			<div className="container">
 				<div className="login-title">Bak||Bar Signup</div>
 				<div className="card login-input-form">
 					<Form>
 						<label htmlFor="firstName">First Name</label>
-						<Field className="input login-input is-primary is-medium" id="firstName" name="firstName" type="firstName" placeholder="Enter your first name" />
+						<Field
+							className="input login-input is-primary is-medium"
+							id="firstName"
+							name="firstName"
+							type="firstName"
+							placeholder="Enter your first name"
+						/>
 						{touched.firstName && errors.firstName && <p className="fieldError">{errors.firstName}</p>}
 
 						<label htmlFor="lastName">Last Name</label>
-						<Field className="input login-input is-primary is-medium" id="lastName" name="lastName" type="lastName" placeholder="Enter your last name" />
+						<Field
+							className="input login-input is-primary is-medium"
+							id="lastName"
+							name="lastName"
+							type="lastName"
+							placeholder="Enter your last name"
+						/>
 						{touched.lastName && errors.lastName && <p className="fieldError">{errors.lastName}</p>}
 
 						<label htmlFor="email">Email</label>
-						<Field className="input login-input is-primary is-medium" id="email" name="email" type="email" placeholder="Enter your email" />
+						<Field
+							className="input login-input is-primary is-medium"
+							id="email"
+							name="email"
+							type="email"
+							placeholder="Enter your email"
+							autoComplete="username"
+						/>
 						{touched.email && errors.email && <p className="fieldError">{errors.email}</p>}
 
 						<label htmlFor="confirmEmail">Confirm Email</label>
-						<Field className="input login-input is-primary is-medium" id="confirmEmail" name="confirmEmail" type="email" placeholder="Enter your confirmEmail" />
+						<Field
+							className="input login-input is-primary is-medium"
+							id="confirmEmail"
+							name="confirmEmail"
+							type="email"
+							placeholder="Enter your confirmEmail"
+						/>
 						{touched.confirmEmail && errors.confirmEmail && <p className="fieldError">{errors.confirmEmail}</p>}
 
 						<label htmlFor="password">Password</label>
-						<Field className="input login-input is-primary is-medium" id="password" name="password" type="password" placeholder="Enter your password" />
+						<Field
+							className="input login-input is-primary is-medium"
+							id="password"
+							name="password"
+							type="password"
+							placeholder="Enter your password"
+							autoComplete="new-password"
+						/>
 						{errors.password && touched.password ? <p className="fieldError">{errors.password}</p> : null}
 
 						<label htmlFor="confirmPassword">Confirm Password</label>
-						<Field className="input login-input is-primary is-medium" id="confirmPassword" name="confirmPassword" type="password" placeholder="Enter your confirmPassword" />
+						<Field
+							className="input login-input is-primary is-medium"
+							id="confirmPassword"
+							name="confirmPassword"
+							type="password"
+							placeholder="Enter your confirmPassword"
+							autoComplete="new-password"
+						/>
 						{errors.confirmPassword && touched.confirmPassword ? <p className="fieldError">{errors.confirmPassword}</p> : null}
 
 						<div className="login-button-div">
