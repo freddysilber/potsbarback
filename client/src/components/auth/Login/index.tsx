@@ -41,7 +41,7 @@ const Login = () => (
 	>
 		{({ errors, touched, isSubmitting }: FormState) => (
 			<div className="container">
-				<div className="login-title">Bak||Bar Login</div>
+				<div className="login-title"><img src={require("../../../img/bakbar.png")} /></div>
 				<div className="card login-input-form">
 					<Form>
 						<label htmlFor="email">Email</label>
