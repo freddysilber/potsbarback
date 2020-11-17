@@ -18,6 +18,9 @@ import "bulma/css/bulma.css"
 // Components
 import { Login, About, Portal, Signup } from './components'
 
+// Routes
+import { Routes } from './utils/routes'
+
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
 	// Set auth token header auth
@@ -43,11 +46,10 @@ function App() {
 			<Router>
 				<div className="App column">
 					<Switch>
-						<Route exact path="/" component={About} />
-						<Route path="/login" component={Login} />
-						<Route path="/portal/admin/signup" component={Signup} />
-						<Route path="/portal" component={Portal} />
-						<Route path="/about" component={About} />
+						<Route exact path={Routes.about} component={About} />
+						<Route path={Routes.login} component={Login} />
+						<Route path={Routes.signup} component={Signup} />
+						<Route path={Routes.portal} component={Portal} />
 					</Switch>
 				</div>
 			</Router>
