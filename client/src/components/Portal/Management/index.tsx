@@ -1,7 +1,7 @@
 import React from "react"
 import './Management.scss'
 
-const Management = () => {
+const Management: () => JSX.Element = () => {
   return <div>This is the Management Component</div>
 }
 

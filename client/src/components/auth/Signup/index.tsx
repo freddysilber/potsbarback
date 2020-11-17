@@ -14,7 +14,14 @@ const initialValues: InitialValues = {
 	confirmPassword: ''
 }
 
-const loginValidators = Yup.object().shape({
+const loginValidators: Yup.ObjectSchema<Yup.Shape<object | undefined, {
+	firstName: string;
+	lastName: string;
+	email: string;
+	confirmEmail: '';
+	password: string;
+	confirmPassword: '';
+}>, object> = Yup.object().shape({
 	firstName: Yup.string()
 		.required('First name cannot be empty'),
 	lastName: Yup.string()
@@ -36,17 +43,12 @@ const loginValidators = Yup.object().shape({
 })
 
 const handleSubmit = (data: FormData) => {
-	const { actions, values } = data
+	const { values } = data
 	const user: User = values
 	console.log(user)
 	axios.post('/api/users/register', user)
 		.then((response: any) => console.log(response))
 		.catch((error: any) => console.log(error))
-	// console.log('user', user)
-	// console.log('actions', actions)
-	// console.log('values', values)
-	// alert(JSON.stringify(values, null, 2));
-	// actions.setSubmitting(false);
 }
 
 const Signup = () => (

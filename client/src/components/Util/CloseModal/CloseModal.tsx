@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export const CloseModal = () => {
+export const CloseModal: () => JSX.Element = () => {
 
 	const [closeModal] = useState()
 
