@@ -13,7 +13,7 @@ const User = require('../../models/User')
 // @desc Register user
 // @access Public
 router.post('/register', (req, res) => {
-	console.log(req.body)
+	// console.log(req.body)
 	// Form validation
 	const { errors, isValid } = validateRegisterInput(req.body)
 	// Check validation
@@ -56,8 +56,8 @@ router.post('/login', (req, res) => {
 	if (!isValid) {
 		return res.status(400).json(errors)
 	}
-	const email = req.body.email
-	const password = req.body.password
+
+	const { email, password } = req.body
 	// Find user by email
 	User.findOne({ email }).then(user => {
 		// Check if user exists
@@ -67,8 +67,10 @@ router.post('/login', (req, res) => {
 		// Check password
 		bcrypt.compare(password, user.password).then(isMatch => {
 			if (isMatch) {
-				// User matched
-				// Create JWT Payload
+				/**
+				 * User matched
+				 * Create JWT Payload
+				 */
 				const payload = {
 					id: user.id,
 					name: user.name
