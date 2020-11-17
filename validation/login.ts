@@ -1,9 +1,9 @@
+export { }
+const Validator: any = require('validator')
+const isEmpty: any = require('is-empty')
 
-const Validator = require('validator')
-const isEmpty = require('is-empty')
-
-module.exports = function validateLoginInput(data) {
-	let errors = {}
+module.exports = function validateLoginInput(data: any) {
+	let errors: any = {}
 	// Convert empty fields to an empty string so we can use validator functions
 	data.email = !isEmpty(data.email) ? data.email : ''
 	data.password = !isEmpty(data.password) ? data.password : ''

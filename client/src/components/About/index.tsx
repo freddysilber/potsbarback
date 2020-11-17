@@ -2,9 +2,9 @@ import React from "react"
 import './About.scss'
 import axios from 'axios'
 
-const About = () => {
+const About: () => JSX.Element = () => {
 
-  const getUsers = () => {
+  const getUsers: () => void = () => {
     axios.get('/api/users/getUsers')
       .then(res => console.log(res))
       .catch(err =>
@@ -12,7 +12,7 @@ const About = () => {
       )
   }
 
-  const newUser = () => {
+  const newUser: () => void = () => {
     axios.post('/api/users/newUser')
       .then(res => console.log(res))
       .catch(err =>

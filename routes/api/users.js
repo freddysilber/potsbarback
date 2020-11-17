@@ -13,6 +13,7 @@ const User = require('../../models/User')
 // @desc Register user
 // @access Public
 router.post('/register', (req, res) => {
+	// console.log(req.body)
 	// Form validation
 	const { errors, isValid } = validateRegisterInput(req.body)
 	// Check validation
@@ -23,10 +24,13 @@ router.post('/register', (req, res) => {
 		if (user) {
 			return res.status(400).json({ email: 'Email already exists' })
 		} else {
+			const { firstName, lastName, email, password } = req.body
 			const newUser = new User({
-				name: req.body.name,
-				email: req.body.email,
-				password: req.body.password
+				firstName,
+				lastName,
+				email,
+				password,
+				phone: '9705313993'
 			})
 			// Hash password before saving in database
 			bcrypt.genSalt(10, (err, salt) => {
@@ -52,8 +56,8 @@ router.post('/login', (req, res) => {
 	if (!isValid) {
 		return res.status(400).json(errors)
 	}
-	const email = req.body.email
-	const password = req.body.password
+
+	const { email, password } = req.body
 	// Find user by email
 	User.findOne({ email }).then(user => {
 		// Check if user exists
@@ -63,8 +67,10 @@ router.post('/login', (req, res) => {
 		// Check password
 		bcrypt.compare(password, user.password).then(isMatch => {
 			if (isMatch) {
-				// User matched
-				// Create JWT Payload
+				/**
+				 * User matched
+				 * Create JWT Payload
+				 */
 				const payload = {
 					id: user.id,
 					name: user.name
@@ -103,7 +109,8 @@ router.get('/getUsers', (req, res) => {
 
 router.post('/newUser', (req, res) => {
 	const newUser = new User({
-		name: 'test',
+		firstName: 'test',
+		lastName: 'lastName',
 		email: 'test@test.com',
 		password: 'password',
 		phone: '9705313993'
