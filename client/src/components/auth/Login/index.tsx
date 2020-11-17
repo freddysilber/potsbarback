@@ -3,6 +3,7 @@ import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
 import './Login.scss'
 import { InitialValues, FormState, FormData } from '../interfaces/login'
+import bakbar from '../../../assets/bakbar.png'
 
 const initialValues: InitialValues = {
 	email: '',
@@ -41,7 +42,7 @@ const Login = () => (
 	>
 		{({ errors, touched, isSubmitting }: FormState) => (
 			<div className="container">
-				<div className="login-title"><img src={require("../../../img/bakbar.png")} /></div>
+				<img src={bakbar} width="400" height="200" />
 				<div className="card login-input-form">
 					<Form>
 						<label htmlFor="email">Email</label>

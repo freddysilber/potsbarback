@@ -2,6 +2,13 @@ import React from "react"
 import './About.scss'
 import axios from 'axios'
 
+/**
+ * Logo
+ * 
+ * Note: 2:1 ratio
+ */
+import bakbar from '../../assets/bakbar.png'
+
 const About: () => JSX.Element = () => {
 
   const getUsers: () => void = () => {
@@ -20,10 +27,12 @@ const About: () => JSX.Element = () => {
       )
   }
 
-
   return (
     <>
       <div>This is the About Component</div>
+      <div>
+        <img src={bakbar} width="400" height="200" />
+      </div>
 
       <button onClick={getUsers}>Get Users</button>
       <button onClick={newUser}>Create dummy user</button>

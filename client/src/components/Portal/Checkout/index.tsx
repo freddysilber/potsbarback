@@ -84,12 +84,14 @@ class Checkout extends React.Component {
 						type="text"
 						placeholder="$250.00"
 					/>
-					<div className="checkout-form-head">Cash Owed to House:</div>
+					<div className="checkout-form-head">Cash Owed to House (tips??):</div>
 					<input
 						className="input checkout-input is-primary is-medium"
 						type="text"
 						placeholder="$250.00"
 					/>
+
+					<div className="checkout-form-head">Cash Owed to Tips (tips??):</div>
 					<div className="checkout-button-div">
 						<a href="/portal/management">
 							<button className="button login-button is-primary" onClick={this.toggleModal}>Verify</button>
