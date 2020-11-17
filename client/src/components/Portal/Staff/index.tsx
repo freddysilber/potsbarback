@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import './Staff.scss'
 
-const Staff = () => {
+const Staff: () => JSX.Element = () => {
   const [shiftStarted, _isShiftStarted] = useState(false);
-  const toggleShift = () => {
+  const toggleShift: () => void = () => {
     // Send Post Regquest to User Object that Shift has Started
     // and Verify/Send Position, Cost Center, and Cash Started
     console.log("Employee Shift Started");
@@ -94,4 +94,4 @@ const Staff = () => {
   );
 };
 
-export default Staff;
+export default Staff

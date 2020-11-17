@@ -5,7 +5,7 @@ import Management from './Management'
 import './Portal.scss'
 import Checkout from "./Checkout";
 
-const Portal = () => {
+const Portal: () => JSX.Element = () => {
 
 	return (
 		<div className="container">
