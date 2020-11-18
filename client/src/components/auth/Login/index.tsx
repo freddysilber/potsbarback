@@ -42,7 +42,7 @@ const Login = () => (
 	>
 		{({ errors, touched, isSubmitting }: FormState) => (
 			<div className="container">
-				<img src={bakbar} width="400" height="200" />
+				<img src={bakbar} width="400" height="200" alt="logo" />
 				<div className="card login-input-form">
 					<Form>
 						<label htmlFor="email">Email</label>

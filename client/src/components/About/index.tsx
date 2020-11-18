@@ -31,7 +31,7 @@ const About: () => JSX.Element = () => {
     <>
       <div>This is the About Component</div>
       <div>
-        <img src={bakbar} width="400" height="200" />
+        <img src={bakbar} width="400" height="200" alt="logo" />
       </div>
 
       <button onClick={getUsers}>Get Users</button>
