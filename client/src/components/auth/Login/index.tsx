@@ -3,6 +3,7 @@ import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
 import './Login.scss'
 import { InitialValues, FormState, FormData } from '../interfaces/login'
+import bakbar from '../../../assets/bakbar.png'
 
 const initialValues: InitialValues = {
 	email: '',
@@ -41,14 +42,28 @@ const Login = () => (
 	>
 		{({ errors, touched, isSubmitting }: FormState) => (
 			<div className="container">
-				<div className="login-title"><img src={require("../../../img/bakbar.png")} /></div>
+				<img src={bakbar} width="400" height="200" alt="logo" />
 				<div className="card login-input-form">
 					<Form>
 						<label htmlFor="email">Email</label>
-						<Field className="input login-input is-primary is-medium" id="email" name="email" type="email" placeholder="Enter your email" />
+						<Field
+							className="input login-input is-primary is-medium"
+							id="email"
+							name="email"
+							type="email"
+							placeholder="Enter your email"
+							autoComplete="username"
+						/>
 						{touched.email && errors.email && <p className="fieldError">{errors.email}</p>}
 						<label htmlFor="password">Pssword</label>
-						<Field className="input login-input is-primary is-medium" id="password" name="password" type="password" placeholder="Enter your password" />
+						<Field
+							className="input login-input is-primary is-medium"
+							id="password"
+							name="password"
+							type="password"
+							placeholder="Enter your password"
+							autoComplete="current-password"
+						/>
 						{errors.password && touched.password ? <p className="fieldError">{errors.password}</p> : null}
 						<div className="login-button-div">
 							<button className="button login-button is-primary" type="submit" disabled={isSubmitting} >Submit</button>
