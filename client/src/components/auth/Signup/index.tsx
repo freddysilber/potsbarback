@@ -66,7 +66,7 @@ const Signup = () => (
 					<Form>
 						<label htmlFor="firstName">First Name</label>
 						<Field
-							className="input login-input is-primary is-medium"
+							className="input login-input is-black is-medium"
 							id="firstName"
 							name="firstName"
 							type="firstName"
@@ -76,7 +76,7 @@ const Signup = () => (
 
 						<label htmlFor="lastName">Last Name</label>
 						<Field
-							className="input login-input is-primary is-medium"
+							className="input login-input is-black is-medium"
 							id="lastName"
 							name="lastName"
 							type="lastName"
@@ -86,7 +86,7 @@ const Signup = () => (
 
 						<label htmlFor="email">Email</label>
 						<Field
-							className="input login-input is-primary is-medium"
+							className="input login-input is-black is-medium"
 							id="email"
 							name="email"
 							type="email"
@@ -97,7 +97,7 @@ const Signup = () => (
 
 						<label htmlFor="confirmEmail">Confirm Email</label>
 						<Field
-							className="input login-input is-primary is-medium"
+							className="input login-input is-black is-medium"
 							id="confirmEmail"
 							name="confirmEmail"
 							type="email"
@@ -107,7 +107,7 @@ const Signup = () => (
 
 						<label htmlFor="password">Password</label>
 						<Field
-							className="input login-input is-primary is-medium"
+							className="input login-input is-black is-medium"
 							id="password"
 							name="password"
 							type="password"
@@ -118,7 +118,7 @@ const Signup = () => (
 
 						<label htmlFor="confirmPassword">Confirm Password</label>
 						<Field
-							className="input login-input is-primary is-medium"
+							className="input login-input is-black is-medium"
 							id="confirmPassword"
 							name="confirmPassword"
 							type="password"
@@ -128,7 +128,7 @@ const Signup = () => (
 						{errors.confirmPassword && touched.confirmPassword ? <p className="fieldError">{errors.confirmPassword}</p> : null}
 
 						<div className="login-button-div">
-							<button className="button login-button is-primary" type="submit" disabled={isSubmitting} >Submit</button>
+							<button className="button login-button is-danger" type="submit" disabled={isSubmitting} >Submit</button>
 						</div>
 					</Form>
 				</div>
