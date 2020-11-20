@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './Staff.scss'
+import bakbar from "../../../assets/bakbar_white.png";
 
 const Staff: () => JSX.Element = () => {
   const [shiftStarted, _isShiftStarted] = useState(false);
@@ -11,14 +12,19 @@ const Staff: () => JSX.Element = () => {
   }
   return (
     <div className="container">
+            <div>
+        <img src={bakbar} width="400" height="200" alt="logo" />
+      </div>
       {shiftStarted ? (
         <>
           <div className="staff-title">Your shift has been started.</div>
           <div className="card staff-input-form">
-            <span className="staff-form-head">
+          <div className="staff-title">Your shift has been started.</div>
+          <span className="staff-form-head">
               To End your workday complete the task below:
             </span>
             <ul className="staff-list">
+            
               <li>1. Preform checkout @ Cost Center</li>
               <li>2. Preform checkout in Bak||Bar</li>
               <li>3. Have Manager verify both checkouts</li>
@@ -27,7 +33,7 @@ const Staff: () => JSX.Element = () => {
             <div className="staff-button-div">
               <a href="/portal/checkout">
                 <button
-                  className="button login-button is-primary"
+                  className="button login-button is-danger"
                   onClick={() => console.log("REROUTE")}
                 >
                   Daily Checkout
@@ -38,16 +44,17 @@ const Staff: () => JSX.Element = () => {
         </>
       ) : (
           <>
+
+            <div className="card staff-input-form">
             <div className="staff-title">Hello [user.name]!</div>
             <span>
               Please verify your postition, cost center, and starting cash to
               "Start Shift".
           </span>
-            <div className="card staff-input-form">
               <span className="staff-form-head">Position:</span>
               <div className="field">
                 <div className="control">
-                  <div className="select is-primary">
+                  <div className="select is-black">
                     <select>
                       <option disabled>Select dropdown</option>
                       <option>Wait Staff</option>
@@ -61,7 +68,7 @@ const Staff: () => JSX.Element = () => {
               <span className="staff-form-head">Cost Center:</span>
               <div className="field">
                 <div className="control">
-                  <div className="select is-primary">
+                  <div className="select is-black">
                     <select>
                       <option disabled>Select dropdown</option>
                       <option>Main Bar</option>
@@ -74,13 +81,13 @@ const Staff: () => JSX.Element = () => {
               </div>
               <span className="staff-form-head">Starting Cash:</span>
               <input
-                className="input staff-input is-primary is-medium"
+                className="input staff-input is-black is-medium"
                 type="text"
                 placeholder="$250.00"
               />
               <div className="staff-button-div">
                 <button
-                  className="button login-button is-primary"
+                  className="button login-button is-danger"
                   onClick={toggleShift}
                 >
                   Start Shift

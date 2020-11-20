@@ -67,7 +67,7 @@ const Login = () => (
 						/>
 						{errors.password && touched.password ? <p className="fieldError">{errors.password}</p> : null}
 						<div className="login-button-div">
-							<Link to="/portal"><button className="button is-danger login-button" type="submit" disabled={isSubmitting} >Submit</button></Link>
+							<Link to="/portal/staff"><button className="button is-danger login-button" type="submit" disabled={isSubmitting} >Submit</button></Link>
 						</div>
 					</Form>
 				</div>

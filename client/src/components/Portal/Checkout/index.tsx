@@ -99,7 +99,7 @@ class Checkout extends React.Component {
 					</div>
 					{/* <Modal
 						closeModal={this.toggleModal}
-						modalState={this.state.modalState}
+						modalState={this.modalState}
 						title="Closeout Summary"
 					>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet justo in arcu efficitur malesuada nec ut diam. Aenean a iaculis eros. Proin nec purus congue, rutrum sapien id, sodales ante. Nam imperdiet sapien pretium leo dapibus euismod. Ut ac venenatis nunc. Praesent viverra purus vel lacus ullamcorper porta a a augue. Proin rhoncus tempus leo sed ultricies. In luctus aliquam placerat. Cras efficitur enim vitae vulputate consequat. Nulla tellus est, fringilla quis nisi eu, aliquam finibus eros.</p>
