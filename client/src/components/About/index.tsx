@@ -26,7 +26,7 @@ const About: () => JSX.Element = () => {
   };
 
   return (
-    <>
+    <div className="container">
       <div>WELCOME TO </div>
       <div>
         <img src={bakbar} width="400" height="200" alt="logo" />
@@ -42,7 +42,7 @@ const About: () => JSX.Element = () => {
           Create user.
         </button>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -94,7 +94,7 @@ class Checkout extends React.Component {
 
           <div className="checkout-form-head">Complete Checkout:</div>
           <div className="checkout-button-div">
-            <a href="/portal/management">
+            <a href="/portal/thankyou">
               <button
                 className="button login-button is-danger"
                 onClick={this.toggleModal}
