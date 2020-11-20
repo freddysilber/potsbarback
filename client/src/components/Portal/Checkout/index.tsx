@@ -59,7 +59,7 @@ class Checkout extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div>
         <div>
           <img src={bakbar} width="400" height="200" alt="logo" />
         </div>
