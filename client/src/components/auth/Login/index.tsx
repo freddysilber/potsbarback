@@ -3,7 +3,8 @@ import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
 import './Login.scss'
 import { InitialValues, FormState, FormData } from '../interfaces/login'
-import bakbar from '../../../assets/bakbar.png'
+import bakbar from '../../../assets/bakbar_white.png'
+import {Link} from 'react-router-dom'
 
 const initialValues: InitialValues = {
 	email: '',
@@ -45,9 +46,9 @@ const Login = () => (
 				<img src={bakbar} width="400" height="200" alt="logo" />
 				<div className="card login-input-form">
 					<Form>
-						<label htmlFor="email">Email</label>
+						<label htmlFor="email">Email:</label>
 						<Field
-							className="input login-input is-primary is-medium"
+							className="input login-input is-medium"
 							id="email"
 							name="email"
 							type="email"
@@ -55,9 +56,9 @@ const Login = () => (
 							autoComplete="username"
 						/>
 						{touched.email && errors.email && <p className="fieldError">{errors.email}</p>}
-						<label htmlFor="password">Pssword</label>
+						<label htmlFor="password">Password:</label>
 						<Field
-							className="input login-input is-primary is-medium"
+							className="input login-input is-medium"
 							id="password"
 							name="password"
 							type="password"
@@ -66,7 +67,7 @@ const Login = () => (
 						/>
 						{errors.password && touched.password ? <p className="fieldError">{errors.password}</p> : null}
 						<div className="login-button-div">
-							<button className="button login-button is-primary" type="submit" disabled={isSubmitting} >Submit</button>
+							<Link to="/portal"><button className="button is-danger login-button" type="submit" disabled={isSubmitting} >Submit</button></Link>
 						</div>
 					</Form>
 				</div>
