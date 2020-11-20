@@ -15,7 +15,10 @@ const db = require('./config/keys').mongoURI
 
 // Connect to MongoDB
 mongoose
-	.connect(db, { useNewUrlParser: true })
+	.connect(db, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true
+	})
 	.then(() => console.log(colors.america('\n------------ MongoDB is connected... #Merica ------------\n')))
 	.catch((err: any) => {
 		console.log(colors.red('----------------- ERROR! -------------------'))

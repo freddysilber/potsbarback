@@ -24,8 +24,8 @@ const UserSchema = new Schema({
 		default: Date.now
 	},
 	phone: {
-		type: String,
-		required: true
+		type: String
+		// required: true
 	},
 	isActive: {
 		type: Boolean

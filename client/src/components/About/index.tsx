@@ -1,8 +1,7 @@
 import React from "react";
 import "./About.scss";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { Link } from "react-router-dom"
-
 /**
  * Logo
  *
@@ -14,20 +13,20 @@ const About: () => JSX.Element = () => {
   const getUsers: () => void = () => {
     axios
       .get("/api/users/getUsers")
-      .then((res) => console.log(res))
-      .catch((err) => console.error(err));
+      .then((res: AxiosResponse<any>) => console.log(res))
+      .catch((err: any) => console.error(err));
   };
 
   const newUser: () => void = () => {
     axios
       .post("/api/users/newUser")
-      .then((res) => console.log(res))
-      .catch((err) => console.error(err));
+      .then((res: AxiosResponse<any>) => console.log(res))
+      .catch((err: any) => console.error(err));
   };
 
   return (
     <>
-      <div>WELCOME TO </div>
+      <div>WELCOME TO</div>
       <div>
         <img src={bakbar} width="400" height="200" alt="logo" />
       </div>
@@ -46,4 +45,4 @@ const About: () => JSX.Element = () => {
   );
 };
 
-export default About;
+export default About

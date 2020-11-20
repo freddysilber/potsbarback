@@ -9,18 +9,6 @@ const Portal: () => JSX.Element = () => {
 
 	return (
 		<div>
-			{/* <div className="nav-bar">
-				
-				<a href="/portal/staff">
-					<button className="button is-primary">Staff</button>
-				</a>
-				<a href="/portal/management">
-					<button className="button is-primary">Mgmt</button>
-				</a>
-				<a href="/portal/checkout">
-					<button className="button is-primary">Checkout</button>
-				</a>
-			</div> */}
 			<Switch>
 				<Route path="/portal/staff" component={Staff} />
 				<Route path="/portal/management" component={Management} />

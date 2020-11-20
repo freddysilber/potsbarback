@@ -3,7 +3,20 @@ import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
 import User from '../../../models/User'
 import { InitialValues, FormState, FormData } from '../interfaces/signup'
-import axios from 'axios'
+// import axios from 'axios'
+import { withRouter } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { registerUser } from '../../../actions/authActions'
+import { Routes } from '../../../utils/routes'
+
+interface SignupProps {
+	history: any,
+	registerUser: any,
+	location: any,
+	match: any,
+	auth: any
+}
 
 const initialValues: InitialValues = {
 	firstName: '',
@@ -18,9 +31,9 @@ const loginValidators: Yup.ObjectSchema<Yup.Shape<object | undefined, {
 	firstName: string;
 	lastName: string;
 	email: string;
-	confirmEmail: '';
+	confirmEmail: string;
 	password: string;
-	confirmPassword: '';
+	confirmPassword: string;
 }>, object> = Yup.object().shape({
 	firstName: Yup.string()
 		.required('First name cannot be empty'),
@@ -42,102 +55,143 @@ const loginValidators: Yup.ObjectSchema<Yup.Shape<object | undefined, {
 		.required('Required'),
 })
 
-const handleSubmit = (data: FormData) => {
-	const { values } = data
-	const user: User = values
-	console.log(user)
-	axios.post('/api/users/register', user)
-		.then((response: any) => console.log(response))
-		.catch((error: any) => console.log(error))
+
+class Signup extends React.Component<SignupProps> {
+
+	public static propTypes = {};
+
+	constructor(props: any) {
+		super(props)
+		console.log('Signup props --> ', props)
+		this.state = {
+			errors: {}
+		}
+	}
+
+	componentDidMount() {
+		// If logged in and user navigates to Register page, should redirect them to dashboard
+		if (this.props.auth.isAuthenticated) {
+			this.props.history.push(Routes.portal)
+		}
+	}
+
+	componentWillReceiveProps(nextProps: any) {
+		console.log('nextProps', nextProps)
+		if (nextProps.errors) {
+			this.setState({
+				errors: nextProps.errors
+			})
+		}
+	}
+
+	handleSubmit(data: FormData) {
+		const { values } = data
+		const user: User = values
+		console.log('This is the user object from #handleSubmit', user)
+		this.props.registerUser(user, this.props.history)
+	}
+
+	render() {
+		return (
+			<Formik
+				initialValues={initialValues}
+				validationSchema={loginValidators}
+				onSubmit={(values: any, actions: any) => {
+					const data: FormData = { actions, values }
+					this.handleSubmit(data)
+				}}>
+				{({ errors, touched, isSubmitting }: FormState) => (
+					<div className="container">
+						<div className="login-title">Bak||Bar Signup</div>
+						<div className="card login-input-form">
+							<Form>
+								<label htmlFor="firstName">First Name</label>
+								<Field
+									className="input login-input is-primary is-medium"
+									id="firstName"
+									name="firstName"
+									type="firstName"
+									placeholder="Enter your first name"
+								/>
+								{touched.firstName && errors.firstName && <p className="fieldError">{errors.firstName}</p>}
+
+								<label htmlFor="lastName">Last Name</label>
+								<Field
+									className="input login-input is-primary is-medium"
+									id="lastName"
+									name="lastName"
+									type="lastName"
+									placeholder="Enter your last name"
+								/>
+								{touched.lastName && errors.lastName && <p className="fieldError">{errors.lastName}</p>}
+
+								<label htmlFor="email">Email</label>
+								<Field
+									className="input login-input is-primary is-medium"
+									id="email"
+									name="email"
+									type="email"
+									placeholder="Enter your email"
+									autoComplete="username"
+								/>
+								{touched.email && errors.email && <p className="fieldError">{errors.email}</p>}
+
+								<label htmlFor="confirmEmail">Confirm Email</label>
+								<Field
+									className="input login-input is-primary is-medium"
+									id="confirmEmail"
+									name="confirmEmail"
+									type="email"
+									placeholder="Enter your confirmEmail"
+								/>
+								{touched.confirmEmail && errors.confirmEmail && <p className="fieldError">{errors.confirmEmail}</p>}
+
+								<label htmlFor="password">Password</label>
+								<Field
+									className="input login-input is-primary is-medium"
+									id="password"
+									name="password"
+									type="password"
+									placeholder="Enter your password"
+									autoComplete="new-password"
+								/>
+								{errors.password && touched.password ? <p className="fieldError">{errors.password}</p> : null}
+
+								<label htmlFor="confirmPassword">Confirm Password</label>
+								<Field
+									className="input login-input is-primary is-medium"
+									id="confirmPassword"
+									name="confirmPassword"
+									type="password"
+									placeholder="Enter your confirmPassword"
+									autoComplete="new-password"
+								/>
+								{errors.confirmPassword && touched.confirmPassword ? <p className="fieldError">{errors.confirmPassword}</p> : null}
+
+								<div className="login-button-div">
+									<button className="button login-button is-primary" type="submit" disabled={isSubmitting} >Submit</button>
+								</div>
+							</Form>
+						</div>
+					</div>
+				)}
+			</Formik>
+		)
+	}
 }
 
-const Signup = () => (
-	<Formik
-		initialValues={initialValues}
-		validationSchema={loginValidators}
-		onSubmit={(values: any, actions: any) => {
-			const data: FormData = { actions, values }
-			handleSubmit(data)
-		}}>
-		{({ errors, touched, isSubmitting }: FormState) => (
-			<div className="container">
-				<div className="login-title">Bak||Bar Signup</div>
-				<div className="card login-input-form">
-					<Form>
-						<label htmlFor="firstName">First Name</label>
-						<Field
-							className="input login-input is-primary is-medium"
-							id="firstName"
-							name="firstName"
-							type="firstName"
-							placeholder="Enter your first name"
-						/>
-						{touched.firstName && errors.firstName && <p className="fieldError">{errors.firstName}</p>}
+Signup.propTypes = {
+	registerUser: PropTypes.func.isRequired,
+	auth: PropTypes.object.isRequired,
+	errors: PropTypes.object.isRequired
+}
 
-						<label htmlFor="lastName">Last Name</label>
-						<Field
-							className="input login-input is-primary is-medium"
-							id="lastName"
-							name="lastName"
-							type="lastName"
-							placeholder="Enter your last name"
-						/>
-						{touched.lastName && errors.lastName && <p className="fieldError">{errors.lastName}</p>}
+const mapStateToProps = (state: any) => ({
+	auth: state.auth,
+	errors: state.errors
+})
 
-						<label htmlFor="email">Email</label>
-						<Field
-							className="input login-input is-primary is-medium"
-							id="email"
-							name="email"
-							type="email"
-							placeholder="Enter your email"
-							autoComplete="username"
-						/>
-						{touched.email && errors.email && <p className="fieldError">{errors.email}</p>}
-
-						<label htmlFor="confirmEmail">Confirm Email</label>
-						<Field
-							className="input login-input is-primary is-medium"
-							id="confirmEmail"
-							name="confirmEmail"
-							type="email"
-							placeholder="Enter your confirmEmail"
-						/>
-						{touched.confirmEmail && errors.confirmEmail && <p className="fieldError">{errors.confirmEmail}</p>}
-
-						<label htmlFor="password">Password</label>
-						<Field
-							className="input login-input is-primary is-medium"
-							id="password"
-							name="password"
-							type="password"
-							placeholder="Enter your password"
-							autoComplete="new-password"
-						/>
-						{errors.password && touched.password ? <p className="fieldError">{errors.password}</p> : null}
-
-						<label htmlFor="confirmPassword">Confirm Password</label>
-						<Field
-							className="input login-input is-primary is-medium"
-							id="confirmPassword"
-							name="confirmPassword"
-							type="password"
-							placeholder="Enter your confirmPassword"
-							autoComplete="new-password"
-						/>
-						{errors.confirmPassword && touched.confirmPassword ? <p className="fieldError">{errors.confirmPassword}</p> : null}
-
-						<div className="login-button-div">
-							<button className="button login-button is-primary" type="submit" disabled={isSubmitting} >Submit</button>
-						</div>
-					</Form>
-				</div>
-			</div>
-		)}
-	</Formik>
-)
-export default Signup
-
+export default connect(mapStateToProps, { registerUser })(withRouter(Signup))
 
 // import React, { Component } from 'react'
 // import { Link, withRouter } from 'react-router-dom'

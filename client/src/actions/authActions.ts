@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 import setAuthToken from '../utils/setAuthToken'
 import jwt_decode from 'jwt-decode'
 import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from './types'
@@ -6,13 +6,17 @@ import { Routes } from '../utils/routes'
 // Register User
 export const registerUser = (userData: any, history: any) => (dispatch: any) => {
 	axios.post('/api/users/register', userData)
-		.then(res => history.push(Routes.login))
-		.catch(err =>
+		.then((res: AxiosResponse) => {
+			console.log('AUTH ACTIONS - REGISTER USER ', res)
+			history.push(Routes.login)
+		})
+		.catch((err: any) => {
+			console.error('AUTH ACTIONS - REGISTER USER ', err)
 			dispatch({
 				type: GET_ERRORS,
 				payload: err.response.data
 			})
-		)
+		})
 }
 // Login - get user token
 export const loginUser = (userData: any) => (dispatch: any) => {

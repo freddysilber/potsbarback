@@ -4,6 +4,8 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const keys = require('../../config/keys')
 const passport = require('passport')
+// const colors = require('colors')
+
 // Load input validation
 const validateRegisterInput = require('../../validation/register')
 const validateLoginInput = require('../../validation/login')
@@ -13,7 +15,6 @@ const User = require('../../models/User')
 // @desc Register user
 // @access Public
 router.post('/register', (req, res) => {
-	// console.log(req.body)
 	// Form validation
 	const { errors, isValid } = validateRegisterInput(req.body)
 	// Check validation
@@ -29,8 +30,7 @@ router.post('/register', (req, res) => {
 				firstName,
 				lastName,
 				email,
-				password,
-				phone: '9705313993'
+				password
 			})
 			// Hash password before saving in database
 			bcrypt.genSalt(10, (err, salt) => {

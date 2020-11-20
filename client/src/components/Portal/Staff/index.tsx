@@ -3,13 +3,16 @@ import "./Staff.scss";
 import bakbar from "../../../assets/bakbar_white.png";
 
 const Staff: () => JSX.Element = () => {
+
   const [shiftStarted, _isShiftStarted] = useState(false);
+
   const toggleShift: () => void = () => {
     // Send Post Regquest to User Object that Shift has Started
     // and Verify/Send Position, Cost Center, and Cash Started
     console.log("Employee Shift Started");
     _isShiftStarted(true);
   };
+
   return (
     <div className="container">
       <div>
@@ -41,58 +44,58 @@ const Staff: () => JSX.Element = () => {
           </div>
         </>
       ) : (
-        <>
-          <div className="card staff-input-form">
-            <div className="staff-title">Hello [user.name]!</div>
-            <div className="staff-form-head">
-              Please verify your postition, cost center, and starting cash to
-              "Start Shift".
+          <>
+            <div className="card staff-input-form">
+              <div className="staff-title">Hello [user.name]!</div>
+              <div className="staff-form-head">
+                Please verify your postition, cost center, and starting cash to
+                "Start Shift".
             </div>
-            <div className="staff-form-head">Position:</div>
-            <div className="field">
-              <div className="control">
-                <div className="select is-black">
-                  <select>
-                    <option selected>Select..</option>
-                    <option>Wait Staff</option>
-                    <option>Bar Back</option>
-                    <option>Security</option>
-                    <option>Bartender</option>
-                  </select>
+              <div className="staff-form-head">Position:</div>
+              <div className="field">
+                <div className="control">
+                  <div className="select is-black">
+                    <select>
+                      <option selected>Select..</option>
+                      <option>Wait Staff</option>
+                      <option>Bar Back</option>
+                      <option>Security</option>
+                      <option>Bartender</option>
+                    </select>
+                  </div>
                 </div>
               </div>
-            </div>
-            <span className="staff-form-head">Cost Center:</span>
-            <div className="field">
-              <div className="control">
-                <div className="select is-black">
-                  <select>
-                    <option selected>Select ..</option>
-                    <option>Main Bar</option>
-                    <option>Garden</option>
-                    <option>Main Door</option>
-                    <option>Side Door</option>
-                  </select>
+              <span className="staff-form-head">Cost Center:</span>
+              <div className="field">
+                <div className="control">
+                  <div className="select is-black">
+                    <select>
+                      <option selected>Select ..</option>
+                      <option>Main Bar</option>
+                      <option>Garden</option>
+                      <option>Main Door</option>
+                      <option>Side Door</option>
+                    </select>
+                  </div>
                 </div>
               </div>
-            </div>
-            <span className="staff-form-head">Starting Cash:</span>
-            <input
-              className="input staff-input is-black is-medium"
-              type="text"
-              placeholder="$250.00"
-            />
-            <div className="staff-button-div">
-              <button
-                className="button login-button is-danger"
-                onClick={toggleShift}
-              >
-                Start Shift
+              <span className="staff-form-head">Starting Cash:</span>
+              <input
+                className="input staff-input is-black is-medium"
+                type="text"
+                placeholder="$250.00"
+              />
+              <div className="staff-button-div">
+                <button
+                  className="button login-button is-danger"
+                  onClick={toggleShift}
+                >
+                  Start Shift
               </button>
+              </div>
             </div>
-          </div>
-        </>
-      )}
+          </>
+        )}
     </div>
   );
 };
