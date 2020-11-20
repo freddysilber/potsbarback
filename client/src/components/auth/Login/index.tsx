@@ -1,10 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
 import './Login.scss'
 import { InitialValues, FormState, FormData } from '../interfaces/login'
 import bakbar from '../../../assets/bakbar_white.png'
-import { Link } from 'react-router-dom'
 
 const initialValues: InitialValues = {
 	email: '',

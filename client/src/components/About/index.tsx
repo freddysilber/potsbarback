@@ -1,7 +1,7 @@
 import React from "react";
 import "./About.scss";
 import axios from "axios";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 
 /**
  * Logo
@@ -32,7 +32,7 @@ const About: () => JSX.Element = () => {
         <img src={bakbar} width="400" height="200" alt="logo" />
       </div>
       <div className="buttonContainer">
-      <Link to="/Login"><button className="button is-black is-small">
+        <Link to="/Login"><button className="button is-black is-small">
           Demo.
         </button></Link>
         <button className="button is-black is-small" onClick={getUsers}>
