@@ -44,7 +44,7 @@ function App() {
 	return (
 		<Provider store={store}>
 			<Router>
-				<div className="App column">
+				<div className="column">
 					<Switch>
 						<Route exact path={Routes.about} component={About} />
 						<Route path={Routes.login} component={Login} />
