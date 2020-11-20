@@ -5,7 +5,8 @@
   text-align: center;
   height: 100vh;
   width: 100vw;
-  background-image: url("./assets/oasisBackground.jpg");
+  // background-image: url("./assets/oasisBackground.jpg");
+  background-repeat: repeat-y;
 }
 .nav .button {
   margin-left: 50px;

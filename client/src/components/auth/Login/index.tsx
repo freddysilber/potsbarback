@@ -48,7 +48,7 @@ const Login = () => (
 					<Form>
 						<label htmlFor="email">Email:</label>
 						<Field
-							className="input login-input is-medium"
+							className="input login-input is-medium is-black"
 							id="email"
 							name="email"
 							type="email"
@@ -58,7 +58,7 @@ const Login = () => (
 						{touched.email && errors.email && <p className="fieldError">{errors.email}</p>}
 						<label htmlFor="password">Password:</label>
 						<Field
-							className="input login-input is-medium"
+							className="input login-input is-medium is-black"
 							id="password"
 							name="password"
 							type="password"

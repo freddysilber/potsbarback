@@ -8,9 +8,9 @@ import Checkout from "./Checkout";
 const Portal: () => JSX.Element = () => {
 
 	return (
-		<div className="container">
-			<div className="nav-bar">
-				{/* Lets refactor these anchors into components for Navi */}
+		<div>
+			{/* <div className="nav-bar">
+				
 				<a href="/portal/staff">
 					<button className="button is-primary">Staff</button>
 				</a>
@@ -20,7 +20,7 @@ const Portal: () => JSX.Element = () => {
 				<a href="/portal/checkout">
 					<button className="button is-primary">Checkout</button>
 				</a>
-			</div>
+			</div> */}
 			<Switch>
 				<Route path="/portal/staff" component={Staff} />
 				<Route path="/portal/management" component={Management} />
