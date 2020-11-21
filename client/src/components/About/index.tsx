@@ -11,6 +11,7 @@ import { connect } from 'react-redux'
  * Note: 2:1 ratio
  */
 import bakbar from "../../assets/bakbar.png"
+import { Routes } from "../../utils/routes";
 
 interface AboutProps {
   logoutUser: any
@@ -47,11 +48,17 @@ class About extends React.Component<AboutProps> {
           <img src={bakbar} width="400" height="200" alt="logo" />
         </div>
         <div className="buttonContainer">
-          <Link to="/Login">
+          <Link to={Routes.login}>
             <button className="button is-black is-small">Demo.</button>
           </Link>
           <button className="button is-black is-small" onClick={this.getUsers}>Get Users.</button>
           <button className="button is-black is-small" onClick={this.newUser}>Create user.</button>
+          <Link to={Routes.signup}>
+            <button className="button is-black is-small">Signup.</button>
+          </Link>
+          <Link to={Routes.login}>
+            <button className="button is-black is-small">Login.</button>
+          </Link>
           <button className="button is-black is-small" onClick={this.logoutUser}>Logout user.</button>
         </div>
       </>
