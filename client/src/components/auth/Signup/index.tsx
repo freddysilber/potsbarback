@@ -3,12 +3,12 @@ import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
 import User from '../../../models/User'
 import { InitialValues, FormState, FormData } from '../interfaces/signup'
-// import axios from 'axios'
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { registerUser } from '../../../actions/authActions'
 import { Routes } from '../../../utils/routes'
+import './Signup.scss'
 
 interface SignupProps {
 	history: any,
@@ -58,7 +58,7 @@ const loginValidators: Yup.ObjectSchema<Yup.Shape<object | undefined, {
 
 class Signup extends React.Component<SignupProps> {
 
-	public static propTypes = {};
+	public static propTypes = {}
 
 	constructor(props: any) {
 		super(props)
@@ -102,7 +102,9 @@ class Signup extends React.Component<SignupProps> {
 				}}>
 				{({ errors, touched, isSubmitting }: FormState) => (
 					<div className="container">
-						<div className="login-title">Bak||Bar Signup</div>
+						<div className="login-title">
+							<p className="titleText">Bak||Bar Signup</p>
+						</div>
 						<div className="card login-input-form">
 							<Form>
 								<label htmlFor="firstName">First Name</label>
