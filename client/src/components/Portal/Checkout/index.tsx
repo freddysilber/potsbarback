@@ -74,35 +74,40 @@ class Checkout extends React.Component {
           </div>
           <div className="checkout-form-head">Daily Cash Sales:</div>
           <input
-            className="input checkout-input is-black is-medium"
+            className="input checkout-input is-black is-medium mt-0"
             type="text"
             placeholder="$250.00"
           />
           <div className="checkout-form-head">Daily Credit Sales:</div>
           <input
-            className="input checkout-input is-black is-medium"
+            className="input checkout-input is-black is-medium mt-0"
             type="text"
             placeholder="$250.00"
           />
           <div className="checkout-form-head">Cash Owed to House:</div>
-		  <div className="exerptText">Use "-xx.xx" to denote if cash is owed to you (ex: -26.00)</div>
+
           <input
-            className="input checkout-input is-black is-medium"
+            className="input is-black is-medium mt-0"
             type="text"
             placeholder="$250.00"
           />
+          <span className="exerptText mt-1">
+            Use "-xx.xx" to denote if cash is owed to you (ex: -26.00)
+          </span>
 
-          <div className="checkout-form-head">Complete Checkout:</div>
-          <div className="checkout-button-div">
-            <a href="/portal/thankyou">
+          <div className="checkout-form-head mt-4">
+            Verify to complete Checkout:
+          </div>
+          <a href="/portal/verification">
+            <div className="staff-button-div">
               <button
                 className="button login-button is-danger"
                 onClick={this.toggleModal}
               >
                 Verify
               </button>
-            </a>
-          </div>
+            </div>
+          </a>
           {/* <Modal
 						closeModal={this.toggleModal}
 						modalState={this.modalState}

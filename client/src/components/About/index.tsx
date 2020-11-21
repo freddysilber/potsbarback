@@ -8,7 +8,7 @@ import {Link} from "react-router-dom"
  *
  * Note: 2:1 ratio
  */
-import bakbar from "../../assets/bakbar.png";
+import bakbar from "../../assets/bakbar_white.png";
 
 const About: () => JSX.Element = () => {
   const getUsers: () => void = () => {
@@ -32,14 +32,17 @@ const About: () => JSX.Element = () => {
         <img src={bakbar} width="400" height="200" alt="logo" />
       </div>
       <div className="buttonContainer">
-      <Link to="/Login"><button className="button is-black is-small">
+      <Link to="/Login"><button className="button is-ghost is-small">
           Demo.
         </button></Link>
-        <button className="button is-black is-small" onClick={getUsers}>
-          Get Users.
+        <Link to="/portal/admin/signup"><button className="button is-ghost is-small">
+          Demo w/ Sign-up.
+        </button></Link>
+        <button className="button is-static is-small" onClick={getUsers}>
+          Users API.
         </button>
-        <button className="button is-black is-small" onClick={newUser}>
-          Create user.
+        <button className="button is-static is-small" onClick={newUser}>
+          Create API.user.
         </button>
       </div>
     </div>

@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import Staff from "./Staff";
 import Management from "./Management";
 import Checkout from "./Checkout";
+import Verification from "./Verification";
 import Thankyou from "./Thankyou";
 import "./Portal.scss";
 
@@ -25,6 +26,7 @@ const Portal: () => JSX.Element = () => {
         <Route path="/portal/staff" component={Staff} />
         <Route path="/portal/management" component={Management} />
         <Route path="/portal/checkout" component={Checkout} />
+		<Route path="/portal/verification" component={Verification} />
         <Route path="/portal/thankyou" component={Thankyou} />
       </Switch>
     </div>

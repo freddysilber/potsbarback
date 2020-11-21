@@ -28,16 +28,18 @@ const Staff: () => JSX.Element = () => {
               <li>3. Have Manager verify both checkouts</li>
               <li>4. Deliver funds to comptroller for verification</li>
             </ul>
+            <a href="/portal/checkout">
             <div className="staff-button-div">
-              <a href="/portal/checkout">
+             
                 <button
                   className="button login-button is-danger"
                   onClick={() => console.log("REROUTE")}
                 >
                   Daily Checkout
                 </button>
-              </a>
+              
             </div>
+            </a>
           </div>
         </>
       ) : (
@@ -48,7 +50,7 @@ const Staff: () => JSX.Element = () => {
               Please verify your postition, cost center, and starting cash to
               "Start Shift".
             </div>
-            <div className="staff-form-head">Position:</div>
+            <div className="staff-form-head mt-4">Position:</div>
             <div className="field">
               <div className="control">
                 <div className="select is-black">
@@ -78,7 +80,7 @@ const Staff: () => JSX.Element = () => {
             </div>
             <span className="staff-form-head">Starting Cash:</span>
             <input
-              className="input staff-input is-black is-medium"
+              className="input staff-input is-black is-medium mt-0"
               type="text"
               placeholder="$250.00"
             />

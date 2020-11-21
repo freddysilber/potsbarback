@@ -1,81 +1,101 @@
-import React from 'react'
-import { Formik, Form, Field } from 'formik'
-import * as Yup from 'yup'
-import './Login.scss'
-import { InitialValues, FormState, FormData } from '../interfaces/login'
-import bakbar from '../../../assets/bakbar_white.png'
-import {Link} from 'react-router-dom'
+import React from "react";
+import { Formik, Form, Field } from "formik";
+import * as Yup from "yup";
+import "./Login.scss";
+import { InitialValues, FormState, FormData } from "../interfaces/login";
+import bakbar from "../../../assets/bakbar_white.png";
+import { Link } from "react-router-dom";
 
 const initialValues: InitialValues = {
-	email: '',
-	password: ''
-}
+  email: "",
+  password: "",
+};
 
-const loginValidators: Yup.ObjectSchema<Yup.Shape<object | undefined, {
-	email: string;
-	password: string;
-}>, object> = Yup.object().shape({
-	email: Yup.string()
-		.email('Invalid email')
-		.required('Required'),
-	password: Yup.string()
-		.min(2, 'Your password is too short!')
-		.max(50, 'Your password is too long')
-		.required('Required'),
-})
+const loginValidators: Yup.ObjectSchema<
+  Yup.Shape<
+    object | undefined,
+    {
+      email: string;
+      password: string;
+    }
+  >,
+  object
+> = Yup.object().shape({
+  email: Yup.string().email("Invalid email").required("Required"),
+  password: Yup.string()
+    .min(2, "Your password is too short!")
+    .max(50, "Your password is too long")
+    .required("Required"),
+});
 
 const handleSubmit = (data: FormData) => {
-	const { actions, values } = data
-	console.log('actions', actions)
-	console.log('values', values)
-	alert(JSON.stringify(values, null, 2));
-	actions.setSubmitting(false);
-}
+  const { actions, values } = data;
+  console.log("actions", actions);
+  console.log("values", values);
+  alert(JSON.stringify(values, null, 2));
+  actions.setSubmitting(false);
+};
 
 const Login = () => (
-	<Formik
-		initialValues={initialValues}
-		validationSchema={loginValidators}
-		onSubmit={(values: any, actions: any) => {
-			const data: FormData = { actions, values }
-			handleSubmit(data)
-		}}
-	>
-		{({ errors, touched, isSubmitting }: FormState) => (
-			<div className="container">
-				<img src={bakbar} width="400" height="200" alt="logo" />
-				<div className="card login-input-form">
-					<Form>
-						<label htmlFor="email">Email:</label>
-						<Field
-							className="input login-input is-medium is-black"
-							id="email"
-							name="email"
-							type="email"
-							placeholder="Enter your email"
-							autoComplete="username"
-						/>
-						{touched.email && errors.email && <p className="fieldError">{errors.email}</p>}
-						<label htmlFor="password">Password:</label>
-						<Field
-							className="input login-input is-medium is-black"
-							id="password"
-							name="password"
-							type="password"
-							placeholder="Enter your password"
-							autoComplete="current-password"
-						/>
-						{errors.password && touched.password ? <p className="fieldError">{errors.password}</p> : null}
-						<div className="login-button-div">
-							<Link to="/portal/staff"><button className="button is-danger login-button" type="submit" disabled={isSubmitting} >Submit</button></Link>
-						</div>
-					</Form>
-				</div>
-			</div>
-		)}
-	</Formik>
-)
-export default Login
+  <Formik
+    initialValues={initialValues}
+    validationSchema={loginValidators}
+    onSubmit={(values: any, actions: any) => {
+      const data: FormData = { actions, values };
+      handleSubmit(data);
+    }}
+  >
+    {({ errors, touched, isSubmitting }: FormState) => (
+      <div className="container">
+        <img src={bakbar} width="400" height="200" alt="logo" />
+        <div className="card login-input-form">
+          <Form>
+            <label className="login-form-head" htmlFor="email">
+              Email:
+            </label>
+            <Field
+              className="input login-input is-medium mt-0 is-black"
+              id="email"
+              name="email"
+              type="email"
+              placeholder="Enter your email"
+              autoComplete="username"
+            />
+            {touched.email && errors.email && (
+              <p className="fieldError">{errors.email}</p>
+            )}
+            <label className="login-form-head" htmlFor="password">
+              Password:
+            </label>
+            <Field
+              className="input login-input is-medium mt-0 is-black"
+              id="password"
+              name="password"
+              type="password"
+              placeholder="Enter your password"
+              autoComplete="current-password"
+            />
+            {errors.password && touched.password ? (
+              <p className="fieldError">{errors.password}</p>
+            ) : null}
+            <Link to="/portal/staff">
+              <div className="staff-button-div">
+                <button
+                  className="button is-danger login-button"
+                  type="submit"
+                  disabled={isSubmitting}
+                >
+                  Submit
+                </button>
+              </div>
+            </Link>
+          </Form>
+        </div>
+      </div>
+    )}
+  </Formik>
+);
+export default Login;
 
 // import React, { Component } from 'react'
 // import { Link } from 'react-router-dom'
