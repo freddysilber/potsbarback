@@ -1,5 +1,7 @@
 # Pots Bak||Bar
 
+<img src="client/src/assets/bakbar.png"/>
+
 ## Getting Started
 1. run ```npm i``` in the root directory
 2. ```cd``` into the 'client' directory and run ```npm i```
