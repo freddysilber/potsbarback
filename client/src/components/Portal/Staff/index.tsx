@@ -23,8 +23,8 @@ const Staff: () => JSX.Element = () => {
               To End your workday complete the task below:
             </span>
             <ul className="staff-list">
-              <li>1. Preform checkout @ Cost Center</li>
-              <li>2. Preform checkout in Bak||Bar</li>
+              <li>1. Perform checkout @ Cost Center</li>
+              <li>2. Perform checkout in Bak||Bar</li>
               <li>3. Have Manager verify both checkouts</li>
               <li>4. Deliver funds to comptroller for verification</li>
             </ul>
