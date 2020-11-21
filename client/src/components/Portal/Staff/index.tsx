@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Staff.scss";
-import bakbar from "../../../assets/bakbar_white.png";
+import bakbar from "../../../assets/bakbar_white.png"
 
 const Staff: () => JSX.Element = () => {
 
@@ -69,8 +69,8 @@ const Staff: () => JSX.Element = () => {
               <div className="field">
                 <div className="control">
                   <div className="select is-black">
-                    <select>
-                      <option selected>Select ..</option>
+                    <select defaultValue="0">
+                      <option>Select ..</option>
                       <option>Main Bar</option>
                       <option>Garden</option>
                       <option>Main Door</option>

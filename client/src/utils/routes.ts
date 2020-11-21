@@ -3,5 +3,6 @@ export enum Routes {
 	signup = '/portal/admin/signup',
 	// dashboard = '/dashboard',
 	login = '/login',
-	portal = '/portal'
+	portal = '/portal',
+	staff = "/portal/staff"
 }
