@@ -55,7 +55,9 @@ class Login extends React.Component<LoginProps> {
 
 	componentWillReceiveProps(nextProps: any) {
 		if (nextProps.auth.isAuthenticated) {
-			this.props.history.push(Routes.portal)
+			// After login, redirect user to the portal/ dashboard route
+			this.props.history.push(Routes.about)
+			// this.props.history.push(Routes.portal)
 		}
 		if (nextProps.errors) {
 			this.setState({
