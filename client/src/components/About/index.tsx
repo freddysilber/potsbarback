@@ -35,7 +35,6 @@ class About extends React.Component<AboutProps> {
   };
 
   logoutUser = (event: any) => {
-    // console.log('logout user!', this.props)
     event.preventDefault()
     this.props.logoutUser()
   }
