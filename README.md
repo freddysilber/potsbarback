@@ -1,7 +1,5 @@
 # Pots Bak||Bar
 
-<hr>
-
 # Getting Started
 1. run ```npm i``` in the root directory
 2. ```cd``` into the 'client' directory and run ```npm i```
