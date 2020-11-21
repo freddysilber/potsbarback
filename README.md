@@ -1,5 +1,8 @@
 # Pots Bak||Bar
 
+## Contents
+* [Getting Started](#Getting-Started)
+
 <img width="500" src="client/src/assets/bakbar.png"/>
 
 ## Getting Started
