@@ -57,8 +57,8 @@ const Staff: () => JSX.Element = () => {
               <div className="field">
                 <div className="control">
                   <div className="select is-black">
-                    <select>
-                      <option selected>Select..</option>
+                    <select defaultValue="0">
+                      <option>Select..</option>
                       <option>Wait Staff</option>
                       <option>Bar Back</option>
                       <option>Security</option>
