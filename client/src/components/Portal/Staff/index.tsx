@@ -14,7 +14,7 @@ const Staff: () => JSX.Element = () => {
   };
 
   return (
-    <div className="container">
+    <div>
       <div>
         <img src={bakbar} width="400" height="200" alt="logo" />
       </div>
@@ -26,21 +26,23 @@ const Staff: () => JSX.Element = () => {
               To End your workday complete the task below:
             </span>
             <ul className="staff-list">
-              <li>1. Preform checkout @ Cost Center</li>
-              <li>2. Preform checkout in Bak||Bar</li>
+              <li>1. Perform checkout @ Cost Center</li>
+              <li>2. Perform checkout in Bak||Bar</li>
               <li>3. Have Manager verify both checkouts</li>
               <li>4. Deliver funds to comptroller for verification</li>
             </ul>
-            <div className="staff-button-div">
-              <a href="/portal/checkout">
+            <a href="/portal/checkout">
+              <div className="staff-button-div">
+
                 <button
                   className="button login-button is-danger"
                   onClick={() => console.log("REROUTE")}
                 >
                   Daily Checkout
                 </button>
-              </a>
-            </div>
+
+              </div>
+            </a>
           </div>
         </>
       ) : (
@@ -51,7 +53,7 @@ const Staff: () => JSX.Element = () => {
                 Please verify your postition, cost center, and starting cash to
                 "Start Shift".
             </div>
-              <div className="staff-form-head">Position:</div>
+              <div className="staff-form-head mt-4">Position:</div>
               <div className="field">
                 <div className="control">
                   <div className="select is-black">
@@ -64,24 +66,24 @@ const Staff: () => JSX.Element = () => {
                     </select>
                   </div>
                 </div>
-              </div>
-              <span className="staff-form-head">Cost Center:</span>
-              <div className="field">
-                <div className="control">
-                  <div className="select is-black">
-                    <select defaultValue="0">
-                      <option>Select ..</option>
-                      <option>Main Bar</option>
-                      <option>Garden</option>
-                      <option>Main Door</option>
-                      <option>Side Door</option>
-                    </select>
+                <span className="staff-form-head">Cost Center:</span>
+                <div className="field">
+                  <div className="control">
+                    <div className="select is-black">
+                      <select defaultValue="0">
+                        <option>Select ..</option>
+                        <option>Main Bar</option>
+                        <option>Garden</option>
+                        <option>Main Door</option>
+                        <option>Side Door</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
               </div>
               <span className="staff-form-head">Starting Cash:</span>
               <input
-                className="input staff-input is-black is-medium"
+                className="input staff-input is-black is-medium mt-0"
                 type="text"
                 placeholder="$250.00"
               />

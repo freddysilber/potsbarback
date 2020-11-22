@@ -19,13 +19,13 @@ interface SignupProps {
 }
 
 const initialValues: InitialValues = {
-	firstName: '',
-	lastName: '',
-	email: '',
-	confirmEmail: '',
-	password: '',
-	confirmPassword: ''
-}
+  firstName: "",
+  lastName: "",
+  email: "",
+  confirmEmail: "",
+  password: "",
+  confirmPassword: "",
+};
 
 const loginValidators: Yup.ObjectSchema<Yup.Shape<object | undefined, {
 	firstName: string;
