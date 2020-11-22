@@ -1,8 +1,24 @@
 import React from "react";
 import bakbar from "../../../assets/bakbar_white.png";
 import "./Thankyou.scss";
+import { logoutUser } from '../../../actions/authActions'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
-const Thankyou = () => {
+interface ThankyouProps {
+  logoutUser: any
+}
+
+const Thankyou = (props: ThankyouProps) => {
+
+  const logoutUser = (event: any) => {
+    event.preventDefault()
+    props.logoutUser()
+    // Redirect to the Sbout component
+    window.location.href = '/'
+  }
+
+  // render() {
   return (
     <>
       <div>
@@ -28,7 +44,7 @@ const Thankyou = () => {
           <div className="staff-button-div">
             <button
               className="button login-button is-danger"
-              onClick={() => console.log("REROUTE")}
+              onClick={logoutUser}
             >
               Good Bye.
             </button>
@@ -36,6 +52,16 @@ const Thankyou = () => {
         </a>
       </div>
     </>
-  );
-};
-export default Thankyou;
+  )
+}
+
+Thankyou.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+}
+
+const mapStateToProps = (state: any) => ({
+  auth: state.auth
+})
+
+export default connect(mapStateToProps, { logoutUser })(Thankyou)

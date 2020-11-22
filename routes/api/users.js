@@ -98,34 +98,34 @@ router.post('/login', (req, res) => {
 	})
 })
 
-router.get('/getUsers', (req, res) => {
-	console.log(res, req)
-	console.log('-----------------')
-	User.find().then(user => {
-		console.log(user)
-		res.json(user)
-	})
-})
+// router.get('/getUsers', (req, res) => {
+// 	console.log(res, req)
+// 	console.log('-----------------')
+// 	User.find().then(user => {
+// 		console.log(user)
+// 		res.json(user)
+// 	})
+// })
 
-router.post('/newUser', (req, res) => {
-	const newUser = new User({
-		firstName: 'test',
-		lastName: 'lastName',
-		email: 'test@test.com',
-		password: 'password',
-		phone: '9705313993'
-	})
-	// Hash password before saving in database
-	bcrypt.genSalt(10, (err, salt) => {
-		bcrypt.hash(newUser.password, salt, (err, hash) => {
-			if (err) throw err
-			newUser.password = hash
-			newUser
-				.save()
-				.then(user => res.json(user))
-				.catch(err => console.log(err))
-		})
-	})
-})
+// router.post('/newUser', (req, res) => {
+// 	const newUser = new User({
+// 		firstName: 'test',
+// 		lastName: 'lastName',
+// 		email: 'test@test.com',
+// 		password: 'password',
+// 		phone: '9705313993'
+// 	})
+// 	// Hash password before saving in database
+// 	bcrypt.genSalt(10, (err, salt) => {
+// 		bcrypt.hash(newUser.password, salt, (err, hash) => {
+// 			if (err) throw err
+// 			newUser.password = hash
+// 			newUser
+// 				.save()
+// 				.then(user => res.json(user))
+// 				.catch(err => console.log(err))
+// 		})
+// 	})
+// })
 
 module.exports = router

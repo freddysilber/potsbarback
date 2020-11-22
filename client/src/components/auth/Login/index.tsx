@@ -60,7 +60,6 @@ class Login extends React.Component<LoginProps> {
 		if (nextProps.auth.isAuthenticated) {
 			// After login, redirect user to the portal/ dashboard route
 			this.props.history.push(Routes.about)
-			// this.props.history.push(Routes.portal)
 		}
 		if (nextProps.errors) {
 			this.setState({
@@ -73,9 +72,9 @@ class Login extends React.Component<LoginProps> {
 		const { actions, values } = data
 		console.log('actions', actions)
 		console.log('values', values)
-		alert(JSON.stringify(values, null, 2));
 		actions.setSubmitting(false);
 		this.props.loginUser(values)
+		this.props.history.push(Routes.staff)
 	}
 
 	render() {
