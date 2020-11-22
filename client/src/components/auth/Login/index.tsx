@@ -16,8 +16,8 @@ interface LoginProps {
 }
 
 const initialValues: InitialValues = {
-	email: "",
-	password: "",
+	email: '',
+	password: ''
 };
 
 const loginValidators: Yup.ObjectSchema<
@@ -70,8 +70,6 @@ class Login extends React.Component<LoginProps> {
 
 	handleSubmit(data: FormData) {
 		const { actions, values } = data
-		console.log('actions', actions)
-		console.log('values', values)
 		actions.setSubmitting(false);
 		this.props.loginUser(values)
 		this.props.history.push(Routes.staff)
@@ -113,9 +111,7 @@ class Login extends React.Component<LoginProps> {
 								/>
 								{errors.password && touched.password ? <p className="fieldError">{errors.password}</p> : null}
 								<div className="login-button-div">
-									{/* <Link to="/portal/staff"> */}
 									<button className="button is-danger login-button" type="submit" disabled={isSubmitting} >Submit</button>
-									{/* </Link> */}
 								</div>
 							</Form>
 						</div>

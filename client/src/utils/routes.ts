@@ -7,5 +7,7 @@ export enum Routes {
 	portal = '/portal',
 	staff = '/portal/staff',
 	management = '/portal/management',
-	checkout = '/portal/checkout'
+	checkout = '/portal/checkout',
+	verification = '/portal/verification',
+	thankyou = '/portal/thankyou'
 }
