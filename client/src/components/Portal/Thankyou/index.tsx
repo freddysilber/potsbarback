@@ -1,9 +1,9 @@
 import React from "react";
-import bakbar from "../../../assets/bakbar_white.png";
 import "./Thankyou.scss";
 import { logoutUser } from '../../../actions/authActions'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { LogoWhite } from "../../Util";
 
 interface ThankyouProps {
   logoutUser: any
@@ -21,9 +21,7 @@ const Thankyou = (props: ThankyouProps) => {
   // render() {
   return (
     <>
-      <div>
-        <img src={bakbar} width="400" height="200" alt="logo" />
-      </div>
+      <LogoWhite />
       <div className="card staff-input-form">
         <div className="staff-title">Your shift has been completed.</div>
         <span className="staff-form-head">

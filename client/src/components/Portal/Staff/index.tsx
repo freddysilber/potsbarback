@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Staff.scss";
-import bakbar from "../../../assets/bakbar_white.png"
+import { LogoWhite } from "../../Util";
 
 const Staff: () => JSX.Element = () => {
 
@@ -15,9 +15,7 @@ const Staff: () => JSX.Element = () => {
 
   return (
     <div>
-      <div>
-        <img src={bakbar} width="400" height="200" alt="logo" />
-      </div>
+      <LogoWhite />
       {shiftStarted ? (
         <>
           <div className="card staff-input-form">

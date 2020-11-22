@@ -3,11 +3,11 @@ import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
 import './Login.scss'
 import { InitialValues, FormState, FormData } from '../interfaces/login'
-import bakbar from '../../../assets/bakbar_white.png'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { loginUser } from '../../../actions/authActions'
 import { Routes } from '../../../utils/routes'
+import { LogoWhite } from '../../Util'
 
 interface LoginProps {
 	loginUser: any,
@@ -88,7 +88,7 @@ class Login extends React.Component<LoginProps> {
 			>
 				{({ errors, touched, isSubmitting }: FormState) => (
 					<div className="container">
-						<img src={bakbar} width="400" height="200" alt="logo" />
+						<LogoWhite />
 						<div className="card login-input-form">
 							<Form>
 								<label htmlFor="email">Email:</label>

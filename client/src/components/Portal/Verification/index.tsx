@@ -1,6 +1,9 @@
 import React, { useState } from "react";
-import bakbar from "../../../assets/bakbar_white.png";
+// Styles
 import "./Verification.scss";
+// Routes
+import { Routes } from '../../../utils/routes'
+import { LogoWhite } from "../../Util";
 
 const Verification = () => {
 	const [checkout, _checkout] = useState(true);
@@ -15,9 +18,8 @@ const Verification = () => {
 	}
 	return (
 		<>
-			<div>
-				<img src={bakbar} width="400" height="200" alt="logo" />
-			</div>
+			<LogoWhite />
+
 			<div className="card staff-input-form">
 				<div className="staff-title">Verification</div>
 				<span className="staff-form-head">
@@ -35,29 +37,25 @@ const Verification = () => {
 				</ul>
 
 				<div className="staff-button-div">
-					{logout_allow ? (<span className="staff-form-head">All task have been completed.</span>) : (<span className="staff-form-head">
-						Have manager and comptroller to verify your submission to allow
-						LogOut
-					</span>)}
+					{logout_allow ? (
+						<span className="staff-form-head">All task have been completed.</span>
+					) : (
+							<span className="staff-form-head">
+								Have manager and comptroller to verify your submission to allow
+								LogOut
+							</span>
+						)}
 
 					{logout_allow ? (
-						<a href="/portal/thankyou">
+						<a href={Routes.thankyou}>
 							<div className="staff-button-div">
-								<button
-									className="button login-button is-danger"
-									onClick={() => console.log("REROUTE")}
-								>
-									Log Out
-            </button>
+								<button className="button login-button is-danger" onClick={() => console.log("REROUTE")}>Log Out</button>
 							</div>
-						</a>) : (
+						</a>
+					) : (
 							<>
 								<span className="has-text-danger  taskNeeded m-4">Verification needed.</span>
-								<button
-									className="button login-button is-black"
-									onClick={verifyState}
-
-								> verify(state)</button>
+								<button className="button login-button is-black" onClick={verifyState}> verify(state)</button>
 							</>
 						)}
 				</div>

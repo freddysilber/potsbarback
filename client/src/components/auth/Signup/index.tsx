@@ -9,6 +9,7 @@ import { connect } from 'react-redux'
 import { registerUser } from '../../../actions/authActions'
 import { Routes } from '../../../utils/routes'
 import './Signup.scss'
+import { LogoWhite } from '../../Util'
 
 interface SignupProps {
 	history: any,
@@ -102,9 +103,7 @@ class Signup extends React.Component<SignupProps> {
 				}}>
 				{({ errors, touched, isSubmitting }: FormState) => (
 					<div className="container">
-						<div className="login-title">
-							<p className="signup-form-head">Bak||Bar Signup</p>
-						</div>
+						<LogoWhite />
 						<div className="card login-input-form">
 							<Form>
 								<label htmlFor="firstName">First Name</label>
