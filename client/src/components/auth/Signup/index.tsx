@@ -103,7 +103,7 @@ class Signup extends React.Component<SignupProps> {
 				{({ errors, touched, isSubmitting }: FormState) => (
 					<div className="container">
 						<div className="login-title">
-							<p className="titleText">Bak||Bar Signup</p>
+							<p className="signup-form-head">Bak||Bar Signup</p>
 						</div>
 						<div className="card login-input-form">
 							<Form>

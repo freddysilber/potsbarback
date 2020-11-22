@@ -1,5 +1,4 @@
 import React from 'react'
-// import { Link } from 'react-router-dom'
 import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
 import './Login.scss'
@@ -17,25 +16,25 @@ interface LoginProps {
 }
 
 const initialValues: InitialValues = {
-  email: "",
-  password: "",
+	email: "",
+	password: "",
 };
 
 const loginValidators: Yup.ObjectSchema<
-  Yup.Shape<
-    object | undefined,
-    {
-      email: string;
-      password: string;
-    }
-  >,
-  object
+	Yup.Shape<
+		object | undefined,
+		{
+			email: string;
+			password: string;
+		}
+	>,
+	object
 > = Yup.object().shape({
-  email: Yup.string().email("Invalid email").required("Required"),
-  password: Yup.string()
-    .min(2, "Your password is too short!")
-    .max(50, "Your password is too long")
-    .required("Required"),
+	email: Yup.string().email("Invalid email").required("Required"),
+	password: Yup.string()
+		.min(2, "Your password is too short!")
+		.max(50, "Your password is too long")
+		.required("Required"),
 });
 
 class Login extends React.Component<LoginProps> {
