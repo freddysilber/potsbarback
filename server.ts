@@ -4,7 +4,7 @@ const bodyParser = require('body-parser')
 const passport = require('passport')
 const users = require('./routes/api/users')
 const app = express()
-const colors = require('colors')
+let colors = require('colors')
 
 // Bodyparser middleware
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -15,8 +15,11 @@ const db = require('./config/keys').mongoURI
 
 // Connect to MongoDB
 mongoose
-	.connect(db, { useNewUrlParser: true })
-	.then(() => console.log(colors.america('\nMongoDB successfully connected\n')))
+	.connect(db, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true
+	})
+	.then(() => console.log(colors.america('\n------------ MongoDB is connected... #Merica ------------\n')))
 	.catch((err: any) => {
 		console.log(colors.red('----------------- ERROR! -------------------'))
 		console.log('Peep the error homie -->', err)
@@ -30,7 +33,7 @@ app.use(passport.initialize())
 require('./config/passport')(passport)
 
 /**
- * Routes
+ * API Routes
  * 
  * add paths to EXPRESS routes here
  * 
@@ -42,4 +45,5 @@ app.use('/api/users', users)
 
 // Express/ Node.js port (local dev)
 const port = process.env.PORT || 5000
-app.listen(port, () => console.log(colors.blue(`\nDeath to all but metal. http://localhost:${port} !\n`)))
+
+app.listen(port, () => console.log(colors.brightBlue(`\n------------ Death to all but metal. http://localhost:${port} ------------\n`)))

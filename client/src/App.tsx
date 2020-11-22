@@ -58,23 +58,3 @@ function App() {
 }
 
 export default App
-
-// class App extends Component {
-// 	render() {
-// 		return (
-// 			<Provider store={store}>
-// 				<Router>
-// 					<div className='App'>
-// 						<Navbar />
-// 						<Route exact path='/' component={Landing} />
-// 						<Route exact path={Routes.register} component={Register} />
-// 						<Route exact path={Routes.login} component={Login} />
-// 						<Switch>
-// 							<PrivateRoute exact path={Routes.dashboard} component={Dashboard} />
-// 						</Switch>
-// 					</div>
-// 				</Router>
-// 			</Provider>
-// 		)
-// 	}
-// }

@@ -2,6 +2,7 @@ import React from "react"
 import './Admin.scss'
 
 const Admin: () => JSX.Element = () => {
+
   return     <div className="management">
   <div className="columns">
     <div className="column nav_direct is-one-fifth card">
@@ -17,4 +18,4 @@ const Admin: () => JSX.Element = () => {
 </div>;
 };
 
-export default Admin;
+export default Admin
