@@ -1,7 +1,10 @@
 import React from 'react'
-import './About.scss'
 import { Link } from 'react-router-dom'
+// Styles
+import './About.scss'
+// Routes
 import { Routes } from '../../utils/routes'
+// Components
 import { LogoWhite } from '../Util'
 
 const About: () => JSX.Element = () => {
