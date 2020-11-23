@@ -3,7 +3,6 @@ import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
 import './Login.scss'
 import { InitialValues, FormState, FormData } from '../interfaces/login'
-import bakbar from '../../../assets/bakbar_white.png'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { loginUser } from '../../../actions/authActions'
@@ -16,8 +15,8 @@ interface LoginProps {
 }
 
 const initialValues: InitialValues = {
-	email: "",
-	password: "",
+	email: '',
+	password: ''
 };
 
 const loginValidators: Yup.ObjectSchema<
@@ -60,7 +59,6 @@ class Login extends React.Component<LoginProps> {
 		if (nextProps.auth.isAuthenticated) {
 			// After login, redirect user to the portal/ dashboard route
 			this.props.history.push(Routes.about)
-			// this.props.history.push(Routes.portal)
 		}
 		if (nextProps.errors) {
 			this.setState({
@@ -71,11 +69,10 @@ class Login extends React.Component<LoginProps> {
 
 	handleSubmit(data: FormData) {
 		const { actions, values } = data
-		console.log('actions', actions)
-		console.log('values', values)
-		alert(JSON.stringify(values, null, 2));
 		actions.setSubmitting(false);
 		this.props.loginUser(values)
+		// window.location.href = '/portal'
+		this.props.history.push(Routes.staff)
 	}
 
 	render() {
@@ -89,37 +86,32 @@ class Login extends React.Component<LoginProps> {
 				}}
 			>
 				{({ errors, touched, isSubmitting }: FormState) => (
-					<div className="container">
-						<img src={bakbar} width="400" height="200" alt="logo" />
-						<div className="card login-input-form">
-							<Form>
-								<label htmlFor="email">Email:</label>
-								<Field
-									className="input login-input is-medium is-black"
-									id="email"
-									name="email"
-									type="email"
-									placeholder="Enter your email"
-									autoComplete="username"
-								/>
-								{touched.email && errors.email && <p className="fieldError">{errors.email}</p>}
-								<label htmlFor="password">Password:</label>
-								<Field
-									className="input login-input is-medium is-black"
-									id="password"
-									name="password"
-									type="password"
-									placeholder="Enter your password"
-									autoComplete="current-password"
-								/>
-								{errors.password && touched.password ? <p className="fieldError">{errors.password}</p> : null}
-								<div className="login-button-div">
-									{/* <Link to="/portal/staff"> */}
-									<button className="button is-danger login-button" type="submit" disabled={isSubmitting} >Submit</button>
-									{/* </Link> */}
-								</div>
-							</Form>
-						</div>
+					<div className="card login-input-form">
+						<Form>
+							<label htmlFor="email">Email:</label>
+							<Field
+								className="input login-input is-medium is-black"
+								id="email"
+								name="email"
+								type="email"
+								placeholder="Enter your email"
+								autoComplete="username"
+							/>
+							{touched.email && errors.email && <p className="fieldError">{errors.email}</p>}
+							<label htmlFor="password">Password:</label>
+							<Field
+								className="input login-input is-medium is-black"
+								id="password"
+								name="password"
+								type="password"
+								placeholder="Enter your password"
+								autoComplete="current-password"
+							/>
+							{errors.password && touched.password ? <p className="fieldError">{errors.password}</p> : null}
+							<div className="login-button-div">
+								<button className="button is-danger login-button" type="submit" disabled={isSubmitting} >Submit</button>
+							</div>
+						</Form>
 					</div>
 				)}
 			</Formik>

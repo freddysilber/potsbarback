@@ -3,7 +3,7 @@ const router = express.Router()
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const keys = require('../../config/keys')
-const passport = require('passport')
+// const passport = require('passport')
 // const colors = require('colors')
 
 // Load input validation
@@ -90,42 +90,40 @@ router.post('/login', (req, res) => {
 					}
 				)
 			} else {
-				return res
-					.status(400)
-					.json({ passwordincorrect: 'Password incorrect' })
+				return res.status(400).json({ passwordincorrect: 'Password incorrect' })
 			}
 		})
 	})
 })
 
-router.get('/getUsers', (req, res) => {
-	console.log(res, req)
-	console.log('-----------------')
-	User.find().then(user => {
-		console.log(user)
-		res.json(user)
-	})
-})
+// router.get('/getUsers', (req, res) => {
+// 	console.log(res, req)
+// 	console.log('-----------------')
+// 	User.find().then(user => {
+// 		console.log(user)
+// 		res.json(user)
+// 	})
+// })
 
-router.post('/newUser', (req, res) => {
-	const newUser = new User({
-		firstName: 'test',
-		lastName: 'lastName',
-		email: 'test@test.com',
-		password: 'password',
-		phone: '9705313993'
-	})
-	// Hash password before saving in database
-	bcrypt.genSalt(10, (err, salt) => {
-		bcrypt.hash(newUser.password, salt, (err, hash) => {
-			if (err) throw err
-			newUser.password = hash
-			newUser
-				.save()
-				.then(user => res.json(user))
-				.catch(err => console.log(err))
-		})
-	})
-})
+// router.post('/newUser', (req, res) => {
+// 	const newUser = new User({
+// 		firstName: 'test',
+// 		lastName: 'lastName',
+// 		email: 'test@test.com',
+// 		password: 'password',
+// 		phone: '9705313993'
+// 	})
+// 	// Hash password before saving in database
+// 	bcrypt.genSalt(10, (err, salt) => {
+// 		bcrypt.hash(newUser.password, salt, (err, hash) => {
+// 			if (err) throw err
+// 			newUser.password = hash
+// 			newUser
+// 				.save()
+// 				.then(user => res.json(user))
+// 				.catch(err => console.log(err))
+// 		})
+// 	})
+// })
 
 module.exports = router

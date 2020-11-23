@@ -146,12 +146,12 @@ const Management: () => JSX.Element = () => {
               >
                 Daily Checkout
               </button>
-            </div>
-          </a>
-        </div>
-      </>
-    </div>
-  );
+						</div>
+					</a>
+				</div>
+			</>
+		</div>
+	);
 };
 
 export default Management;
