@@ -18,3 +18,9 @@ export interface FormData {
 	values: any,
 	actions: any
 }
+
+export interface LoginProps {
+	loginUser: any,
+	history: any,
+	auth: any
+}

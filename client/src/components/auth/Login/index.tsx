@@ -2,33 +2,21 @@ import React from 'react'
 import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
 import './Login.scss'
-import { InitialValues, FormState, FormData } from '../interfaces/login'
+import { InitialValues, FormState, FormData, LoginProps } from '../interfaces/login'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
 import { loginUser } from '../../../actions/authActions'
 import { Routes } from '../../../utils/routes'
-
-interface LoginProps {
-	loginUser: any,
-	history: any,
-	auth: any
-}
 
 const initialValues: InitialValues = {
 	email: '',
 	password: ''
 };
 
-const loginValidators: Yup.ObjectSchema<
-	Yup.Shape<
-		object | undefined,
-		{
-			email: string;
-			password: string;
-		}
-	>,
-	object
-> = Yup.object().shape({
+type UserLogin =
+	| object
+	| undefined
+
+const loginValidators: Yup.ObjectSchema<Yup.Shape<UserLogin, InitialValues>, object> = Yup.object().shape({
 	email: Yup.string().email("Invalid email").required("Required"),
 	password: Yup.string()
 		.min(2, "Your password is too short!")
@@ -38,9 +26,7 @@ const loginValidators: Yup.ObjectSchema<
 
 class Login extends React.Component<LoginProps> {
 
-	public static propTypes = {}
-
-	constructor(props: any) {
+	constructor(props: LoginProps) {
 		super(props)
 		console.log(this.props)
 		this.state = {
@@ -118,11 +104,6 @@ class Login extends React.Component<LoginProps> {
 	}
 }
 
-Login.propTypes = {
-	loginUser: PropTypes.func.isRequired,
-	auth: PropTypes.object.isRequired,
-	errors: PropTypes.object.isRequired
-}
 
 const mapStateToProps = (state: any) => ({
 	auth: state.auth,

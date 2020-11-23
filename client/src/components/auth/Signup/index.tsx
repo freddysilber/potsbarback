@@ -2,32 +2,27 @@ import React from 'react'
 import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
 import User from '../../../models/User'
-import { InitialValues, FormState, FormData } from '../interfaces/signup'
+import { InitialValues, FormState, FormData, SignupProps } from '../interfaces/signup'
 import { withRouter } from 'react-router-dom'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { registerUser } from '../../../actions/authActions'
 import { Routes } from '../../../utils/routes'
 import './Signup.scss'
 
-interface SignupProps {
-	history: any,
-	registerUser: any,
-	location: any,
-	match: any,
-	auth: any
+const initialValues: InitialValues = {
+	firstName: '',
+	lastName: '',
+	email: '',
+	confirmEmail: '',
+	password: '',
+	confirmPassword: '',
 }
 
-const initialValues: InitialValues = {
-	firstName: "",
-	lastName: "",
-	email: "",
-	confirmEmail: "",
-	password: "",
-	confirmPassword: "",
-};
+type UserSignup =
+	| object
+	| undefined
 
-const loginValidators: Yup.ObjectSchema<Yup.Shape<object | undefined, {
+const loginValidators: Yup.ObjectSchema<Yup.Shape<UserSignup, {
 	firstName: string;
 	lastName: string;
 	email: string;
@@ -55,12 +50,9 @@ const loginValidators: Yup.ObjectSchema<Yup.Shape<object | undefined, {
 		.required('Required'),
 })
 
-
 class Signup extends React.Component<SignupProps> {
 
-	public static propTypes = {}
-
-	constructor(props: any) {
+	constructor(props: SignupProps) {
 		super(props)
 		console.log('Signup props --> ', props)
 		this.state = {
@@ -175,12 +167,6 @@ class Signup extends React.Component<SignupProps> {
 			</Formik>
 		)
 	}
-}
-
-Signup.propTypes = {
-	registerUser: PropTypes.func.isRequired,
-	auth: PropTypes.object.isRequired,
-	errors: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state: any) => ({
