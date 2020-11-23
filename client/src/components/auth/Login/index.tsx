@@ -71,7 +71,6 @@ class Login extends React.Component<LoginProps> {
 		const { actions, values } = data
 		actions.setSubmitting(false);
 		this.props.loginUser(values)
-		// window.location.href = '/portal'
 		this.props.history.push(Routes.staff)
 	}
 
