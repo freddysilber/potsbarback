@@ -1,8 +1,94 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Management.scss";
 import bakbar from "../../../assets/bakbar_white.png";
+import { createEmitAndSemanticDiagnosticsBuilderProgram } from "typescript";
+
+const dummyData = [
+  {
+    id: 0,
+    first_name: "Andrew",
+    last_name: "Pedersen",
+    phone: "9705313993",
+    is_active: true,
+    job_role: 0,
+    active_shift: true,
+    check_out: {
+      cash_sales: 476.98,
+      credit_sales: 9889.0,
+      credit_tips: 976.89,
+      is_closed: true,
+      is_verified: true,
+      is_recieved: true,
+      cost_center: 0,
+      starting_cash: 250.0,
+    },
+  },
+  {
+    id: 1,
+    first_name: "Chauncey",
+    last_name: "Phillips",
+    phone: "9705354553",
+    is_active: true,
+    job_role: 1,
+    active_shift: true,
+    check_out: {
+      cash_sales: 276.98,
+      credit_sales: 999.0,
+      credit_tips: 56.89,
+      is_closed: true,
+      is_verified: true,
+      is_recieved: true,
+      cost_center: 0,
+      starting_cash: 250.0,
+    },
+  },
+  {
+    id: 2,
+    first_name: "Terrance",
+    last_name: "Harvey",
+    phone: "9705312343",
+    is_active: true,
+    job_role: 1,
+    active_shift: true,
+    check_out: {
+      cash_sales: 446.98,
+      credit_sales: 1289.0,
+      credit_tips: 76.89,
+      is_closed: true,
+      is_verified: true,
+      is_recieved: true,
+      cost_center: 0,
+      starting_cash: 120.0,
+    },
+  },
+  {
+    id: 3,
+    first_name: "Andrew",
+    last_name: "Pedersen",
+    phone: "9705313993",
+    is_active: true,
+    job_role: 1,
+    active_shift: true,
+    check_out: {
+      cash_sales: 676.98,
+      credit_sales: 389.0,
+      credit_tips: 276.89,
+      is_closed: true,
+      is_verified: true,
+      is_recieved: true,
+      cost_center: 0,
+      starting_cash: 100.0,
+    },
+  },
+];
+
 
 const Management: () => JSX.Element = () => {
+  const [selectedPosition, _selectedPosition] = useState(0);
+  // const setSelectedState = (event) => {
+  //   console.log("selected")
+  //   _selectedPosition(event.target.id);
+  // };
   return (
     <div>
       <div>
@@ -11,24 +97,26 @@ const Management: () => JSX.Element = () => {
       <>
         <div className="card staff-input-form">
           <div className="staff-title">Employee Checkout</div>
-          <span className="staff-form-head">
-            Filter By Position:
-          </span>
+          <span className="staff-form-head">Filter By Position:</span>
           <div className="field">
-              <div className="control">
-                <div className="select is-black">
-                  <select>
-                    <option selected>Position</option>
-                    <option>Wait Staff</option>
-                    <option>Bar Back</option>
-                    <option>Security</option>
-                    <option>Bartender</option>
-                  </select>
-                </div>
+            <div className="control">
+              <div className="select is-black">
+                <select>
+                  <option>Position</option>
+                  <option id="1"
+                  //  onSelect={() => setSelectedState}
+                   >
+                    Wait Staff
+                  </option>
+                  <option>Bar Back</option>
+                  <option>Security</option>
+                  <option>Bartender</option>
+                </select>
               </div>
             </div>
-            <span className="staff-form-head">Name:</span>
-            <div className="field">
+          </div>
+          <span className="staff-form-head">Name:</span>
+          {/* <div className="field">
               <div className="control">
                 <div className="select is-black">
                   <select>
@@ -40,12 +128,15 @@ const Management: () => JSX.Element = () => {
                   </select>
                 </div>
               </div>
-            </div>
+            </div> */}
           <ul className="staff-list">
-            <li>1. Perform checkout @ Cost Center</li>
-            <li>2. Perform checkout in Bak||Bar</li>
-            <li>3. Have Manager verify both checkouts</li>
-            <li>4. Deliver funds to comptroller for verification</li>
+            {dummyData.map((filteredEmployees) => filteredEmployees.job_role === selectedPosition ?
+              <li key={filteredEmployees.id}>
+                <div>
+                  {filteredEmployees.last_name}, {filteredEmployees.first_name}
+                </div>
+              </li> : null
+            )}
           </ul>
           <a href="/portal/checkout">
             <div className="staff-button-div">
