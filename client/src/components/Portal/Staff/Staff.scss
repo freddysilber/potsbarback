@@ -1,39 +1,39 @@
 .staff-class {
-    display: flex;
-    align-items: center;
-    height: 100%;
+	display: flex;
+	align-items: center;
+	height: 100%;
 }
 .staff-title {
-    font-size: 24pt;
-    font-weight: bold;
-    padding-top: 20px;
-    padding-bottom: 20px;
+	font-size: 24pt;
+	font-weight: bold;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 .staff-input {
-    margin-top: 20px;
-    margin-bottom: 20px;
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 .staff-button-div {
-    display: flex;
-    justify-content: left;
+	display: flex;
+	justify-content: left;
 }
 .staff-input-form {
-    text-align: left;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    // padding-top: 50px;
-    // padding-bottom: 50px;
-    padding-left: 20px;
-    padding-right: 20px;
+	text-align: left;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	// padding-top: 50px;
+	// padding-bottom: 50px;
+	padding-left: 20px;
+	padding-right: 20px;
 }
 .staff-form-head {
-    color: grey;
-    font-weight: bold;
+	color: grey;
+	font-weight: bold;
 }
 .staff-list {
-    padding-top: 25px;
-    padding-bottom: 25px;
-    li {
-        padding: 25px;
-    }
+	padding-top: 25px;
+	padding-bottom: 25px;
+	li {
+		padding: 25px;
+	}
 }
