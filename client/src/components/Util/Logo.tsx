@@ -6,10 +6,6 @@ import React from 'react'
  */
 import bakbar from "../../assets/bakbar.png"
 
-const Logo: () => JSX.Element = () => {
-	return (
-		<img src={bakbar} width="400" height="200" alt="logo" />
-	)
-}
+const Logo: () => JSX.Element = () => <img src={bakbar} width="400" height="200" alt="logo" />
 
 export default Logo
