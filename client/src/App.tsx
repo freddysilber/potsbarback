@@ -1,23 +1,19 @@
-// React
 import React from 'react'
 // Router
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-
 // Auth
 import jwt_decode from 'jwt-decode'
 import setAuthToken from './utils/setAuthToken'
-
 // Redux
 import { setCurrentUser, logoutUser } from './actions/authActions'
 import { Provider } from 'react-redux'
 import store from './store'
-
 // Styles
 import './App.scss'
 import "bulma/css/bulma.css"
 // Components
 import { Login, About, Portal, Signup } from './components'
-
+import { LogoWhite } from './components/Util'
 // Routes
 import { Routes } from './utils/routes'
 
@@ -44,7 +40,8 @@ function App() {
 	return (
 		<Provider store={store}>
 			<Router>
-				<div>
+				<div className="container">
+					<LogoWhite />
 					<Switch>
 						<Route exact path={Routes.about} component={About} />
 						<Route path={Routes.login} component={Login} />

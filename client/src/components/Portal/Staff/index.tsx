@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Staff.scss";
 // Components
-import { Dropdown, LogoWhite, POSITIONS, COST_CENTERS } from '../../Util'
+import { Dropdown, POSITIONS, COST_CENTERS } from '../../Util'
 
 const Staff: () => JSX.Element = () => {
 
@@ -16,7 +16,7 @@ const Staff: () => JSX.Element = () => {
 
 	return (
 		<div>
-			<LogoWhite />
+			{/* <LogoWhite /> */}
 			{shiftStarted ? (
 				<>
 					<div className="card staff-input-form">
@@ -51,7 +51,7 @@ const Staff: () => JSX.Element = () => {
 							<div className="staff-form-head">
 								Please verify your postition, cost center, and starting cash to
 								"Start Shift".
-            </div>
+							</div>
 							<div className="staff-form-head mt-4">Position:</div>
 							<div className="field">
 								<div className="control">
@@ -80,7 +80,7 @@ const Staff: () => JSX.Element = () => {
 									onClick={toggleShift}
 								>
 									Start Shift
-              </button>
+              					</button>
 							</div>
 						</div>
 					</>
@@ -89,4 +89,4 @@ const Staff: () => JSX.Element = () => {
 	);
 };
 
-export default Staff;
+export default Staff

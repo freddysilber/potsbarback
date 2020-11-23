@@ -2,7 +2,6 @@ import React from "react";
 import "./Checkout.scss";
 // Components
 import CloseModal from "../index";
-import { LogoWhite } from "../../Util";
 
 interface ModalProps {
 	children: any;
@@ -60,7 +59,6 @@ class Checkout extends React.Component {
 	render() {
 		return (
 			<div>
-				<LogoWhite />
 				<div className="card checkout-input-form">
 					<div className="checkout-user-static">
 						<div className="checkout-title">

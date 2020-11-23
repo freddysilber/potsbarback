@@ -7,7 +7,6 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { loginUser } from '../../../actions/authActions'
 import { Routes } from '../../../utils/routes'
-import { LogoWhite } from '../../Util'
 
 interface LoginProps {
 	loginUser: any,
@@ -72,6 +71,7 @@ class Login extends React.Component<LoginProps> {
 		const { actions, values } = data
 		actions.setSubmitting(false);
 		this.props.loginUser(values)
+		// window.location.href = '/portal'
 		this.props.history.push(Routes.staff)
 	}
 
@@ -86,35 +86,32 @@ class Login extends React.Component<LoginProps> {
 				}}
 			>
 				{({ errors, touched, isSubmitting }: FormState) => (
-					<div className="container">
-						<LogoWhite />
-						<div className="card login-input-form">
-							<Form>
-								<label htmlFor="email">Email:</label>
-								<Field
-									className="input login-input is-medium is-black"
-									id="email"
-									name="email"
-									type="email"
-									placeholder="Enter your email"
-									autoComplete="username"
-								/>
-								{touched.email && errors.email && <p className="fieldError">{errors.email}</p>}
-								<label htmlFor="password">Password:</label>
-								<Field
-									className="input login-input is-medium is-black"
-									id="password"
-									name="password"
-									type="password"
-									placeholder="Enter your password"
-									autoComplete="current-password"
-								/>
-								{errors.password && touched.password ? <p className="fieldError">{errors.password}</p> : null}
-								<div className="login-button-div">
-									<button className="button is-danger login-button" type="submit" disabled={isSubmitting} >Submit</button>
-								</div>
-							</Form>
-						</div>
+					<div className="card login-input-form">
+						<Form>
+							<label htmlFor="email">Email:</label>
+							<Field
+								className="input login-input is-medium is-black"
+								id="email"
+								name="email"
+								type="email"
+								placeholder="Enter your email"
+								autoComplete="username"
+							/>
+							{touched.email && errors.email && <p className="fieldError">{errors.email}</p>}
+							<label htmlFor="password">Password:</label>
+							<Field
+								className="input login-input is-medium is-black"
+								id="password"
+								name="password"
+								type="password"
+								placeholder="Enter your password"
+								autoComplete="current-password"
+							/>
+							{errors.password && touched.password ? <p className="fieldError">{errors.password}</p> : null}
+							<div className="login-button-div">
+								<button className="button is-danger login-button" type="submit" disabled={isSubmitting} >Submit</button>
+							</div>
+						</Form>
 					</div>
 				)}
 			</Formik>
