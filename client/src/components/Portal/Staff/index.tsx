@@ -16,7 +16,6 @@ const Staff: () => JSX.Element = () => {
 
 	return (
 		<div>
-			{/* <LogoWhite /> */}
 			{shiftStarted ? (
 				<>
 					<div className="card staff-input-form">
