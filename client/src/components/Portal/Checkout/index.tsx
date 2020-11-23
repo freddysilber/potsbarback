@@ -1,7 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
+// Styles
 import "./Checkout.scss";
 // Components
 import CloseModal from "../index";
+// Routes
+import { Routes } from "../../../utils/routes";
 
 interface ModalProps {
 	children: any;
@@ -61,9 +65,7 @@ class Checkout extends React.Component {
 			<div>
 				<div className="card checkout-input-form">
 					<div className="checkout-user-static">
-						<div className="checkout-title">
-							[user.name], please complete this form for your checkout process.
-            </div>
+						<div className="checkout-title">[user.name], please complete this form for your checkout process.</div>
 						<div className="checkout-form-head">[user.position]</div>
 						<div className="checkout-form-head">[user.cashcenter]</div>
 						<div className="checkout-form-head">[user.startingcash]</div>
@@ -89,21 +91,16 @@ class Checkout extends React.Component {
 					/>
 					<span className="exerptText mt-1">
 						Use "-xx.xx" to denote if cash is owed to you (ex: -26.00)
-          </span>
+          			</span>
 
 					<div className="checkout-form-head mt-4">
 						Verify to complete Checkout:
-          </div>
-					<a href="/portal/verification">
+          			</div>
+					<Link to={Routes.verification}>
 						<div className="staff-button-div">
-							<button
-								className="button login-button is-danger"
-								onClick={this.toggleModal}
-							>
-								Verify
-              </button>
+							<button className="button login-button is-danger" onClick={this.toggleModal}>Verify</button>
 						</div>
-					</a>
+					</Link>
 					{/* <Modal
 						closeModal={this.toggleModal}
 						modalState={this.modalState}

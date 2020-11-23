@@ -1,5 +1,6 @@
 // Enum to store and organize our client routes
 export enum Routes {
+	// Base routes
 	about = '/',
 	login = '/login',
 	// Portal routes

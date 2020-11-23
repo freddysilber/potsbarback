@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./Staff.scss";
 // Components
 import { Dropdown, POSITIONS, COST_CENTERS } from '../../Util'
+import { Routes } from "../../../utils/routes";
+import { Link } from "react-router-dom";
 
 const Staff: () => JSX.Element = () => {
 
@@ -29,18 +31,11 @@ const Staff: () => JSX.Element = () => {
 							<li>3. Have Manager verify both checkouts</li>
 							<li>4. Deliver funds to comptroller for verification</li>
 						</ul>
-						<a href="/portal/checkout">
+						<Link to={Routes.checkout}>
 							<div className="staff-button-div">
-
-								<button
-									className="button login-button is-danger"
-									onClick={() => console.log("REROUTE")}
-								>
-									Daily Checkout
-                </button>
-
+								<button className="button login-button is-danger" onClick={() => console.log("REROUTE")}>Daily Checkout</button>
 							</div>
-						</a>
+						</Link>
 					</div>
 				</>
 			) : (

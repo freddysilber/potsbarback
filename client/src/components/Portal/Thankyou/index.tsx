@@ -3,6 +3,8 @@ import "./Thankyou.scss";
 import { logoutUser } from '../../../actions/authActions'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { Link } from "react-router-dom";
+import { Routes } from "../../../utils/routes";
 
 interface ThankyouProps {
   logoutUser: any
@@ -35,16 +37,11 @@ const Thankyou = (props: ThankyouProps) => {
         <li>Monies recieved: [checkout.is_recieved]</li>
       </ul>
 
-      <a href="/portal/staff">
+      <Link to={Routes.staff}>
         <div className="staff-button-div">
-          <button
-            className="button login-button is-danger"
-            onClick={logoutUser}
-          >
-            Good Bye.
-            </button>
+          <button className="button login-button is-danger" onClick={logoutUser}>Good Bye.</button>
         </div>
-      </a>
+      </Link>
     </div>
   )
 }

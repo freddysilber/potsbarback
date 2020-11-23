@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./Management.scss";
 import bakbar from "../../../assets/bakbar_white.png";
-import { createEmitAndSemanticDiagnosticsBuilderProgram } from "typescript";
+import { Link } from "react-router-dom";
+import { Routes } from "../../../utils/routes";
 
 const dummyData = [
 	{
@@ -138,16 +139,11 @@ const Management: () => JSX.Element = () => {
 							</li> : null
 						)}
 					</ul>
-					<a href="/portal/checkout">
+					<Link to={Routes.checkout}>
 						<div className="staff-button-div">
-							<button
-								className="button login-button is-danger"
-								onClick={() => console.log("REROUTE")}
-							>
-								Daily Checkout
-              </button>
+							<button className="button login-button is-danger" onClick={() => console.log("REROUTE")}>Daily Checkout</button>
 						</div>
-					</a>
+					</Link>
 				</div>
 			</>
 		</div>

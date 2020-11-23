@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import "./Verification.scss";
 // Routes
 import { Routes } from '../../../utils/routes'
+import { Link } from "react-router-dom";
 
 const Verification = () => {
 	const [checkout, _checkout] = useState(true);
@@ -43,11 +44,11 @@ const Verification = () => {
 					)}
 
 				{logout_allow ? (
-					<a href={Routes.thankyou}>
+					<Link to={Routes.thankyou}>
 						<div className="staff-button-div">
 							<button className="button login-button is-danger" onClick={() => console.log("REROUTE")}>Log Out</button>
 						</div>
-					</a>
+					</Link>
 				) : (
 						<>
 							<span className="has-text-danger  taskNeeded m-4">Verification needed.</span>
