@@ -88,7 +88,8 @@ router.post('/login', (req, res) => {
 					(err, token) => {
 						res.json({
 							success: true,
-							token: 'Bearer ' + token
+							token: 'Bearer ' + token,
+							user
 						})
 					}
 				)
@@ -97,6 +98,20 @@ router.post('/login', (req, res) => {
 			}
 		})
 	})
+})
+
+router.get('/getCurrentUser', (req, res) => {
+	console.log('heres my id', req.query.userId)
+	User.findById(req.query.userId)
+		.then(user => {
+			console.log('USER IN MONGO!', user)
+			// return user
+			res.json({
+				success: true,
+				user
+			})
+		})
+		.catch(error => console.error(error))
 })
 
 module.exports = router
