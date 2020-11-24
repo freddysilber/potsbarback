@@ -23,7 +23,7 @@ type UserSignup =
 	| object
 	| undefined
 
-const loginValidators: Yup.ObjectSchema<Yup.Shape<UserSignup, {
+const signupValidators: Yup.ObjectSchema<Yup.Shape<UserSignup, {
 	firstName: string;
 	lastName: string;
 	email: string;
@@ -85,7 +85,7 @@ class Signup extends React.Component<SignupProps> {
 		return (
 			<Formik
 				initialValues={initialValues}
-				validationSchema={loginValidators}
+				validationSchema={signupValidators}
 				onSubmit={(values: any, actions: any) => {
 					const data: FormData = { actions, values }
 					this.handleSubmit(data)
