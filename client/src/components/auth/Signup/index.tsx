@@ -102,10 +102,11 @@ class Signup extends React.Component<SignupProps> {
 				}}>
 				{({ errors, touched, isSubmitting }: FormState) => (
 					<div className="card login-input-form">
+						<div className="login-title">User Sign Up</div>
 						<Form>
 							<label htmlFor="firstName">First Name</label>
 							<Field
-								className="input login-input is-primary is-medium"
+								className="input login-input is-black mt-0 is-medium"
 								id="firstName"
 								name="firstName"
 								type="firstName"
@@ -115,7 +116,7 @@ class Signup extends React.Component<SignupProps> {
 
 							<label htmlFor="lastName">Last Name</label>
 							<Field
-								className="input login-input is-primary is-medium"
+								className="input login-input is-black mt-0 is-medium"
 								id="lastName"
 								name="lastName"
 								type="lastName"
@@ -125,7 +126,7 @@ class Signup extends React.Component<SignupProps> {
 
 							<label htmlFor="email">Email</label>
 							<Field
-								className="input login-input is-primary is-medium"
+								className="input login-input is-black mt-0 is-medium"
 								id="email"
 								name="email"
 								type="email"
@@ -136,7 +137,7 @@ class Signup extends React.Component<SignupProps> {
 
 							<label htmlFor="confirmEmail">Confirm Email</label>
 							<Field
-								className="input login-input is-primary is-medium"
+								className="input login-input is-black mt-0 is-medium"
 								id="confirmEmail"
 								name="confirmEmail"
 								type="email"
@@ -146,7 +147,7 @@ class Signup extends React.Component<SignupProps> {
 
 							<label htmlFor="password">Password</label>
 							<Field
-								className="input login-input is-primary is-medium"
+								className="input login-input is-black mt-0 is-medium"
 								id="password"
 								name="password"
 								type="password"
@@ -157,7 +158,7 @@ class Signup extends React.Component<SignupProps> {
 
 							<label htmlFor="confirmPassword">Confirm Password</label>
 							<Field
-								className="input login-input is-primary is-medium"
+								className="input login-input is-black mt-0 is-medium"
 								id="confirmPassword"
 								name="confirmPassword"
 								type="password"
@@ -167,7 +168,7 @@ class Signup extends React.Component<SignupProps> {
 							{errors.confirmPassword && touched.confirmPassword ? <p className="fieldError">{errors.confirmPassword}</p> : null}
 
 							<div className="login-button-div">
-								<button className="button login-button is-primary" type="submit" disabled={isSubmitting} >Submit</button>
+								<button className="button login-button is-black mt-0" type="submit" disabled={isSubmitting} >Submit</button>
 							</div>
 						</Form>
 					</div>

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./Management.scss";
 import bakbar from "../../../assets/bakbar_white.png";
-import { createEmitAndSemanticDiagnosticsBuilderProgram } from "typescript";
 
 const dummyData = [
   {
