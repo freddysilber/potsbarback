@@ -26,3 +26,11 @@ export interface FormData {
 	values: any,
 	actions: any
 }
+
+export interface SignupProps {
+	history: any,
+	registerUser: any,
+	location: any,
+	match: any,
+	auth: any
+}

@@ -2,32 +2,28 @@ import React from 'react'
 import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
 import User from '../../../models/User'
-import { InitialValues, FormState, FormData } from '../interfaces/signup'
+import { InitialValues, FormState, FormData, SignupProps } from './signupTypes'
 import { withRouter } from 'react-router-dom'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { registerUser } from '../../../actions/authActions'
 import { Routes } from '../../../utils/routes'
-import './Signup.scss'
-
-interface SignupProps {
-	history: any,
-	registerUser: any,
-	location: any,
-	match: any,
-	auth: any
-}
+import { Link } from 'react-router-dom'
+import '../Auth.scss'
 
 const initialValues: InitialValues = {
-	firstName: "",
-	lastName: "",
-	email: "",
-	confirmEmail: "",
-	password: "",
-	confirmPassword: "",
-};
+	firstName: '',
+	lastName: '',
+	email: '',
+	confirmEmail: '',
+	password: '',
+	confirmPassword: '',
+}
 
-const loginValidators: Yup.ObjectSchema<Yup.Shape<object | undefined, {
+type UserSignup =
+	| object
+	| undefined
+
+const signupValidators: Yup.ObjectSchema<Yup.Shape<UserSignup, {
 	firstName: string;
 	lastName: string;
 	email: string;
@@ -41,28 +37,24 @@ const loginValidators: Yup.ObjectSchema<Yup.Shape<object | undefined, {
 		.required('Last name cannot be empty'),
 	email: Yup.string()
 		.email('Invalid email')
-		.required('Required'),
+		.required('Email is required'),
 	confirmEmail: Yup.string()
 		.oneOf([Yup.ref('email'), null || ''], 'Emails must match!')
 		.required('Confirm Email is required'),
 	password: Yup.string()
 		.min(2, 'Your password is too short!')
 		.max(50, 'Your password is too long')
-		.required('Required'),
+		.required('A password is required'),
 	confirmPassword: Yup.string()
 		.oneOf([Yup.ref('password'), null || ''], 'Passwords must match!')
 		.max(50, 'Your password is too long')
-		.required('Required'),
+		.required('A password is required'),
 })
-
 
 class Signup extends React.Component<SignupProps> {
 
-	public static propTypes = {}
-
-	constructor(props: any) {
+	constructor(props: SignupProps) {
 		super(props)
-		console.log('Signup props --> ', props)
 		this.state = {
 			errors: {}
 		}
@@ -76,7 +68,6 @@ class Signup extends React.Component<SignupProps> {
 	}
 
 	componentWillReceiveProps(nextProps: any) {
-		console.log('nextProps', nextProps)
 		if (nextProps.errors) {
 			this.setState({
 				errors: nextProps.errors
@@ -87,7 +78,6 @@ class Signup extends React.Component<SignupProps> {
 	handleSubmit(data: FormData) {
 		const { values } = data
 		const user: User = values
-		console.log('This is the user object from #handleSubmit', user)
 		this.props.registerUser(user, this.props.history)
 	}
 
@@ -95,7 +85,7 @@ class Signup extends React.Component<SignupProps> {
 		return (
 			<Formik
 				initialValues={initialValues}
-				validationSchema={loginValidators}
+				validationSchema={signupValidators}
 				onSubmit={(values: any, actions: any) => {
 					const data: FormData = { actions, values }
 					this.handleSubmit(data)
@@ -104,7 +94,7 @@ class Signup extends React.Component<SignupProps> {
 					<div className="card login-input-form">
 						<div className="login-title">User Sign Up</div>
 						<Form>
-							<label htmlFor="firstName">First Name</label>
+							<label htmlFor="firstName">{touched.firstName && errors.firstName ? <p className="fieldError">{errors.firstName}</p> : 'First Name'}</label>
 							<Field
 								className="input login-input is-black mt-0 is-medium"
 								id="firstName"
@@ -112,9 +102,8 @@ class Signup extends React.Component<SignupProps> {
 								type="firstName"
 								placeholder="Enter your first name"
 							/>
-							{touched.firstName && errors.firstName && <p className="fieldError">{errors.firstName}</p>}
 
-							<label htmlFor="lastName">Last Name</label>
+							<label htmlFor="lastName">{touched.lastName && errors.lastName ? <p className="fieldError">{errors.lastName}</p> : 'Last Name'}</label>
 							<Field
 								className="input login-input is-black mt-0 is-medium"
 								id="lastName"
@@ -122,9 +111,8 @@ class Signup extends React.Component<SignupProps> {
 								type="lastName"
 								placeholder="Enter your last name"
 							/>
-							{touched.lastName && errors.lastName && <p className="fieldError">{errors.lastName}</p>}
 
-							<label htmlFor="email">Email</label>
+							<label htmlFor="email">{touched.email && errors.email ? <p className="fieldError">{errors.email}</p> : 'Email'}</label>
 							<Field
 								className="input login-input is-black mt-0 is-medium"
 								id="email"
@@ -133,42 +121,41 @@ class Signup extends React.Component<SignupProps> {
 								placeholder="Enter your email"
 								autoComplete="username"
 							/>
-							{touched.email && errors.email && <p className="fieldError">{errors.email}</p>}
 
-							<label htmlFor="confirmEmail">Confirm Email</label>
+							<label htmlFor="confirmEmail">{touched.confirmEmail && errors.confirmEmail ? <p className="fieldError">{errors.confirmEmail}</p> : 'Confirm Email'}</label>
 							<Field
 								className="input login-input is-black mt-0 is-medium"
 								id="confirmEmail"
 								name="confirmEmail"
 								type="email"
-								placeholder="Enter your confirmEmail"
+								placeholder="Confirm email"
 							/>
-							{touched.confirmEmail && errors.confirmEmail && <p className="fieldError">{errors.confirmEmail}</p>}
 
-							<label htmlFor="password">Password</label>
+							<label htmlFor="password">{touched.password && errors.password && touched.password ? <p className="fieldError">{errors.password}</p> : 'Create Password'}</label>
 							<Field
 								className="input login-input is-black mt-0 is-medium"
 								id="password"
 								name="password"
 								type="password"
-								placeholder="Enter your password"
+								placeholder="Choose a password"
 								autoComplete="new-password"
 							/>
-							{errors.password && touched.password ? <p className="fieldError">{errors.password}</p> : null}
 
-							<label htmlFor="confirmPassword">Confirm Password</label>
+							<label htmlFor="confirmPassword">{touched.confirmPassword && errors.confirmPassword && touched.confirmPassword ? <p className="fieldError">{errors.confirmPassword}</p> : 'Confirm Password'}</label>
 							<Field
 								className="input login-input is-black mt-0 is-medium"
 								id="confirmPassword"
 								name="confirmPassword"
 								type="password"
-								placeholder="Enter your confirmPassword"
+								placeholder="Confirm your password"
 								autoComplete="new-password"
 							/>
-							{errors.confirmPassword && touched.confirmPassword ? <p className="fieldError">{errors.confirmPassword}</p> : null}
 
 							<div className="login-button-div">
-								<button className="button login-button is-black mt-0" type="submit" disabled={isSubmitting} >Submit</button>
+								<Link to={Routes.about}>
+									<button className="button is-danger login-button" type="submit">Back</button>
+								</Link>
+								<button className="button login-button is-primary" type="submit" disabled={isSubmitting} >Submit</button>
 							</div>
 						</Form>
 					</div>
@@ -176,12 +163,6 @@ class Signup extends React.Component<SignupProps> {
 			</Formik>
 		)
 	}
-}
-
-Signup.propTypes = {
-	registerUser: PropTypes.func.isRequired,
-	auth: PropTypes.object.isRequired,
-	errors: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state: any) => ({

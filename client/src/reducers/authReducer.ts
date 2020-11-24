@@ -20,7 +20,7 @@ export default function (state = initialState, action: any) {
 			return {
 				...state,
 				isAuthenticated: !isEmpty(action.payload),
-				user: action.payload
+				user: action.payload.user
 			}
 		case USER_LOADING:
 			return {

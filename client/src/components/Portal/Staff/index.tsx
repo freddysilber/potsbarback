@@ -1,9 +1,16 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+// Styles
 import "./Staff.scss";
 // Components
 import { Dropdown, POSITIONS, COST_CENTERS } from '../../Util'
+import { Routes } from "../../../utils/routes";
+// Redux
+import { connect } from 'react-redux'
 
-const Staff: () => JSX.Element = () => {
+const Staff: (props: any) => JSX.Element = (props: any) => {
+	// this is where you can access the current user from the store
+	console.log('staff', props)
 
 	const [shiftStarted, _isShiftStarted] = useState(false);
 
@@ -29,18 +36,11 @@ const Staff: () => JSX.Element = () => {
 							<li>3. Have Manager verify both checkouts</li>
 							<li>4. Deliver funds to comptroller for verification</li>
 						</ul>
-						<a href="/portal/checkout">
+						<Link to={Routes.checkout}>
 							<div className="staff-button-div">
-
-								<button
-									className="button login-button is-danger"
-									onClick={() => console.log("REROUTE")}
-								>
-									Daily Checkout
-                </button>
-
+								<button className="button login-button is-danger" onClick={() => console.log("REROUTE")}>Daily Checkout</button>
 							</div>
-						</a>
+						</Link>
 					</div>
 				</>
 			) : (
@@ -88,4 +88,11 @@ const Staff: () => JSX.Element = () => {
 	);
 };
 
-export default Staff
+// export default Staff
+
+const mapStateToProps = (state: any) => ({
+	auth: state.auth,
+	errors: state.errors
+})
+
+export default connect(mapStateToProps, {})(Staff)

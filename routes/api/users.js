@@ -35,12 +35,14 @@ router.post('/register', (req, res) => {
 			// Hash password before saving in database
 			bcrypt.genSalt(10, (err, salt) => {
 				bcrypt.hash(newUser.password, salt, (err, hash) => {
-					if (err) throw err
+					if (err) {
+						throw err
+					}
 					newUser.password = hash
 					newUser
 						.save()
 						.then(user => res.json(user))
-						.catch(err => console.log(err))
+						.catch(err => console.error(err))
 				})
 			})
 		}
@@ -71,9 +73,10 @@ router.post('/login', (req, res) => {
 				 * User matched
 				 * Create JWT Payload
 				 */
+				const { id, name } = user
 				const payload = {
-					id: user.id,
-					name: user.name
+					id,
+					name
 				}
 				// Sign token
 				jwt.sign(
@@ -85,7 +88,8 @@ router.post('/login', (req, res) => {
 					(err, token) => {
 						res.json({
 							success: true,
-							token: 'Bearer ' + token
+							token: 'Bearer ' + token,
+							user
 						})
 					}
 				)
@@ -96,34 +100,16 @@ router.post('/login', (req, res) => {
 	})
 })
 
-// router.get('/getUsers', (req, res) => {
-// 	console.log(res, req)
-// 	console.log('-----------------')
-// 	User.find().then(user => {
-// 		console.log(user)
-// 		res.json(user)
-// 	})
-// })
-
-// router.post('/newUser', (req, res) => {
-// 	const newUser = new User({
-// 		firstName: 'test',
-// 		lastName: 'lastName',
-// 		email: 'test@test.com',
-// 		password: 'password',
-// 		phone: '9705313993'
-// 	})
-// 	// Hash password before saving in database
-// 	bcrypt.genSalt(10, (err, salt) => {
-// 		bcrypt.hash(newUser.password, salt, (err, hash) => {
-// 			if (err) throw err
-// 			newUser.password = hash
-// 			newUser
-// 				.save()
-// 				.then(user => res.json(user))
-// 				.catch(err => console.log(err))
-// 		})
-// 	})
-// })
+router.get('/getUserById', (req, res) => {
+	const { userId } = req.query
+	User.findById(userId)
+		.then(user => {
+			return res.status(200).json({
+				success: true,
+				user
+			})
+		})
+		.catch(error => console.error(error))
+})
 
 module.exports = router
