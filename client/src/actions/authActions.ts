@@ -7,8 +7,7 @@ import { Routes } from '../utils/routes'
 export const registerUser = (userData: any, history: any) => (dispatch: any) => {
 	axios.post('/api/users/register', userData)
 		.then((res: AxiosResponse) => {
-			console.log('AUTH ACTIONS - REGISTER USER ', res)
-			history.push(Routes.login)
+			history.push(Routes.staff)
 		})
 		.catch((err: any) => {
 			console.error('AUTH ACTIONS - REGISTER USER ', err)
