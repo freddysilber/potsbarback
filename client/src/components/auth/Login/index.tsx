@@ -1,11 +1,12 @@
 import React from 'react'
 import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
-import './Login.scss'
+import '../Auth.scss'
 import { InitialValues, FormState, FormData, LoginProps } from './loginTypes'
 import { connect } from 'react-redux'
 import { loginUser } from '../../../actions/authActions'
 import { Routes } from '../../../utils/routes'
+import { Link } from 'react-router-dom'
 
 const initialValues: InitialValues = {
 	email: '',
@@ -62,44 +63,49 @@ class Login extends React.Component<LoginProps> {
 
 	render() {
 		return (
-			<Formik
-				initialValues={initialValues}
-				validationSchema={loginValidators}
-				onSubmit={(values: any, actions: any) => {
-					const data: FormData = { actions, values }
-					this.handleSubmit(data)
-				}}
-			>
-				{({ errors, touched, isSubmitting }: FormState) => (
-					<div className="card login-input-form">
-						<Form>
-							<label htmlFor="email">Email:</label>
-							<Field
-								className="input login-input is-medium is-black"
-								id="email"
-								name="email"
-								type="email"
-								placeholder="Enter your email"
-								autoComplete="username"
-							/>
-							{touched.email && errors.email && <p className="fieldError">{errors.email}</p>}
-							<label htmlFor="password">Password:</label>
-							<Field
-								className="input login-input is-medium is-black"
-								id="password"
-								name="password"
-								type="password"
-								placeholder="Enter your password"
-								autoComplete="current-password"
-							/>
-							{errors.password && touched.password ? <p className="fieldError">{errors.password}</p> : null}
-							<div className="login-button-div">
-								<button className="button is-danger login-button" type="submit" disabled={isSubmitting} >Submit</button>
-							</div>
-						</Form>
-					</div>
-				)}
-			</Formik>
+			<>
+				<Formik
+					initialValues={initialValues}
+					validationSchema={loginValidators}
+					onSubmit={(values: any, actions: any) => {
+						const data: FormData = { actions, values }
+						this.handleSubmit(data)
+					}}
+				>
+					{({ errors, touched, isSubmitting }: FormState) => (
+						<div className="card login-input-form">
+							<Form>
+								<label htmlFor="email">Email:</label>
+								<Field
+									className="input login-input is-medium is-black"
+									id="email"
+									name="email"
+									type="email"
+									placeholder="Enter your email"
+									autoComplete="username"
+								/>
+								{touched.email && errors.email && <p className="fieldError">{errors.email}</p>}
+								<label htmlFor="password">Password:</label>
+								<Field
+									className="input login-input is-medium is-black"
+									id="password"
+									name="password"
+									type="password"
+									placeholder="Enter your password"
+									autoComplete="current-password"
+								/>
+								{errors.password && touched.password ? <p className="fieldError">{errors.password}</p> : null}
+								<div className="login-button-div">
+									<Link to={Routes.about}>
+										<button className="button is-danger login-button" type="submit">Back</button>
+									</Link>
+									<button className="button is-success login-button" type="submit" disabled={isSubmitting}>Login</button>
+								</div>
+							</Form>
+						</div>
+					)}
+				</Formik>
+			</>
 		)
 	}
 }

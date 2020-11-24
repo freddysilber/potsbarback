@@ -7,7 +7,8 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { registerUser } from '../../../actions/authActions'
 import { Routes } from '../../../utils/routes'
-import './Signup.scss'
+import { Link } from 'react-router-dom'
+import '../Auth.scss'
 
 const initialValues: InitialValues = {
 	firstName: '',
@@ -159,6 +160,9 @@ class Signup extends React.Component<SignupProps> {
 							{errors.confirmPassword && touched.confirmPassword ? <p className="fieldError">{errors.confirmPassword}</p> : null}
 
 							<div className="login-button-div">
+								<Link to={Routes.about}>
+									<button className="button is-danger login-button" type="submit">Back</button>
+								</Link>
 								<button className="button login-button is-primary" type="submit" disabled={isSubmitting} >Submit</button>
 							</div>
 						</Form>
