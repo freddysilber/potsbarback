@@ -100,13 +100,11 @@ router.post('/login', (req, res) => {
 	})
 })
 
-router.get('/getCurrentUser', (req, res) => {
-	console.log('heres my id', req.query.userId)
-	User.findById(req.query.userId)
+router.get('/getUserById', (req, res) => {
+	const { userId } = req.query
+	User.findById(userId)
 		.then(user => {
-			console.log('USER IN MONGO!', user)
-			// return user
-			res.json({
+			return res.status(200).json({
 				success: true,
 				user
 			})
