@@ -76,9 +76,9 @@ class Login extends React.Component<LoginProps> {
 					{({ errors, touched, isSubmitting }: FormState) => (
 						<div className="card login-input-form">
 							<Form>
-								<label htmlFor="email">{touched.email && errors.email ? <p className="fieldError">{errors.email}</p> : 'Email'}</label>
+								<label htmlFor="email">{touched.email && errors.email ? <p className="fieldError">{errors.email}</p> : <span style={{fontWeight:"bold"}}>Email</span>}</label>
 								<Field
-									className="input login-input is-medium is-black"
+									className="input login-input is-medium mt-0 is-black"
 									id="email"
 									name="email"
 									type="email"
@@ -86,9 +86,9 @@ class Login extends React.Component<LoginProps> {
 									autoComplete="username"
 								/>
 
-								<label htmlFor="password">{errors.password && touched.password ? <p className="fieldError">{errors.password}</p> : 'Password'}</label>
+								<label htmlFor="password">{errors.password && touched.password ? <p className="fieldError">{errors.password}</p> : <span style={{fontWeight:"bold"}}>Password</span>}</label>
 								<Field
-									className="input login-input is-medium is-black"
+									className="input login-input mt-0 is-medium is-black"
 									id="password"
 									name="password"
 									type="password"
