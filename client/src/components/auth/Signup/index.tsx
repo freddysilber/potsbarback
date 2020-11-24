@@ -55,7 +55,6 @@ class Signup extends React.Component<SignupProps> {
 
 	constructor(props: SignupProps) {
 		super(props)
-		console.log('Signup props --> ', props)
 		this.state = {
 			errors: {}
 		}
@@ -69,7 +68,6 @@ class Signup extends React.Component<SignupProps> {
 	}
 
 	componentWillReceiveProps(nextProps: any) {
-		console.log('nextProps', nextProps)
 		if (nextProps.errors) {
 			this.setState({
 				errors: nextProps.errors
@@ -80,7 +78,6 @@ class Signup extends React.Component<SignupProps> {
 	handleSubmit(data: FormData) {
 		const { values } = data
 		const user: User = values
-		console.log('This is the user object from #handleSubmit', user)
 		this.props.registerUser(user, this.props.history)
 	}
 

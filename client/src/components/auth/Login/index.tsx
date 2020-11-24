@@ -29,7 +29,6 @@ class Login extends React.Component<LoginProps> {
 
 	constructor(props: LoginProps) {
 		super(props)
-		console.log(this.props)
 		this.state = {
 			errors: {}
 		}
