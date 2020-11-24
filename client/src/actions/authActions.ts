@@ -21,16 +21,19 @@ export const registerUser = (userData: any, history: any) => (dispatch: any) => 
 export const loginUser = (userData: any) => (dispatch: any) => {
 	axios.post('/api/users/login', userData)
 		.then(res => {
+			console.log('RES', res)
 			// Save to localStorage
 			// Set token to localStorage
-			const { token } = res.data
+			const { token, user } = res.data
+			const userId = user._id
+			localStorage.setItem('userId', userId)
 			localStorage.setItem('jwtToken', token)
 			// Set token to Auth header
 			setAuthToken(token)
 			// Decode token to get user data
-			const decoded = jwt_decode(token)
+			const decoded: any = jwt_decode(token)
 			// Set current user
-			dispatch(setCurrentUser(decoded))
+			dispatch(setCurrentUser(decoded, user))
 		})
 		.catch(err =>
 			dispatch({
@@ -40,10 +43,12 @@ export const loginUser = (userData: any) => (dispatch: any) => {
 		)
 }
 // Set logged in user
-export const setCurrentUser = (decoded: any) => {
+export const setCurrentUser = (decoded: any, user: any) => {
+	console.log('user', user)
 	return {
 		type: SET_CURRENT_USER,
-		payload: decoded
+		payload: { token: decoded, user }
+		// payload: decoded
 	}
 }
 // User loading
@@ -59,5 +64,13 @@ export const logoutUser = () => (dispatch: any) => {
 	// Remove auth header for future requests
 	setAuthToken(false)
 	// Set current user to empty object {} which will set isAuthenticated to false
-	dispatch(setCurrentUser({}))
+	dispatch(removeCurrentUser({}))
+	// dispatch(setCurrentUser({}))
+}
+
+const removeCurrentUser = (emptyToken: any) => {
+	return {
+		type: SET_CURRENT_USER,
+		payload: emptyToken
+	}
 }
