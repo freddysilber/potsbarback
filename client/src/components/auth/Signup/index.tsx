@@ -130,17 +130,17 @@ class Signup extends React.Component<SignupProps> {
 								id="confirmEmail"
 								name="confirmEmail"
 								type="email"
-								placeholder="Enter your confirmEmail"
+								placeholder="Confirm email"
 							/>
 							{touched.confirmEmail && errors.confirmEmail && <p className="fieldError">{errors.confirmEmail}</p>}
 
-							<label htmlFor="password">Password</label>
+							<label htmlFor="password">Create Password</label>
 							<Field
 								className="input login-input is-primary is-medium"
 								id="password"
 								name="password"
 								type="password"
-								placeholder="Enter your password"
+								placeholder="Choose a password"
 								autoComplete="new-password"
 							/>
 							{errors.password && touched.password ? <p className="fieldError">{errors.password}</p> : null}
@@ -151,7 +151,7 @@ class Signup extends React.Component<SignupProps> {
 								id="confirmPassword"
 								name="confirmPassword"
 								type="password"
-								placeholder="Enter your confirmPassword"
+								placeholder="Confirm your password"
 								autoComplete="new-password"
 							/>
 							{errors.confirmPassword && touched.confirmPassword ? <p className="fieldError">{errors.confirmPassword}</p> : null}
