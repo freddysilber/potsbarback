@@ -18,11 +18,13 @@ type UserLogin =
 	| undefined
 
 const loginValidators: Yup.ObjectSchema<Yup.Shape<UserLogin, InitialValues>, object> = Yup.object().shape({
-	email: Yup.string().email("Invalid email").required("Required"),
+	email: Yup.string()
+		.email('Invalid email')
+		.required('An email is required'),
 	password: Yup.string()
-		.min(2, "Your password is too short!")
-		.max(50, "Your password is too long")
-		.required("Required"),
+		.min(2, 'Your password is too short!')
+		.max(50, 'Your password is too long')
+		.required('A password is required'),
 });
 
 class Login extends React.Component<LoginProps> {
@@ -74,7 +76,7 @@ class Login extends React.Component<LoginProps> {
 					{({ errors, touched, isSubmitting }: FormState) => (
 						<div className="card login-input-form">
 							<Form>
-								<label htmlFor="email">Email:</label>
+								<label htmlFor="email">{touched.email && errors.email ? <p className="fieldError">{errors.email}</p> : 'Email'}</label>
 								<Field
 									className="input login-input is-medium is-black"
 									id="email"
@@ -83,8 +85,8 @@ class Login extends React.Component<LoginProps> {
 									placeholder="Enter your email"
 									autoComplete="username"
 								/>
-								{touched.email && errors.email && <p className="fieldError">{errors.email}</p>}
-								<label htmlFor="password">Password:</label>
+
+								<label htmlFor="password">{errors.password && touched.password ? <p className="fieldError">{errors.password}</p> : 'Password'}</label>
 								<Field
 									className="input login-input is-medium is-black"
 									id="password"
@@ -93,7 +95,7 @@ class Login extends React.Component<LoginProps> {
 									placeholder="Enter your password"
 									autoComplete="current-password"
 								/>
-								{errors.password && touched.password ? <p className="fieldError">{errors.password}</p> : null}
+
 								<div className="login-button-div">
 									<Link to={Routes.about}>
 										<button className="button is-danger login-button" type="submit">Back</button>
