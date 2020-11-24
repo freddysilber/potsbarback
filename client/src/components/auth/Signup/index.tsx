@@ -37,18 +37,18 @@ const signupValidators: Yup.ObjectSchema<Yup.Shape<UserSignup, {
 		.required('Last name cannot be empty'),
 	email: Yup.string()
 		.email('Invalid email')
-		.required('Required'),
+		.required('Email is required'),
 	confirmEmail: Yup.string()
 		.oneOf([Yup.ref('email'), null || ''], 'Emails must match!')
 		.required('Confirm Email is required'),
 	password: Yup.string()
 		.min(2, 'Your password is too short!')
 		.max(50, 'Your password is too long')
-		.required('Required'),
+		.required('A password is required'),
 	confirmPassword: Yup.string()
 		.oneOf([Yup.ref('password'), null || ''], 'Passwords must match!')
 		.max(50, 'Your password is too long')
-		.required('Required'),
+		.required('A password is required'),
 })
 
 class Signup extends React.Component<SignupProps> {
@@ -93,7 +93,7 @@ class Signup extends React.Component<SignupProps> {
 				{({ errors, touched, isSubmitting }: FormState) => (
 					<div className="card login-input-form">
 						<Form>
-							<label htmlFor="firstName">First Name</label>
+							<label htmlFor="firstName">{touched.firstName && errors.firstName ? <p className="fieldError">{errors.firstName}</p> : 'First Name'}</label>
 							<Field
 								className="input login-input is-primary is-medium"
 								id="firstName"
@@ -101,9 +101,8 @@ class Signup extends React.Component<SignupProps> {
 								type="firstName"
 								placeholder="Enter your first name"
 							/>
-							{touched.firstName && errors.firstName && <p className="fieldError">{errors.firstName}</p>}
 
-							<label htmlFor="lastName">Last Name</label>
+							<label htmlFor="lastName">{touched.lastName && errors.lastName ? <p className="fieldError">{errors.lastName}</p> : 'Last Name'}</label>
 							<Field
 								className="input login-input is-primary is-medium"
 								id="lastName"
@@ -111,9 +110,8 @@ class Signup extends React.Component<SignupProps> {
 								type="lastName"
 								placeholder="Enter your last name"
 							/>
-							{touched.lastName && errors.lastName && <p className="fieldError">{errors.lastName}</p>}
 
-							<label htmlFor="email">Email</label>
+							<label htmlFor="email">{touched.email && errors.email ? <p className="fieldError">{errors.email}</p> : 'Email'}</label>
 							<Field
 								className="input login-input is-primary is-medium"
 								id="email"
@@ -122,9 +120,8 @@ class Signup extends React.Component<SignupProps> {
 								placeholder="Enter your email"
 								autoComplete="username"
 							/>
-							{touched.email && errors.email && <p className="fieldError">{errors.email}</p>}
 
-							<label htmlFor="confirmEmail">Confirm Email</label>
+							<label htmlFor="confirmEmail">{touched.confirmEmail && errors.confirmEmail ? <p className="fieldError">{errors.confirmEmail}</p> : 'Confirm Email'}</label>
 							<Field
 								className="input login-input is-primary is-medium"
 								id="confirmEmail"
@@ -132,9 +129,8 @@ class Signup extends React.Component<SignupProps> {
 								type="email"
 								placeholder="Confirm email"
 							/>
-							{touched.confirmEmail && errors.confirmEmail && <p className="fieldError">{errors.confirmEmail}</p>}
 
-							<label htmlFor="password">Create Password</label>
+							<label htmlFor="password">{touched.password && errors.password && touched.password ? <p className="fieldError">{errors.password}</p> : 'Create Password'}</label>
 							<Field
 								className="input login-input is-primary is-medium"
 								id="password"
@@ -143,9 +139,8 @@ class Signup extends React.Component<SignupProps> {
 								placeholder="Choose a password"
 								autoComplete="new-password"
 							/>
-							{errors.password && touched.password ? <p className="fieldError">{errors.password}</p> : null}
 
-							<label htmlFor="confirmPassword">Confirm Password</label>
+							<label htmlFor="confirmPassword">{touched.confirmPassword && errors.confirmPassword && touched.confirmPassword ? <p className="fieldError">{errors.confirmPassword}</p> : 'Confirm Password'}</label>
 							<Field
 								className="input login-input is-primary is-medium"
 								id="confirmPassword"
@@ -154,7 +149,6 @@ class Signup extends React.Component<SignupProps> {
 								placeholder="Confirm your password"
 								autoComplete="new-password"
 							/>
-							{errors.confirmPassword && touched.confirmPassword ? <p className="fieldError">{errors.confirmPassword}</p> : null}
 
 							<div className="login-button-div">
 								<Link to={Routes.about}>
