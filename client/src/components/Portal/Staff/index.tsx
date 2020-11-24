@@ -1,11 +1,16 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+// Styles
 import "./Staff.scss";
 // Components
 import { Dropdown, POSITIONS, COST_CENTERS } from '../../Util'
 import { Routes } from "../../../utils/routes";
-import { Link } from "react-router-dom";
+// Redux
+import { connect } from 'react-redux'
 
-const Staff: () => JSX.Element = () => {
+const Staff: (props: any) => JSX.Element = (props: any) => {
+	// this is where you can access the current user from the store
+	console.log('staff', props)
 
 	const [shiftStarted, _isShiftStarted] = useState(false);
 
@@ -83,4 +88,11 @@ const Staff: () => JSX.Element = () => {
 	);
 };
 
-export default Staff
+// export default Staff
+
+const mapStateToProps = (state: any) => ({
+	auth: state.auth,
+	errors: state.errors
+})
+
+export default connect(mapStateToProps, {})(Staff)
