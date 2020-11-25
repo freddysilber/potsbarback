@@ -22,5 +22,6 @@ export interface FormData {
 export interface LoginProps {
 	loginUser: any,
 	history: any,
-	auth: any
+	auth: any,
+	errors: any
 }

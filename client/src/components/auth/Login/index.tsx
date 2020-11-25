@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
 import '../Auth.scss'
@@ -27,90 +27,71 @@ const loginValidators: Yup.ObjectSchema<Yup.Shape<UserLogin, InitialValues>, obj
 		.required('A password is required'),
 });
 
-class Login extends React.Component<LoginProps> {
+const Login: (props: LoginProps) => JSX.Element = (props: LoginProps) => {
+	const [errors, setErrors] = useState(props)
 
-	constructor(props: LoginProps) {
-		super(props)
-		this.state = {
-			errors: {}
+	useEffect(() => {
+		if (props.auth.isAuthenticated) {
+			props.history.push(Routes.staff)
 		}
-	}
+		if (props.errors) {
+			alert('There was an error! Check the console!')
+			console.error(props.errors, errors)
+			setErrors(props.errors)
+		}
+	})
 
-	componentDidMount() {
-		// If logged in and user navigates to Login page, should redirect them to dashboard
-		if (this.props.auth.isAuthenticated) {
-			this.props.history.push(Routes.staff)
-		}
-	}
-
-	componentWillReceiveProps(nextProps: any) {
-		if (nextProps.auth.isAuthenticated) {
-			// After login, redirect user to the portal/ dashboard route
-			this.props.history.push(Routes.about)
-		}
-		if (nextProps.errors) {
-			this.setState({
-				errors: nextProps.errors
-			})
-		}
-	}
-
-	handleSubmit(data: FormData) {
+	const handleSubmit = (data: FormData) => {
 		const { actions, values } = data
 		actions.setSubmitting(false);
-		this.props.loginUser(values)
-		this.props.history.push(Routes.staff)
+		props.loginUser(values)
+		props.history.push(Routes.staff)
 	}
 
-	render() {
-		return (
-			<>
-				<Formik
-					initialValues={initialValues}
-					validationSchema={loginValidators}
-					onSubmit={(values: any, actions: any) => {
-						const data: FormData = { actions, values }
-						this.handleSubmit(data)
-					}}
-				>
-					{({ errors, touched, isSubmitting }: FormState) => (
-						<div className="card login-input-form">
-							<Form>
-								<label htmlFor="email">{touched.email && errors.email ? <p className="fieldError">{errors.email}</p> : <span style={{fontWeight:"bold"}}>Email</span>}</label>
-								<Field
-									className="input login-input is-medium mt-0 is-black"
-									id="email"
-									name="email"
-									type="email"
-									placeholder="Enter your email"
-									autoComplete="username"
-								/>
+	return (
+		<Formik
+			initialValues={initialValues}
+			validationSchema={loginValidators}
+			onSubmit={(values: any, actions: any) => {
+				const data: FormData = { actions, values }
+				handleSubmit(data)
+			}}
+		>
+			{({ errors, touched, isSubmitting }: FormState) => (
+				<div className="card login-input-form">
+					<Form>
+						<label htmlFor="email">{touched.email && errors.email ? <p className="fieldError">{errors.email}</p> : <span style={{ fontWeight: "bold" }}>Email</span>}</label>
+						<Field
+							className="input login-input is-medium mt-0 is-black"
+							id="email"
+							name="email"
+							type="email"
+							placeholder="Enter your email"
+							autoComplete="username"
+						/>
 
-								<label htmlFor="password">{errors.password && touched.password ? <p className="fieldError">{errors.password}</p> : <span style={{fontWeight:"bold"}}>Password</span>}</label>
-								<Field
-									className="input login-input mt-0 is-medium is-black"
-									id="password"
-									name="password"
-									type="password"
-									placeholder="Enter your password"
-									autoComplete="current-password"
-								/>
+						<label htmlFor="password">{errors.password && touched.password ? <p className="fieldError">{errors.password}</p> : <span style={{ fontWeight: "bold" }}>Password</span>}</label>
+						<Field
+							className="input login-input mt-0 is-medium is-black"
+							id="password"
+							name="password"
+							type="password"
+							placeholder="Enter your password"
+							autoComplete="current-password"
+						/>
 
-								<div className="login-button-div">
-									<Link to={Routes.about}>
-										<button className="button is-danger login-button" type="submit">Back</button>
-									</Link>
-									<button className="button is-success login-button" type="submit" disabled={isSubmitting}>Login</button>
-								</div>
-							</Form>
+						<div className="login-button-div">
+							<Link to={Routes.about}>
+								<button className="button is-danger login-button" type="submit">Back</button>
+							</Link>
+							<button className="button is-success login-button" type="submit" disabled={isSubmitting}>Login</button>
 						</div>
-					)}
-				</Formik>
-			</>
-		)
-	}
+					</Form>
+				</div>
+			)}
+		</Formik>
+	)
 }
-
 
 const mapStateToProps = (state: any) => ({
 	auth: state.auth,
