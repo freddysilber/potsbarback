@@ -65,8 +65,7 @@ const Signup: (props: SignupProps) => JSX.Element = (props: SignupProps) => {
 	})
 
 	const handleSubmit = (data: FormData) => {
-		const { values } = data
-		const user: User = values
+		const user: User = data.values
 		props.registerUser(user, props.history)
 	}
 
