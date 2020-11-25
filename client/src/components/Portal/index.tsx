@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Switch, Route } from 'react-router-dom'
 // Redux
 import { connect } from 'react-redux'
@@ -14,7 +14,13 @@ import './Portal.scss'
 import { Routes } from '../../utils/routes'
 
 const Portal: (props: any) => JSX.Element = (props: any) => {
-	console.log('Portal props', props)
+
+	useEffect(() => {
+		if (!props.auth.isAuthenticated) {
+			props.history.push(Routes.login)
+		}
+	})
+
 	return (
 		<Switch>
 			<Route path={Routes.staff} component={Staff} />

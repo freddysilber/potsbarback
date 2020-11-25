@@ -17,7 +17,7 @@ const Thankyou = (props: ThankyouProps) => {
 		event.preventDefault()
 		props.logoutUser()
 		// Redirect to the About component
-		props.history.push(Routes.about)
+		window.location.href = Routes.about
 	}
 
 	return (

@@ -22,6 +22,12 @@ const Staff: (props: any) => JSX.Element = (props: any) => {
 		_isShiftStarted(true);
 	};
 
+	// useEffect(() => {
+	// 	if (!props.auth.isAuthenticated) {
+	// 		props.history.push(Routes.login)
+	// 	}
+	// })
+
 	return (
 		<div>
 			{shiftStarted ? (
