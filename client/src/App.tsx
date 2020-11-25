@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import jwt_decode from 'jwt-decode'
 import setAuthToken from './utils/setAuthToken'
 // Redux
-import { logoutUser, getUserById } from './actions/authActions'
+import { logoutUser, setCurrentUser } from './actions/authActions'
 import { Provider } from 'react-redux'
 import store from './store'
 // Styles
@@ -24,8 +24,10 @@ if (localStorage.jwtToken) {
 	setAuthToken(token)
 	// Decode token and get user info and exp
 	const decoded: any = jwt_decode(token)
+	console.log('User info -->', decoded)
 	// Set user and isAuthenticated
-	store.dispatch(getUserById(decoded))
+	store.dispatch(setCurrentUser(decoded))
+	// store.dispatch(getUserById(decoded))
 	// Check for expired token
 	const currentTime: number = Date.now() / 1000 // to get in milliseconds
 	if (decoded.exp < currentTime) {

@@ -4,11 +4,15 @@ import jwt_decode from 'jwt-decode'
 import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from './actionTypes'
 import { Routes } from '../utils/routes'
 
-interface UserAuth {
-	id: string,
-	iat: number,
-	exp: number
+interface CurrentUser {
+	id?: string,
+	firstName?: string,
+	lastName?: string,
+	email?: string,
+	iat?: number,
+	exp?: number
 }
+
 // Register User
 export const registerUser = (userData: any, history: any) => (dispatch: any) => {
 	axios.post('/api/users/register', userData)
@@ -27,15 +31,15 @@ export const loginUser = (userData: any) => (dispatch: any) => {
 	axios.post('/api/users/login', userData)
 		.then(res => {
 			// Save to localStorage
-			// Set token  and userId to localStorage
-			const { token, user } = res.data
+			// Set token/ UserId to localStorage
+			const { token } = res.data
 			localStorage.setItem('jwtToken', token)
 			// Set token to Auth header
 			setAuthToken(token)
 			// Decode token to get user data
 			const decoded: any = jwt_decode(token)
 			// Set current user in store
-			dispatch(setCurrentUser(decoded, user))
+			dispatch(setCurrentUser(decoded))
 		})
 		.catch(err =>
 			dispatch({
@@ -45,21 +49,20 @@ export const loginUser = (userData: any) => (dispatch: any) => {
 		)
 }
 
-export const getUserById = (decoded: UserAuth) => (dispatch: any) => {
-	const userId = decoded.id
-	axios.get('/api/users/getUserById', { params: { userId } })
-		.then((result: AxiosResponse) => {
-			dispatch(setCurrentUser(decoded, result.data.user))
-		})
-		.catch(error => console.error(error))
-}
+// export const getUserById = (decoded: UserAuth) => (dispatch: any) => {
+// 	const userId = decoded.id
+// 	axios.get('/api/users/getUserById', { params: { userId } })
+// 		.then((result: AxiosResponse) => {
+// 			dispatch(setCurrentUser(decoded))
+// 		})
+// 		.catch(error => console.error(error))
+// }
 // Set logged in user
-export const setCurrentUser = (decoded: UserAuth, user: object | null) => {
+export const setCurrentUser = (decoded: CurrentUser) => {
 	return {
 		type: SET_CURRENT_USER,
 		payload: {
-			decoded,
-			user
+			decoded
 		}
 	}
 }
@@ -76,10 +79,5 @@ export const logoutUser = () => (dispatch: any) => {
 	// Remove auth header for future requests
 	setAuthToken(false)
 	// Set current user to empty object {} which will set isAuthenticated to false
-	dispatch(() => {
-		return {
-			type: SET_CURRENT_USER,
-			payload: {}
-		}
-	})
+	dispatch(setCurrentUser({}))
 }

@@ -73,10 +73,12 @@ router.post('/login', (req, res) => {
 				 * User matched
 				 * Create JWT Payload
 				 */
-				const { id, name } = user
+				const { id, firstName, lastName, email } = user
 				const payload = {
 					id,
-					name
+					firstName,
+					lastName,
+					email
 				}
 				// Sign token
 				jwt.sign(
@@ -88,8 +90,7 @@ router.post('/login', (req, res) => {
 					(err, token) => {
 						res.json({
 							success: true,
-							token: 'Bearer ' + token,
-							user
+							token: 'Bearer ' + token
 						})
 					}
 				)
@@ -100,16 +101,16 @@ router.post('/login', (req, res) => {
 	})
 })
 
-router.get('/getUserById', (req, res) => {
-	const { userId } = req.query
-	User.findById(userId)
-		.then(user => {
-			return res.status(200).json({
-				success: true,
-				user
-			})
-		})
-		.catch(error => console.error(error))
-})
+// router.get('/getUserById', (req, res) => {
+// 	const { userId } = req.query
+// 	User.findById(userId)
+// 		.then(user => {
+// 			return res.status(200).json({
+// 				success: true,
+// 				user
+// 			})
+// 		})
+// 		.catch(error => console.error(error))
+// })
 
 module.exports = router
