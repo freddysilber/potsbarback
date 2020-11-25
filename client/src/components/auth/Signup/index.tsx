@@ -1,13 +1,18 @@
 import React, { useEffect } from 'react'
+import { withRouter, Link } from 'react-router-dom'
+// Formik/Validations (Yup)
 import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
+// Models
 import User from '../../../models/User'
+// Types
 import { InitialValues, FormState, FormData, SignupProps } from './signupTypes'
-import { withRouter } from 'react-router-dom'
+// Redux
 import { connect } from 'react-redux'
 import { registerUser } from '../../../actions/authActions'
+// Routes
 import { Routes } from '../../../utils/routes'
-import { Link } from 'react-router-dom'
+// Styles
 import '../Auth.scss'
 
 const initialValues: InitialValues = {
