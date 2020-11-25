@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 // Formik/Validations (Yup)
-import { Formik, Form, Field } from 'formik'
+import { Formik, Form, Field, FormikValues } from 'formik'
 import * as Yup from 'yup'
 // Styles
 import '../Auth.scss'
@@ -51,7 +51,7 @@ const Login: (props: LoginProps) => JSX.Element = (props: LoginProps) => {
 		<Formik
 			initialValues={initialValues}
 			validationSchema={loginValidators}
-			onSubmit={(values: any, actions: any) => {
+			onSubmit={(values: FormikValues, actions: object) => {
 				const data: FormData = { actions, values }
 				handleSubmit(data)
 			}}
