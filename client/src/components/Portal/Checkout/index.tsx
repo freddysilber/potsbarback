@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 // Styles
 import "./Checkout.scss";
 // Components
-import CloseModal from "../index";
+// import CloseModal from "../index";
 // Routes
 import { Routes } from "../../../utils/routes";
 // Redux

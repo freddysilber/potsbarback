@@ -12,6 +12,7 @@ import Thankyou from './Thankyou'
 import './Portal.scss'
 // Routes
 import { Routes } from '../../utils/routes'
+// Models
 import User from '../../models/User'
 
 interface Auth {
@@ -44,7 +45,7 @@ const Portal: (props: PortalProps) => JSX.Element = (props: PortalProps) => {
 		</Switch>
 	)
 }
-// export default Portal
+
 const mapStateToProps = (state: any) => ({
 	auth: state.auth,
 	errors: state.errors

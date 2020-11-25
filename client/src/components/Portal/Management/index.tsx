@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-import "./Management.scss";
-import bakbar from "../../../assets/bakbar_white.png";
 import { Link } from "react-router-dom";
+// Styles
+import "./Management.scss";
+// Routes
 import { Routes } from "../../../utils/routes";
+// Components
+import { LogoWhite } from "../../Util";
 
 const dummyData = [
 	{
@@ -92,32 +95,29 @@ const Management: () => JSX.Element = () => {
 	// };
 	return (
 		<div>
-			<div>
-				<img src={bakbar} width="400" height="200" alt="logo" />
-			</div>
-			<>
-				<div className="card staff-input-form">
-					<div className="staff-title">Employee Checkout</div>
-					<span className="staff-form-head">Filter By Position:</span>
-					<div className="field">
-						<div className="control">
-							<div className="select is-black">
-								<select>
-									<option>Position</option>
-									<option id="1"
-									//  onSelect={() => setSelectedState}
-									>
-										Wait Staff
+			<LogoWhite />
+			<div className="card staff-input-form">
+				<div className="staff-title">Employee Checkout</div>
+				<span className="staff-form-head">Filter By Position:</span>
+				<div className="field">
+					<div className="control">
+						<div className="select is-black">
+							<select>
+								<option>Position</option>
+								<option id="1"
+								//  onSelect={() => setSelectedState}
+								>
+									Wait Staff
                   </option>
-									<option>Bar Back</option>
-									<option>Security</option>
-									<option>Bartender</option>
-								</select>
-							</div>
+								<option>Bar Back</option>
+								<option>Security</option>
+								<option>Bartender</option>
+							</select>
 						</div>
 					</div>
-					<span className="staff-form-head">Name:</span>
-					{/* <div className="field">
+				</div>
+				<span className="staff-form-head">Name:</span>
+				{/* <div className="field">
               <div className="control">
                 <div className="select is-black">
                   <select>
@@ -130,22 +130,21 @@ const Management: () => JSX.Element = () => {
                 </div>
               </div>
             </div> */}
-					<ul className="staff-list">
-						{dummyData.map((filteredEmployees) => filteredEmployees.job_role === selectedPosition ?
-							<li key={filteredEmployees.id}>
-								<div>
-									{filteredEmployees.last_name}, {filteredEmployees.first_name}
-								</div>
-							</li> : null
-						)}
-					</ul>
-					<Link to={Routes.checkout}>
-						<div className="staff-button-div">
-							<button className="button login-button is-danger" onClick={() => console.log("REROUTE")}>Daily Checkout</button>
-						</div>
-					</Link>
-				</div>
-			</>
+				<ul className="staff-list">
+					{dummyData.map((filteredEmployees) => filteredEmployees.job_role === selectedPosition ?
+						<li key={filteredEmployees.id}>
+							<div>
+								{filteredEmployees.last_name}, {filteredEmployees.first_name}
+							</div>
+						</li> : null
+					)}
+				</ul>
+				<Link to={Routes.checkout}>
+					<div className="staff-button-div">
+						<button className="button login-button is-danger" onClick={() => console.log("REROUTE")}>Daily Checkout</button>
+					</div>
+				</Link>
+			</div>
 		</div>
 	);
 };
