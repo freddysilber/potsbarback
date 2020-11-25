@@ -1,17 +1,23 @@
-import axios, { AxiosResponse } from 'axios'
+import axios, { AxiosError, AxiosResponse } from 'axios'
+// Redux
 import setAuthToken from '../utils/setAuthToken'
-import jwt_decode from 'jwt-decode'
 import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from './actionTypes'
+// JWT
+import jwt_decode from 'jwt-decode'
+// Routes
 import { Routes } from '../utils/routes'
+// Models
 import User from '../models/User'
 
+type ApiError = | AxiosError | Error | any
 // Register User
 export const registerUser = (userData: User, history: any) => (dispatch: any) => {
 	axios.post('/api/users/register', userData)
 		.then((res: AxiosResponse) => {
+			console.log(res)
 			history.push(Routes.staff)
 		})
-		.catch((err: any) => {
+		.catch((err: ApiError) => {
 			dispatch({
 				type: GET_ERRORS,
 				payload: err.response.data
@@ -21,7 +27,7 @@ export const registerUser = (userData: User, history: any) => (dispatch: any) =>
 // Login - get user token
 export const loginUser = (userData: User) => (dispatch: any) => {
 	axios.post('/api/users/login', userData)
-		.then(res => {
+		.then((res: AxiosResponse) => {
 			// Save to localStorage
 			// Set token/ UserId to localStorage
 			const { token } = res.data
@@ -33,7 +39,7 @@ export const loginUser = (userData: User) => (dispatch: any) => {
 			// Set current user in store
 			dispatch(setCurrentUser(decoded))
 		})
-		.catch(err =>
+		.catch((err: ApiError) =>
 			dispatch({
 				type: GET_ERRORS,
 				payload: err.response.data
