@@ -28,16 +28,10 @@ const loginValidators: Yup.ObjectSchema<Yup.Shape<UserLogin, InitialValues>, obj
 });
 
 const Login: (props: LoginProps) => JSX.Element = (props: LoginProps) => {
-	const [errors, setErrors] = useState(props)
 
 	useEffect(() => {
 		if (props.auth.isAuthenticated) {
 			props.history.push(Routes.staff)
-		}
-		if (props.errors) {
-			alert('There was an error! Check the console!')
-			console.error(props.errors, errors)
-			setErrors(props.errors)
 		}
 	})
 
