@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
 import User from '../../../models/User'
@@ -51,118 +51,100 @@ const signupValidators: Yup.ObjectSchema<Yup.Shape<UserSignup, {
 		.required('A password is required'),
 })
 
-class Signup extends React.Component<SignupProps> {
+const Signup: (props: SignupProps) => JSX.Element = (props: SignupProps) => {
 
-	constructor(props: SignupProps) {
-		super(props)
-		this.state = {
-			errors: {}
+	useEffect(() => {
+		if (props.auth.isAuthenticated) {
+			props.history.push(Routes.staff)
 		}
-	}
+	})
 
-	componentDidMount() {
-		// If logged in and user navigates to Register page, should redirect them to dashboard
-		if (this.props.auth.isAuthenticated) {
-			this.props.history.push(Routes.portal)
-		}
-	}
-
-	componentWillReceiveProps(nextProps: any) {
-		if (nextProps.errors) {
-			this.setState({
-				errors: nextProps.errors
-			})
-		}
-	}
-
-	handleSubmit(data: FormData) {
+	const handleSubmit = (data: FormData) => {
 		const { values } = data
 		const user: User = values
-		this.props.registerUser(user, this.props.history)
+		props.registerUser(user, props.history)
 	}
 
-	render() {
-		return (
-			<Formik
-				initialValues={initialValues}
-				validationSchema={signupValidators}
-				onSubmit={(values: any, actions: any) => {
-					const data: FormData = { actions, values }
-					this.handleSubmit(data)
-				}}>
-				{({ errors, touched, isSubmitting }: FormState) => (
-					<div className="card login-input-form">
-						<div className="login-title">User Sign Up</div>
-						<Form>
-							<label htmlFor="firstName">{touched.firstName && errors.firstName ? <p className="fieldError">{errors.firstName}</p> : 'First Name'}</label>
-							<Field
-								className="input login-input is-black mt-0 is-medium"
-								id="firstName"
-								name="firstName"
-								type="firstName"
-								placeholder="Enter your first name"
-							/>
+	return (
+		<Formik
+			initialValues={initialValues}
+			validationSchema={signupValidators}
+			onSubmit={(values: any, actions: any) => {
+				const data: FormData = { actions, values }
+				handleSubmit(data)
+			}}>
+			{({ errors, touched, isSubmitting }: FormState) => (
+				<div className="card login-input-form">
+					<div className="login-title">User Sign Up</div>
+					<Form>
+						<label htmlFor="firstName">{touched.firstName && errors.firstName ? <p className="fieldError">{errors.firstName}</p> : 'First Name'}</label>
+						<Field
+							className="input login-input is-black mt-0 is-medium"
+							id="firstName"
+							name="firstName"
+							type="firstName"
+							placeholder="Enter your first name"
+						/>
 
-							<label htmlFor="lastName">{touched.lastName && errors.lastName ? <p className="fieldError">{errors.lastName}</p> : 'Last Name'}</label>
-							<Field
-								className="input login-input is-black mt-0 is-medium"
-								id="lastName"
-								name="lastName"
-								type="lastName"
-								placeholder="Enter your last name"
-							/>
+						<label htmlFor="lastName">{touched.lastName && errors.lastName ? <p className="fieldError">{errors.lastName}</p> : 'Last Name'}</label>
+						<Field
+							className="input login-input is-black mt-0 is-medium"
+							id="lastName"
+							name="lastName"
+							type="lastName"
+							placeholder="Enter your last name"
+						/>
 
-							<label htmlFor="email">{touched.email && errors.email ? <p className="fieldError">{errors.email}</p> : 'Email'}</label>
-							<Field
-								className="input login-input is-black mt-0 is-medium"
-								id="email"
-								name="email"
-								type="email"
-								placeholder="Enter your email"
-								autoComplete="username"
-							/>
+						<label htmlFor="email">{touched.email && errors.email ? <p className="fieldError">{errors.email}</p> : 'Email'}</label>
+						<Field
+							className="input login-input is-black mt-0 is-medium"
+							id="email"
+							name="email"
+							type="email"
+							placeholder="Enter your email"
+							autoComplete="username"
+						/>
 
-							<label htmlFor="confirmEmail">{touched.confirmEmail && errors.confirmEmail ? <p className="fieldError">{errors.confirmEmail}</p> : 'Confirm Email'}</label>
-							<Field
-								className="input login-input is-black mt-0 is-medium"
-								id="confirmEmail"
-								name="confirmEmail"
-								type="email"
-								placeholder="Confirm email"
-							/>
+						<label htmlFor="confirmEmail">{touched.confirmEmail && errors.confirmEmail ? <p className="fieldError">{errors.confirmEmail}</p> : 'Confirm Email'}</label>
+						<Field
+							className="input login-input is-black mt-0 is-medium"
+							id="confirmEmail"
+							name="confirmEmail"
+							type="email"
+							placeholder="Confirm email"
+						/>
 
-							<label htmlFor="password">{touched.password && errors.password && touched.password ? <p className="fieldError">{errors.password}</p> : 'Create Password'}</label>
-							<Field
-								className="input login-input is-black mt-0 is-medium"
-								id="password"
-								name="password"
-								type="password"
-								placeholder="Choose a password"
-								autoComplete="new-password"
-							/>
+						<label htmlFor="password">{touched.password && errors.password && touched.password ? <p className="fieldError">{errors.password}</p> : 'Create Password'}</label>
+						<Field
+							className="input login-input is-black mt-0 is-medium"
+							id="password"
+							name="password"
+							type="password"
+							placeholder="Choose a password"
+							autoComplete="new-password"
+						/>
 
-							<label htmlFor="confirmPassword">{touched.confirmPassword && errors.confirmPassword && touched.confirmPassword ? <p className="fieldError">{errors.confirmPassword}</p> : 'Confirm Password'}</label>
-							<Field
-								className="input login-input is-black mt-0 is-medium"
-								id="confirmPassword"
-								name="confirmPassword"
-								type="password"
-								placeholder="Confirm your password"
-								autoComplete="new-password"
-							/>
+						<label htmlFor="confirmPassword">{touched.confirmPassword && errors.confirmPassword && touched.confirmPassword ? <p className="fieldError">{errors.confirmPassword}</p> : 'Confirm Password'}</label>
+						<Field
+							className="input login-input is-black mt-0 is-medium"
+							id="confirmPassword"
+							name="confirmPassword"
+							type="password"
+							placeholder="Confirm your password"
+							autoComplete="new-password"
+						/>
 
-							<div className="login-button-div">
-								<Link to={Routes.about}>
-									<button className="button is-danger login-button" type="submit">Back</button>
-								</Link>
-								<button className="button login-button is-primary" type="submit" disabled={isSubmitting} >Submit</button>
-							</div>
-						</Form>
-					</div>
-				)}
-			</Formik>
-		)
-	}
+						<div className="login-button-div">
+							<Link to={Routes.about}>
+								<button className="button is-danger login-button" type="submit">Back</button>
+							</Link>
+							<button className="button login-button is-primary" type="submit" disabled={isSubmitting}>Submit</button>
+						</div>
+					</Form>
+				</div>
+			)}
+		</Formik>
+	)
 }
 
 const mapStateToProps = (state: any) => ({
