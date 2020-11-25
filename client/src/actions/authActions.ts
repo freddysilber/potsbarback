@@ -3,18 +3,10 @@ import setAuthToken from '../utils/setAuthToken'
 import jwt_decode from 'jwt-decode'
 import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from './actionTypes'
 import { Routes } from '../utils/routes'
-
-interface CurrentUser {
-	id?: string,
-	firstName?: string,
-	lastName?: string,
-	email?: string,
-	iat?: number,
-	exp?: number
-}
+import User from '../models/User'
 
 // Register User
-export const registerUser = (userData: any, history: any) => (dispatch: any) => {
+export const registerUser = (userData: User, history: any) => (dispatch: any) => {
 	axios.post('/api/users/register', userData)
 		.then((res: AxiosResponse) => {
 			history.push(Routes.staff)
@@ -27,7 +19,7 @@ export const registerUser = (userData: any, history: any) => (dispatch: any) => 
 		})
 }
 // Login - get user token
-export const loginUser = (userData: any) => (dispatch: any) => {
+export const loginUser = (userData: User) => (dispatch: any) => {
 	axios.post('/api/users/login', userData)
 		.then(res => {
 			// Save to localStorage
@@ -48,17 +40,8 @@ export const loginUser = (userData: any) => (dispatch: any) => {
 			})
 		)
 }
-
-// export const getUserById = (decoded: UserAuth) => (dispatch: any) => {
-// 	const userId = decoded.id
-// 	axios.get('/api/users/getUserById', { params: { userId } })
-// 		.then((result: AxiosResponse) => {
-// 			dispatch(setCurrentUser(decoded))
-// 		})
-// 		.catch(error => console.error(error))
-// }
 // Set logged in user
-export const setCurrentUser = (decoded: CurrentUser) => {
+export const setCurrentUser = (decoded: User | object) => {
 	return {
 		type: SET_CURRENT_USER,
 		payload: {
