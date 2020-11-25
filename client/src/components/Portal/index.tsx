@@ -12,8 +12,21 @@ import Thankyou from './Thankyou'
 import './Portal.scss'
 // Routes
 import { Routes } from '../../utils/routes'
+import User from '../../models/User'
 
-const Portal: (props: any) => JSX.Element = (props: any) => {
+interface Auth {
+	isAuthenticated: boolean,
+	loading: boolean,
+	user: User
+}
+interface PortalProps {
+	auth: Auth,
+	history: any,
+	errors: any
+}
+
+const Portal: (props: PortalProps) => JSX.Element = (props: PortalProps) => {
+	console.log('portal props', props)
 
 	useEffect(() => {
 		if (!props.auth.isAuthenticated) {

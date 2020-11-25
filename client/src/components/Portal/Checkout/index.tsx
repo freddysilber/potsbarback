@@ -13,7 +13,7 @@ interface ModalProps {
 	children: any;
 	closeModal: any;
 	modalState: any;
-	title: any;
+	title: any
 }
 
 const Modal = ({ children, closeModal, modalState, title }: ModalProps) => {
@@ -33,7 +33,7 @@ const Modal = ({ children, closeModal, modalState, title }: ModalProps) => {
 					<div className="content">{children}</div>
 				</section>
 				<footer className="modal-card-foot">
-					<CloseModal />
+					{/* <CloseModal /> */}
 				</footer>
 			</div>
 		</div>
