@@ -24,7 +24,7 @@ const Thankyou = (props: ThankyouProps) => {
 		<div className="card staff-input-form">
 			<div className="staff-title">Your shift has been completed.</div>
 			<span className="staff-form-head">
-				You have completed all task in Bak||Bar for the day!
+				You have completed all tasks in Bak||Bar for the day!
         </span>
 			<div className="mt-4">
 				You have been logged out for the day. Here is a summary:
