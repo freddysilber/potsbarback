@@ -6,6 +6,8 @@ import "./Checkout.scss";
 import CloseModal from "../index";
 // Routes
 import { Routes } from "../../../utils/routes";
+// Redux
+import { connect } from 'react-redux'
 
 interface ModalProps {
 	children: any;
@@ -115,4 +117,10 @@ class Checkout extends React.Component {
 	}
 }
 
-export default Checkout;
+// export default Checkout;
+const mapStateToProps = (state: any) => ({
+	auth: state.auth,
+	errors: state.errors
+})
+
+export default connect(mapStateToProps)(Checkout)
