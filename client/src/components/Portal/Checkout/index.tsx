@@ -9,8 +9,8 @@ import "./Checkout.scss";
 import { Routes } from "../../../utils/routes";
 // Redux
 import { connect } from 'react-redux'
-// Models
-import User from '../../../models/User'
+// Types/ Interfaces
+import { Auth } from '../../Auth'
 
 // interface ModalProps {
 // 	children: any;
@@ -49,11 +49,6 @@ import User from '../../../models/User'
 // 	title: React.PropTypes
 // }
 
-interface Auth {
-	isAuthenticated: boolean,
-	loading: boolean,
-	user: User
-}
 interface CheckoutProps {
 	auth: Auth,
 	history: any

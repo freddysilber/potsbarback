@@ -1,3 +1,5 @@
+import { Auth } from '../'
+
 interface TouchedProps {
 	email: boolean,
 	password: boolean
@@ -22,6 +24,6 @@ export interface FormData {
 export interface LoginProps {
 	loginUser: any,
 	history: any,
-	auth: any,
+	auth: Auth,
 	errors: any
 }

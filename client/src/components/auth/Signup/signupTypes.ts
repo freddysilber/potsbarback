@@ -1,3 +1,5 @@
+import { Auth } from '../'
+
 interface TouchedProps {
 	firstName: boolean,
 	lastName: boolean,
@@ -32,5 +34,5 @@ export interface SignupProps {
 	registerUser: any,
 	location: any,
 	match: any,
-	auth: any
+	auth: Auth
 }

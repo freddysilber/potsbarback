@@ -4,10 +4,11 @@ import { logoutUser } from '../../../actions/authActions'
 import { connect } from 'react-redux'
 import { Link } from "react-router-dom";
 import { Routes } from "../../../utils/routes";
+import { Auth } from '../../Auth'
 
 interface ThankyouProps {
 	logoutUser: any,
-	auth: any,
+	auth: Auth,
 	history: any
 }
 

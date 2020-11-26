@@ -12,14 +12,9 @@ import Thankyou from './Thankyou'
 import './Portal.scss'
 // Routes
 import { Routes } from '../../utils/routes'
-// Models
-import User from '../../models/User'
+// Types/Interfaces
+import { Auth } from '../Auth'
 
-interface Auth {
-	isAuthenticated: boolean,
-	loading: boolean,
-	user: User
-}
 interface PortalProps {
 	auth: Auth,
 	history: any,
