@@ -8,8 +8,16 @@ import { Dropdown, POSITIONS, COST_CENTERS } from '../../Util'
 import { Routes } from "../../../utils/routes";
 // Redux
 import { connect } from 'react-redux'
+// Types/Interfaces
+import { Auth } from '../../Auth'
 
-const Staff: (props: any) => JSX.Element = (props: any) => {
+interface StaffProps {
+	auth: Auth,
+	history: any,
+	errors: any
+}
+
+const Staff: (props: StaffProps) => JSX.Element = (props: StaffProps) => {
 	// this is where you can access the current user from the store
 	console.log('staff', props)
 
