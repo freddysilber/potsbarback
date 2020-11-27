@@ -10,7 +10,7 @@ import { Provider } from 'react-redux'
 import store from './store'
 // Styles
 import './App.scss'
-import "bulma/css/bulma.css"
+import 'bulma/css/bulma.css'
 // Components
 import { Login, About, Portal, Signup } from './components'
 import { LogoWhite } from './components/Util'
