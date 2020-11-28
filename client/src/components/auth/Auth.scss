@@ -6,12 +6,10 @@
 .login-title {
     font-size: 24pt;
     font-weight: bold;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 20px 0px 20px 0;
 }
-.login-input {
-    margin-top: 20px;
-    margin-bottom: 20px;
+.login-input, .login-input-form {
+    margin: 20px 0 20px 0;
 }
 .login-button-div {
     display: flex;
@@ -19,21 +17,14 @@
 }
 .login-input-form {
     text-align: left;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 50px 20px 50px 20px;
 }
 .login-form-head {
     color: grey;
     font-weight: bold;
 }
-
 .fieldError {
     color: red;
-    // text-align: center;
 }
 input {
     margin: 0;

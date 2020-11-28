@@ -4,15 +4,25 @@ import { Link } from "react-router-dom";
 import "./Staff.scss";
 // Components
 import { Dropdown, POSITIONS, COST_CENTERS } from '../../Util'
+// Routes
 import { Routes } from "../../../utils/routes";
 // Redux
 import { connect } from 'react-redux'
+// Types/Interfaces
+import { Auth } from '../../Auth'
 
-const Staff: (props: any) => JSX.Element = (props: any) => {
+interface StaffProps {
+	auth: Auth,
+	history: any,
+	errors: any
+}
+
+const Staff: (props: StaffProps) => JSX.Element = (props: StaffProps) => {
 	// this is where you can access the current user from the store
 	console.log('staff', props)
 
 	const [shiftStarted, _isShiftStarted] = useState(false);
+	const { firstName, lastName } = props.auth.user
 
 	const toggleShift: () => void = () => {
 		// Send Post Regquest to User Object that Shift has Started
@@ -20,6 +30,12 @@ const Staff: (props: any) => JSX.Element = (props: any) => {
 		console.log("Employee Shift Started");
 		_isShiftStarted(true);
 	};
+
+	// useEffect(() => {
+	// 	if (!props.auth.isAuthenticated) {
+	// 		props.history.push(Routes.login)
+	// 	}
+	// })
 
 	return (
 		<div>
@@ -46,7 +62,7 @@ const Staff: (props: any) => JSX.Element = (props: any) => {
 			) : (
 					<>
 						<div className="card staff-input-form">
-							<div className="staff-title">Hello [user.name]!</div>
+							<div className="staff-title">Hello {firstName} {lastName}!</div>
 							<div className="staff-form-head">
 								Please verify your postition, cost center, and starting cash to
 								"Start Shift".
@@ -88,11 +104,9 @@ const Staff: (props: any) => JSX.Element = (props: any) => {
 	);
 };
 
-// export default Staff
-
 const mapStateToProps = (state: any) => ({
 	auth: state.auth,
 	errors: state.errors
 })
 
-export default connect(mapStateToProps, {})(Staff)
+export default connect(mapStateToProps)(Staff)
