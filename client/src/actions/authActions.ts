@@ -1,21 +1,23 @@
-import axios, { AxiosResponse } from 'axios'
+import axios, { AxiosError, AxiosResponse } from 'axios'
+// Redux
 import setAuthToken from '../utils/setAuthToken'
-import jwt_decode from 'jwt-decode'
 import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from './actionTypes'
+// JWT
+import jwt_decode from 'jwt-decode'
+// Routes
 import { Routes } from '../utils/routes'
+// Models
+import User from '../models/User'
 
-interface UserAuth {
-	id: string,
-	iat: number,
-	exp: number
-}
+type ApiError = | AxiosError | Error | any
 // Register User
-export const registerUser = (userData: any, history: any) => (dispatch: any) => {
+export const registerUser = (userData: User, history: any) => (dispatch: any) => {
 	axios.post('/api/users/register', userData)
 		.then((res: AxiosResponse) => {
+			console.log(res)
 			history.push(Routes.staff)
 		})
-		.catch((err: any) => {
+		.catch((err: ApiError) => {
 			dispatch({
 				type: GET_ERRORS,
 				payload: err.response.data
@@ -23,43 +25,33 @@ export const registerUser = (userData: any, history: any) => (dispatch: any) => 
 		})
 }
 // Login - get user token
-export const loginUser = (userData: any) => (dispatch: any) => {
+export const loginUser = (userData: User) => (dispatch: any) => {
 	axios.post('/api/users/login', userData)
-		.then(res => {
+		.then((res: AxiosResponse) => {
 			// Save to localStorage
-			// Set token  and userId to localStorage
-			const { token, user } = res.data
+			// Set token/ UserId to localStorage
+			const { token } = res.data
 			localStorage.setItem('jwtToken', token)
 			// Set token to Auth header
 			setAuthToken(token)
 			// Decode token to get user data
 			const decoded: any = jwt_decode(token)
 			// Set current user in store
-			dispatch(setCurrentUser(decoded, user))
+			dispatch(setCurrentUser(decoded))
 		})
-		.catch(err =>
+		.catch((err: ApiError) =>
 			dispatch({
 				type: GET_ERRORS,
 				payload: err.response.data
 			})
 		)
 }
-
-export const getUserById = (decoded: UserAuth) => (dispatch: any) => {
-	const userId = decoded.id
-	axios.get('/api/users/getUserById', { params: { userId } })
-		.then((result: AxiosResponse) => {
-			dispatch(setCurrentUser(decoded, result.data.user))
-		})
-		.catch(error => console.error(error))
-}
 // Set logged in user
-export const setCurrentUser = (decoded: UserAuth, user: object | null) => {
+export const setCurrentUser = (decoded: User | object) => {
 	return {
 		type: SET_CURRENT_USER,
 		payload: {
-			decoded,
-			user
+			decoded
 		}
 	}
 }
@@ -76,10 +68,5 @@ export const logoutUser = () => (dispatch: any) => {
 	// Remove auth header for future requests
 	setAuthToken(false)
 	// Set current user to empty object {} which will set isAuthenticated to false
-	dispatch(() => {
-		return {
-			type: SET_CURRENT_USER,
-			payload: {}
-		}
-	})
+	dispatch(setCurrentUser({}))
 }

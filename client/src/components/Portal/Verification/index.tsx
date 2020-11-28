@@ -27,7 +27,7 @@ const Verification = () => {
 
 			<ul className="staff-list">
 				Procedures to Complete
-  {checkout ? <li className="taskCompleted"> 1. Preform checkout @ Cost Center</li> : <li className="taskNeeded has-text-danger">1. Preform checkout @ Cost Center</li>}
+  				{checkout ? <li className="taskCompleted"> 1. Preform checkout @ Cost Center</li> : <li className="taskNeeded has-text-danger">1. Preform checkout @ Cost Center</li>}
 				{checkout ? <li className="taskCompleted">2. Preform checkout in Bak || Bar </li> : <li className="taskNeeded has-text-danger">2. Preform checkout in Bak || Bar </li>}
 				{manager ? <li className="taskCompleted">3. Have Manager verify both checkouts</li> : <li className="taskNeeded has-text-danger">3. Have manager verify both checkouts</li>}
 				{comptroller ? <li className="taskCompleted">4. Deliver funds to comptroller for verification</li> : <li className="taskNeeded has-text-danger">4. Deliver funds to comptroller for verification</li>}

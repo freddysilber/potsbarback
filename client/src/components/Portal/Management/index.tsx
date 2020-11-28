@@ -1,7 +1,15 @@
 import React, { useState } from "react";
+<<<<<<< HEAD
 import "./Management.scss";
+=======
+>>>>>>> 1eb5d353fec3321bf94e139332478d23e10e3df4
 import { Link } from "react-router-dom";
+// Styles
+import "./Management.scss";
+// Routes
 import { Routes } from "../../../utils/routes";
+// Components
+import { LogoWhite } from "../../Util";
 
 const dummyData = [
   {
@@ -83,6 +91,7 @@ const dummyData = [
 ];
 
 const Management: () => JSX.Element = () => {
+<<<<<<< HEAD
   const [selectedPosition, _selectedPosition] = useState(0);
   const setSelectedState = (event:any) => {
 	  console.log("HEY")
@@ -147,6 +156,67 @@ const Management: () => JSX.Element = () => {
       </>
     </div>
   );
+=======
+	const [selectedPosition, _selectedPosition] = useState(0);
+	// const setSelectedState = (event) => {
+	//   console.log("selected")
+	//   _selectedPosition(event.target.id);
+	// };
+	return (
+		<div>
+			<LogoWhite />
+			<div className="card staff-input-form">
+				<div className="staff-title">Employee Checkout</div>
+				<span className="staff-form-head">Filter By Position:</span>
+				<div className="field">
+					<div className="control">
+						<div className="select is-black">
+							<select>
+								<option>Position</option>
+								<option id="1"
+								//  onSelect={() => setSelectedState}
+								>
+									Wait Staff
+                  </option>
+								<option>Bar Back</option>
+								<option>Security</option>
+								<option>Bartender</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<span className="staff-form-head">Name:</span>
+				{/* <div className="field">
+              <div className="control">
+                <div className="select is-black">
+                  <select>
+                    <option selected>Select ..</option>
+                    <option>Main Bar</option>
+                    <option>Garden</option>
+                    <option>Main Door</option>
+                    <option>Side Door</option>
+                  </select>
+                </div>
+              </div>
+            </div> */}
+				<ul className="staff-list">
+					{dummyData.map((filteredEmployees) => filteredEmployees.job_role === selectedPosition ?
+						<li key={filteredEmployees.id}>
+							<div>
+								{filteredEmployees.last_name}, {filteredEmployees.first_name}
+							</div>
+						</li> : null
+					)}
+				</ul>
+				<Link to={Routes.checkout}>
+					<div className="staff-button-div">
+						<button className="button login-button is-danger" onClick={() => console.log("REROUTE")}>Daily Checkout</button>
+					</div>
+				</Link>
+			</div>
+		</div>
+	);
+>>>>>>> 1eb5d353fec3321bf94e139332478d23e10e3df4
 };
 
 export default Management;

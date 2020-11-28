@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Switch, Route } from 'react-router-dom'
+// Redux
+import { connect } from 'react-redux'
 // Components
 import Staff from './Staff'
 import Management from './Management'
@@ -10,8 +12,24 @@ import Thankyou from './Thankyou'
 import './Portal.scss'
 // Routes
 import { Routes } from '../../utils/routes'
+// Types/Interfaces
+import { Auth } from '../Auth'
 
-const Portal: () => JSX.Element = () => {
+interface PortalProps {
+	auth: Auth,
+	history: any,
+	errors: any
+}
+
+const Portal: (props: PortalProps) => JSX.Element = (props: PortalProps) => {
+	console.log('portal props', props)
+
+	useEffect(() => {
+		if (!props.auth.isAuthenticated) {
+			props.history.push(Routes.login)
+		}
+	})
+
 	return (
 		<Switch>
 			<Route path={Routes.staff} component={Staff} />
@@ -22,4 +40,10 @@ const Portal: () => JSX.Element = () => {
 		</Switch>
 	)
 }
-export default Portal
+
+const mapStateToProps = (state: any) => ({
+	auth: state.auth,
+	errors: state.errors
+})
+
+export default connect(mapStateToProps)(Portal)
