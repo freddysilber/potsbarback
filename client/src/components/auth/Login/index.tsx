@@ -59,7 +59,7 @@ const Login: (props: LoginProps) => JSX.Element = (props: LoginProps) => {
 			{({ errors, touched, isSubmitting }: FormState) => (
 				<div className="card login-input-form">
 					<Form>
-						<label htmlFor="email">{touched.email && errors.email ? <p className="fieldError">{errors.email}</p> : <span style={{ fontWeight: "bold" }}>Email</span>}</label>
+						<label htmlFor="email">{touched.email && errors.email ? <p className="fieldError">{errors.email}</p> : <p style={{ fontWeight: "bold" }}>Email</p>}</label>
 						<Field
 							className="input login-input is-medium mt-0 is-black"
 							id="email"
@@ -69,7 +69,7 @@ const Login: (props: LoginProps) => JSX.Element = (props: LoginProps) => {
 							autoComplete="username"
 						/>
 
-						<label htmlFor="password">{errors.password && touched.password ? <p className="fieldError">{errors.password}</p> : <span style={{ fontWeight: "bold" }}>Password</span>}</label>
+						<label htmlFor="password">{errors.password && touched.password ? <p className="fieldError">{errors.password}</p> : <p style={{ fontWeight: "bold" }}>Password</p>}</label>
 						<Field
 							className="input login-input mt-0 is-medium is-black"
 							id="password"
