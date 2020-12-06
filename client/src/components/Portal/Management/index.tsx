@@ -1,15 +1,10 @@
 import React, { useState } from "react";
-<<<<<<< HEAD
-import "./Management.scss";
-=======
->>>>>>> 1eb5d353fec3321bf94e139332478d23e10e3df4
 import { Link } from "react-router-dom";
 // Styles
 import "./Management.scss";
 // Routes
 import { Routes } from "../../../utils/routes";
 // Components
-import { LogoWhite } from "../../Util";
 
 const dummyData = [
   {
@@ -18,7 +13,7 @@ const dummyData = [
     last_name: "Pedersen",
     phone: "9705313993",
     is_active: true,
-    job_role: 0,
+    job_role: 1,
     active_shift: true,
     check_out: {
       cash_sales: 476.98,
@@ -26,7 +21,7 @@ const dummyData = [
       credit_tips: 976.89,
       is_closed: true,
       is_verified: true,
-      is_recieved: true,
+      is_recieved: false,
       cost_center: 0,
       starting_cash: 250.0,
     },
@@ -44,8 +39,8 @@ const dummyData = [
       credit_sales: 999.0,
       credit_tips: 56.89,
       is_closed: true,
-      is_verified: true,
-      is_recieved: true,
+      is_verified: false,
+      is_recieved: false,
       cost_center: 0,
       starting_cash: 250.0,
     },
@@ -64,18 +59,94 @@ const dummyData = [
       credit_tips: 76.89,
       is_closed: true,
       is_verified: true,
-      is_recieved: true,
+      is_recieved: false,
       cost_center: 0,
       starting_cash: 120.0,
     },
   },
   {
     id: 3,
-    first_name: "Andrew",
+    first_name: "Bodhi",
     last_name: "Pedersen",
     phone: "9705313993",
     is_active: true,
-    job_role: 1,
+    job_role: 3,
+    active_shift: true,
+    check_out: {
+      cash_sales: 0.00,
+      credit_sales: 0.00,
+      credit_tips: 0.00,
+      is_closed: false,
+      is_verified: false,
+      is_recieved: false,
+      cost_center: 0,
+      starting_cash: 0.00,
+    },
+  },
+  {
+    id: 4,
+    first_name: "Nadia",
+    last_name: "Soto",
+    phone: "9705313993",
+    is_active: true,
+    job_role: 2,
+    active_shift: true,
+    check_out: {
+      cash_sales: 676.98,
+      credit_sales: 389.0,
+      credit_tips: 276.89,
+      is_closed: true,
+      is_verified: false,
+      is_recieved: false,
+      cost_center: 0,
+      starting_cash: 100.0,
+    },
+  },
+  {
+    id: 5,
+    first_name: "Stacy",
+    last_name: "Phillips",
+    phone: "9705313993",
+    is_active: true,
+    job_role: 2,
+    active_shift: true,
+    check_out: {
+      cash_sales: 676.98,
+      credit_sales: 389.0,
+      credit_tips: 276.89,
+      is_closed: true,
+      is_verified: true,
+      is_recieved: true,
+      cost_center: 0,
+      starting_cash: 100.0,
+    },
+  },
+  {
+    id: 6,
+    first_name: "Taylor",
+    last_name: "Drew",
+    phone: "9705313993",
+    is_active: true,
+    job_role: 2,
+    active_shift: true,
+    check_out: {
+      cash_sales: 676.98,
+      credit_sales: 389.0,
+      credit_tips: 276.89,
+      is_closed: true,
+      is_verified: true,
+      is_recieved: false,
+      cost_center: 0,
+      starting_cash: 100.0,
+    },
+  },
+  {
+    id: 7,
+    first_name: "Jackson",
+    last_name: "Pedersen",
+    phone: "9705313993",
+    is_active: true,
+    job_role: 4,
     active_shift: true,
     check_out: {
       cash_sales: 676.98,
@@ -91,102 +162,34 @@ const dummyData = [
 ];
 
 const Management: () => JSX.Element = () => {
-<<<<<<< HEAD
   const [selectedPosition, _selectedPosition] = useState(0);
-  const setSelectedState = (event:any) => {
-	  console.log("HEY")
-	_selectedPosition(event.target.value)
+  const setSelectedState = (event: any) => {
+    console.log(event.target.value);
+    _selectedPosition(parseInt(event.target.value));
+    console.log("click");
   };
   return (
     <div>
-      <>
-        <div className="card staff-input-form">
-          <div className="staff-title">Employee Checkout</div>
-          <span className="staff-form-head">Filter By Position:</span>
-          <div className="field">
-            <div className="control">
-              <div className="select is-black">
-                <select>
-                  <option value="1" onClick={() =>setSelectedState}>Position</option>
-                  <option id="1">Wait Staff</option>
-                  <option>Bar Back</option>
-                  <option>Security</option>
-                  <option>Bartender</option>
-                </select>
-              </div>
+      <div className="card staff-input-form">
+        <div className="staff-title">Manager Checkout</div>
+        <span className="staff-form-head">Filter By Position:</span>
+        <div className="field">
+          <div className="control">
+            <div className="select is-black">
+              <select onChange={setSelectedState}>
+                
+                <option>Position</option>
+                <option value="1">Bartender</option>
+                <option value="2">Wait Staff</option>
+                <option value="3">Bar Back</option>
+                <option value="4">Security</option>
+                
+              </select>
             </div>
           </div>
-          <span className="staff-form-head">Name:</span>
-          <div className="field">
-            <div className="control">
-              <div className="select is-black">
-                <select>
-                  <option selected>Select ..</option>
-                  <option>Main Bar</option>
-                  <option>Garden</option>
-                  <option>Main Door</option>
-                  <option>Side Door</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <ul className="staff-list">
-            {dummyData.map((filteredEmployees) =>
-              filteredEmployees.job_role === selectedPosition ? (
-                <li key={filteredEmployees.id}>
-                  <div className="m-0">
-                    {filteredEmployees.last_name},{" "}
-                    {filteredEmployees.first_name}
-                  </div>
-                </li>
-              ) : null
-            )}
-          </ul>
-          <Link to={Routes.checkout}>
-            <div className="staff-button-div">
-              <button
-                className="button login-button is-danger"
-                onClick={() => console.log("REROUTE")}
-              >
-                Daily Checkout
-              </button>
-            </div>
-          </Link>
         </div>
-      </>
-    </div>
-  );
-=======
-	const [selectedPosition, _selectedPosition] = useState(0);
-	// const setSelectedState = (event) => {
-	//   console.log("selected")
-	//   _selectedPosition(event.target.id);
-	// };
-	return (
-		<div>
-			<LogoWhite />
-			<div className="card staff-input-form">
-				<div className="staff-title">Employee Checkout</div>
-				<span className="staff-form-head">Filter By Position:</span>
-				<div className="field">
-					<div className="control">
-						<div className="select is-black">
-							<select>
-								<option>Position</option>
-								<option id="1"
-								//  onSelect={() => setSelectedState}
-								>
-									Wait Staff
-                  </option>
-								<option>Bar Back</option>
-								<option>Security</option>
-								<option>Bartender</option>
-							</select>
-						</div>
-					</div>
-				</div>
-				<span className="staff-form-head">Name:</span>
-				{/* <div className="field">
+        <span className="staff-form-head">Name:</span>
+        {/* <div className="field">
               <div className="control">
                 <div className="select is-black">
                   <select>
@@ -199,24 +202,58 @@ const Management: () => JSX.Element = () => {
                 </div>
               </div>
             </div> */}
-				<ul className="staff-list">
-					{dummyData.map((filteredEmployees) => filteredEmployees.job_role === selectedPosition ?
-						<li key={filteredEmployees.id}>
-							<div>
-								{filteredEmployees.last_name}, {filteredEmployees.first_name}
-							</div>
-						</li> : null
-					)}
-				</ul>
-				<Link to={Routes.checkout}>
-					<div className="staff-button-div">
-						<button className="button login-button is-danger" onClick={() => console.log("REROUTE")}>Daily Checkout</button>
-					</div>
-				</Link>
-			</div>
-		</div>
-	);
->>>>>>> 1eb5d353fec3321bf94e139332478d23e10e3df4
+        <ul className="staff-list">
+          {dummyData.map((filteredEmployees) =>
+            filteredEmployees.job_role === selectedPosition ? (
+              <li key={filteredEmployees.id}>
+                <div className="has-text-weight-bold">
+                  {filteredEmployees.last_name}, {filteredEmployees.first_name} - {filteredEmployees.job_role === 1 ? <span> Bartender </span> : filteredEmployees.job_role === 2 ? <span>Wait Staff</span> : filteredEmployees.job_role === 3 ? <span> BarBack </span> : filteredEmployees.job_role === 4 ? <span> Security </span> : null}
+                </div>
+                <div>
+                  {filteredEmployees.check_out.is_closed ? (
+                    <span className="has-text-black">Closed</span>
+                  ) : (
+                    <span className="has-text-info">On Shift</span>
+                  )} -
+                  {filteredEmployees.check_out.is_verified ? (
+                    <span className="has-text-info"> Verified </span>
+                  ) : (
+                    <span className="has-text-danger">Unverified</span>
+                  )} - 
+                  {filteredEmployees.check_out.is_recieved ? (
+                    <span className="has-text-success"> Recieved </span>
+                  ) : (
+                    <span className="has-text-danger">Outstanding</span>
+                  )}
+                </div>
+                <div>
+                  toggle selector here with a post button 
+                </div>
+            
+                <div className="column">
+                   <div className="has-text-info">Staring Cash: {filteredEmployees.check_out.starting_cash}</div>
+                   <div className="has-text-success">Cash Sales: {filteredEmployees.check_out.cash_sales}</div>
+                   <div className="has-text-primary">Credit Sales: {filteredEmployees.check_out.credit_sales}</div>
+                   <div className="has-text-primary">Credit Tips: {filteredEmployees.check_out.credit_tips}</div>
+                   <div className="has-text-danger">Owed to House: {(filteredEmployees.check_out.cash_sales * 100 - filteredEmployees.check_out.credit_tips * 100)/ 100}</div>
+                </div>
+              </li>
+            ) : null
+          )}
+        </ul>
+        {/* <Link to={Routes.checkout}>
+          <div className="staff-button-div">
+            <button
+              className="button login-button is-danger"
+              onClick={() => console.log("REROUTE")}
+            >
+              Daily Checkout
+            </button>
+          </div>
+        </Link> */}
+      </div>
+    </div>
+  );
 };
 
 export default Management;
