@@ -4,7 +4,7 @@ import React from 'react'
  *
  * Note: 2:1 ratio
  */
-import bakbar from "../../assets/bakbar.png"
+import bakbar from "../../../../assets/bakbar_white.png"
 
 const Logo: () => JSX.Element = () => <img src={bakbar} width="400" height="200" alt="logo" />
 
