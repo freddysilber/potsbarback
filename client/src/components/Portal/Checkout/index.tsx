@@ -82,7 +82,7 @@ const Checkout = (props: CheckoutProps) => {
 				<div className="checkout-user-static">
 					<div className="checkout-title">{user.firstName}, please complete this form for your checkout process.</div>
 					<div className="checkout-form-head">[user.position]</div>
-					<div className="checkout-form-head">[user.cashcenter]</div>
+					<div className="checkout-form-head">[user.costcenter]</div>
 					<div className="checkout-form-head">[user.startingcash]</div>
 				</div>
 				<div className="checkout-form-head">Daily Cash Sales:</div>
