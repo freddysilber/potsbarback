@@ -1,7 +1,7 @@
 # Pots Bak||Bar
 
 ## About
-Application for Potbellies sales and inventory management
+Application for Potbellies sales and inventory management 
 
 ## Contents
 * [Getting Started](#Getting-Started)
