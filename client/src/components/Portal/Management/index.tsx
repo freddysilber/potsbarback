@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 // Styles
 import "./Management.scss";
 // Routes
-import { Routes } from "../../../utils/routes";
+// import { Routes } from "../../../utils/routes";
 // Components
 
 const dummyData = [
@@ -177,13 +177,13 @@ const Management: () => JSX.Element = () => {
           <div className="control">
             <div className="select is-black">
               <select onChange={setSelectedState}>
-                
+
                 <option>Position</option>
                 <option value="1">Bartender</option>
                 <option value="2">Wait Staff</option>
                 <option value="3">Bar Back</option>
                 <option value="4">Security</option>
-                
+
               </select>
             </div>
           </div>
@@ -213,29 +213,29 @@ const Management: () => JSX.Element = () => {
                   {filteredEmployees.check_out.is_closed ? (
                     <span className="has-text-black">Closed</span>
                   ) : (
-                    <span className="has-text-info">On Shift</span>
-                  )} -
+                      <span className="has-text-info">On Shift</span>
+                    )} -
                   {filteredEmployees.check_out.is_verified ? (
                     <span className="has-text-info"> Verified </span>
                   ) : (
-                    <span className="has-text-danger">Unverified</span>
-                  )} - 
+                      <span className="has-text-danger">Unverified</span>
+                    )} -
                   {filteredEmployees.check_out.is_recieved ? (
                     <span className="has-text-success"> Recieved </span>
                   ) : (
-                    <span className="has-text-danger">Outstanding</span>
-                  )}
+                      <span className="has-text-danger">Outstanding</span>
+                    )}
                 </div>
                 <div>
-                  toggle selector here with a post button 
+                  toggle selector here with a post button
                 </div>
-            
+
                 <div className="column">
-                   <div className="has-text-info">Staring Cash: {filteredEmployees.check_out.starting_cash}</div>
-                   <div className="has-text-success">Cash Sales: {filteredEmployees.check_out.cash_sales}</div>
-                   <div className="has-text-primary">Credit Sales: {filteredEmployees.check_out.credit_sales}</div>
-                   <div className="has-text-primary">Credit Tips: {filteredEmployees.check_out.credit_tips}</div>
-                   <div className="has-text-danger">Owed to House: {(filteredEmployees.check_out.cash_sales * 100 - filteredEmployees.check_out.credit_tips * 100)/ 100}</div>
+                  <div className="has-text-info">Staring Cash: {filteredEmployees.check_out.starting_cash}</div>
+                  <div className="has-text-success">Cash Sales: {filteredEmployees.check_out.cash_sales}</div>
+                  <div className="has-text-primary">Credit Sales: {filteredEmployees.check_out.credit_sales}</div>
+                  <div className="has-text-primary">Credit Tips: {filteredEmployees.check_out.credit_tips}</div>
+                  <div className="has-text-danger">Owed to House: {(filteredEmployees.check_out.cash_sales * 100 - filteredEmployees.check_out.credit_tips * 100) / 100}</div>
                 </div>
               </li>
             ) : null

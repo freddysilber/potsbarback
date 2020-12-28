@@ -6,7 +6,8 @@ import { Routes } from '../../../utils/routes'
 import { Link } from "react-router-dom";
 
 const Verification = () => {
-	const [checkout, _checkout] = useState(true);
+	const [checkout] = useState(true);
+	// const [checkout, _checkout] = useState(true);
 	const [manager, _manager] = useState(false);
 	const [comptroller, _comptroller] = useState(false);
 	const [logout_allow, _logout_allow] = useState(false);
