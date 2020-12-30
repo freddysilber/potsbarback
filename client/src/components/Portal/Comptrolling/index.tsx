@@ -200,11 +200,11 @@ const Comptrolling: () => JSX.Element = () => {
                 </div>
               </div>
             </div> */}
-        <ul className="staff-list">
+                <ul className="staff-list">
           {dummyData.map((filteredEmployees) =>
             filteredEmployees.job_role === selectedPosition ? (
               <li key={filteredEmployees.id}>
-                <div className="has-text-weight-bold">
+                {/* <div className="has-text-weight-bold">
                   {filteredEmployees.last_name}, {filteredEmployees.first_name}{" "}
                   -{" "}
                   {filteredEmployees.job_role === 1 ? (
@@ -236,19 +236,7 @@ const Comptrolling: () => JSX.Element = () => {
                     <span className="has-text-danger">Outstanding</span>
                   )}
                 </div>
-                {filteredEmployees.check_out.is_closed &&
-                filteredEmployees.check_out.is_verified ? (
-                  <div className="field">
-                    <input
-                      id="switchColorInfo"
-                      type="checkbox"
-                      name="switchColorInfo"
-                      defaultChecked={true}
-                      className="switchLarge is-info"
-                    ></input>
-                    <label htmlFor="switchColorInfo"> Switch DYNAMIC SWITCH </label>
-                  </div>
-                ) : null}
+                <div>toggle selector here with a post button</div>
 
                 <div className="column">
                   <div className="has-text-info">
@@ -269,7 +257,104 @@ const Comptrolling: () => JSX.Element = () => {
                       filteredEmployees.check_out.credit_tips * 100) /
                       100}
                   </div>
-                </div>
+                </div> */}
+                <nav className="panel">
+                  <p className="panel-heading">
+                    <div className="has-text-weight-bold">
+                      {filteredEmployees.last_name},{" "}
+                      {filteredEmployees.first_name} -{" "}
+                      {filteredEmployees.job_role === 1 ? (
+                        <span> Bartender </span>
+                      ) : filteredEmployees.job_role === 2 ? (
+                        <span>Wait Staff</span>
+                      ) : filteredEmployees.job_role === 3 ? (
+                        <span> BarBack </span>
+                      ) : filteredEmployees.job_role === 4 ? (
+                        <span> Security </span>
+                      ) : null}
+                    </div>
+                    <div>
+                      {filteredEmployees.check_out.is_closed ? (
+                        <span className="has-text-black">Closed</span>
+                      ) : (
+                        <span className="has-text-info">On Shift</span>
+                      )}{" "}
+                      -
+                      {filteredEmployees.check_out.is_verified ? (
+                        <span className="has-text-info"> Verified </span>
+                      ) : (
+                        <span className="has-text-danger">Unverified</span>
+                      )}{" "}
+                      -
+                      {filteredEmployees.check_out.is_recieved ? (
+                        <span className="has-text-success"> Recieved </span>
+                      ) : (
+                        <span className="has-text-danger"> Outstanding</span>
+                      )}
+                    </div>
+                  </p>
+                  <div className="panel-block">
+                    <p className="control has-icons-left">
+                      <span className="icon is-left">
+                        <i className="fas fa-search" aria-hidden="true"></i>
+                      </span>
+                    </p>
+                  </div>
+                  <a className="panel-block">
+                    <span className="panel-icon">
+                      <i
+                        className="fas fa-money-bill-alt"
+                        aria-hidden="true"
+                      ></i>
+                    </span>
+                    <div className="has-text-info">
+                      Staring Cash: {filteredEmployees.check_out.starting_cash}
+                    </div>
+                  </a>
+                  <a className="panel-block is-success">
+                    <span className="panel-icon">
+                      <i
+                        className="fas fa-money-bill-wave"
+                        aria-hidden="true"
+                      ></i>
+                    </span>
+                    <div className="has-text-success">
+                      Cash Sales: {filteredEmployees.check_out.cash_sales}
+                    </div>
+                  </a>
+                  <a className="panel-block">
+                    <span className="panel-icon">
+                      <i className="fas fa-credit-card" aria-hidden="true"></i>
+                    </span>
+                    <div className="has-text-primary">
+                      Credit Sales: {filteredEmployees.check_out.credit_sales}
+                    </div>
+                  </a>
+                  <a className="panel-block">
+                    <span className="panel-icon">
+                      <i className="fas fa-receipt" aria-hidden="true"></i>
+                    </span>
+                    <div className="has-text-primary">
+                      Credit Tips: {filteredEmployees.check_out.credit_tips}
+                    </div>
+                  </a>
+                  <a className="panel-block">
+                    <span className="panel-icon">
+                      <i className="fas fa-piggy-bank" aria-hidden="true"></i>
+                    </span>
+                    <div className="has-text-danger">
+                      Owed to House:{" "}
+                      {(filteredEmployees.check_out.cash_sales * 100 -
+                        filteredEmployees.check_out.credit_tips * 100) /
+                        100}
+                    </div>
+                  </a>
+                  <a className="panel-block">
+                  {filteredEmployees.check_out.is_verified === true && filteredEmployees.check_out.is_closed === true && filteredEmployees.check_out.is_recieved === false? <button onClick={() => alert("This Employees Checkouts now are verified - this completes all task for the employee and they are able to closeout on their end.")} className="button is-dark is-outlined is-halfwidth">
+                    Verify Monies
+                  </button> : null}
+                  </a>
+                </nav>
               </li>
             ) : null
           )}

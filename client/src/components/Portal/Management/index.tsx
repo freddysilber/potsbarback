@@ -73,14 +73,14 @@ const dummyData = [
     job_role: 3,
     active_shift: true,
     check_out: {
-      cash_sales: 0.00,
-      credit_sales: 0.00,
-      credit_tips: 0.00,
+      cash_sales: 0.0,
+      credit_sales: 0.0,
+      credit_tips: 0.0,
       is_closed: false,
       is_verified: false,
       is_recieved: false,
       cost_center: 0,
-      starting_cash: 0.00,
+      starting_cash: 0.0,
     },
   },
   {
@@ -177,18 +177,16 @@ const Management: () => JSX.Element = () => {
           <div className="control">
             <div className="select is-black">
               <select onChange={setSelectedState}>
-                
                 <option>Position</option>
                 <option value="1">Bartender</option>
                 <option value="2">Wait Staff</option>
                 <option value="3">Bar Back</option>
                 <option value="4">Security</option>
-                
               </select>
             </div>
           </div>
         </div>
-        <span className="staff-form-head">Name:</span>
+       
         {/* <div className="field">
               <div className="control">
                 <div className="select is-black">
@@ -206,41 +204,162 @@ const Management: () => JSX.Element = () => {
           {dummyData.map((filteredEmployees) =>
             filteredEmployees.job_role === selectedPosition ? (
               <li key={filteredEmployees.id}>
-                <div className="has-text-weight-bold">
-                  {filteredEmployees.last_name}, {filteredEmployees.first_name} - {filteredEmployees.job_role === 1 ? <span> Bartender </span> : filteredEmployees.job_role === 2 ? <span>Wait Staff</span> : filteredEmployees.job_role === 3 ? <span> BarBack </span> : filteredEmployees.job_role === 4 ? <span> Security </span> : null}
+                {/* <div className="has-text-weight-bold">
+                  {filteredEmployees.last_name}, {filteredEmployees.first_name}{" "}
+                  -{" "}
+                  {filteredEmployees.job_role === 1 ? (
+                    <span> Bartender </span>
+                  ) : filteredEmployees.job_role === 2 ? (
+                    <span>Wait Staff</span>
+                  ) : filteredEmployees.job_role === 3 ? (
+                    <span> BarBack </span>
+                  ) : filteredEmployees.job_role === 4 ? (
+                    <span> Security </span>
+                  ) : null}
                 </div>
                 <div>
                   {filteredEmployees.check_out.is_closed ? (
                     <span className="has-text-black">Closed</span>
                   ) : (
                     <span className="has-text-info">On Shift</span>
-                  )} -
+                  )}{" "}
+                  -
                   {filteredEmployees.check_out.is_verified ? (
                     <span className="has-text-info"> Verified </span>
                   ) : (
                     <span className="has-text-danger">Unverified</span>
-                  )} - 
+                  )}{" "}
+                  -
                   {filteredEmployees.check_out.is_recieved ? (
                     <span className="has-text-success"> Recieved </span>
                   ) : (
                     <span className="has-text-danger">Outstanding</span>
                   )}
                 </div>
-                <div>
-                  toggle selector here with a post button 
-                </div>
-            
+                <div>toggle selector here with a post button</div>
+
                 <div className="column">
-                   <div className="has-text-info">Staring Cash: {filteredEmployees.check_out.starting_cash}</div>
-                   <div className="has-text-success">Cash Sales: {filteredEmployees.check_out.cash_sales}</div>
-                   <div className="has-text-primary">Credit Sales: {filteredEmployees.check_out.credit_sales}</div>
-                   <div className="has-text-primary">Credit Tips: {filteredEmployees.check_out.credit_tips}</div>
-                   <div className="has-text-danger">Owed to House: {(filteredEmployees.check_out.cash_sales * 100 - filteredEmployees.check_out.credit_tips * 100)/ 100}</div>
-                </div>
+                  <div className="has-text-info">
+                    Staring Cash: {filteredEmployees.check_out.starting_cash}
+                  </div>
+                  <div className="has-text-success">
+                    Cash Sales: {filteredEmployees.check_out.cash_sales}
+                  </div>
+                  <div className="has-text-primary">
+                    Credit Sales: {filteredEmployees.check_out.credit_sales}
+                  </div>
+                  <div className="has-text-primary">
+                    Credit Tips: {filteredEmployees.check_out.credit_tips}
+                  </div>
+                  <div className="has-text-danger">
+                    Owed to House:{" "}
+                    {(filteredEmployees.check_out.cash_sales * 100 -
+                      filteredEmployees.check_out.credit_tips * 100) /
+                      100}
+                  </div>
+                </div> */}
+                <nav className="panel">
+                  <p className="panel-heading">
+                    <div className="has-text-weight-bold">
+                      {filteredEmployees.last_name},{" "}
+                      {filteredEmployees.first_name} -{" "}
+                      {filteredEmployees.job_role === 1 ? (
+                        <span> Bartender </span>
+                      ) : filteredEmployees.job_role === 2 ? (
+                        <span>Wait Staff</span>
+                      ) : filteredEmployees.job_role === 3 ? (
+                        <span> BarBack </span>
+                      ) : filteredEmployees.job_role === 4 ? (
+                        <span> Security </span>
+                      ) : null}
+                    </div>
+                    <div>
+                      {filteredEmployees.check_out.is_closed ? (
+                        <span className="has-text-black">Closed</span>
+                      ) : (
+                        <span className="has-text-info">On Shift</span>
+                      )}{" "}
+                      -
+                      {filteredEmployees.check_out.is_verified ? (
+                        <span className="has-text-info"> Verified </span>
+                      ) : (
+                        <span className="has-text-danger"> Unverified</span>
+                      )}{" "}
+                      -
+                      {filteredEmployees.check_out.is_recieved ? (
+                        <span className="has-text-success"> Recieved </span>
+                      ) : (
+                        <span className="has-text-danger"> Outstanding</span>
+                      )}
+                    </div>
+                  </p>
+                  <div className="panel-block">
+                    <p className="control has-icons-left">
+                      <span className="icon is-left">
+                        <i className="fas fa-search" aria-hidden="true"></i>
+                      </span>
+                    </p>
+                  </div>
+                  <a className="panel-block">
+                    <span className="panel-icon">
+                      <i
+                        className="fas fa-money-bill-alt"
+                        aria-hidden="true"
+                      ></i>
+                    </span>
+                    <div className="has-text-info">
+                      Staring Cash: {filteredEmployees.check_out.starting_cash}
+                    </div>
+                  </a>
+                  <a className="panel-block is-success">
+                    <span className="panel-icon">
+                      <i
+                        className="fas fa-money-bill-wave"
+                        aria-hidden="true"
+                      ></i>
+                    </span>
+                    <div className="has-text-success">
+                      Cash Sales: {filteredEmployees.check_out.cash_sales}
+                    </div>
+                  </a>
+                  <a className="panel-block">
+                    <span className="panel-icon">
+                      <i className="fas fa-credit-card" aria-hidden="true"></i>
+                    </span>
+                    <div className="has-text-primary">
+                      Credit Sales: {filteredEmployees.check_out.credit_sales}
+                    </div>
+                  </a>
+                  <a className="panel-block">
+                    <span className="panel-icon">
+                      <i className="fas fa-receipt" aria-hidden="true"></i>
+                    </span>
+                    <div className="has-text-primary">
+                      Credit Tips: {filteredEmployees.check_out.credit_tips}
+                    </div>
+                  </a>
+                  <a className="panel-block">
+                    <span className="panel-icon">
+                      <i className="fas fa-piggy-bank" aria-hidden="true"></i>
+                    </span>
+                    <div className="has-text-danger">
+                      Owed to House:{" "}
+                      {(filteredEmployees.check_out.cash_sales * 100 -
+                        filteredEmployees.check_out.credit_tips * 100) /
+                        100}
+                    </div>
+                  </a>
+                  <a className="panel-block">
+                  {filteredEmployees.check_out.is_verified  === false && filteredEmployees.check_out.is_closed === true ? <button onClick={() => alert("This Employee's checkout is verified by the manager - This allows the Comptroller to Verifiy their monies")} className="button is-dark is-outlined is-halfwidth">
+                    Verify Checkout 
+                  </button> : null}
+                  </a>
+                </nav>
               </li>
             ) : null
           )}
         </ul>
+
         {/* <Link to={Routes.checkout}>
           <div className="staff-button-div">
             <button
