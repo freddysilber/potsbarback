@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 // Styles
-import "./Management.scss";
+import "./Comptrolling.scss";
 // Routes
-// import { Routes } from "../../../utils/routes";
+import { Routes } from "../../../utils/routes";
 // Components
 
 const dummyData = [
@@ -161,7 +161,7 @@ const dummyData = [
   },
 ];
 
-const Management: () => JSX.Element = () => {
+const Comptrolling: () => JSX.Element = () => {
   const [selectedPosition, _selectedPosition] = useState(0);
   const setSelectedState = (event: any) => {
     console.log(event.target.value);
@@ -171,7 +171,7 @@ const Management: () => JSX.Element = () => {
   return (
     <div>
       <div className="card staff-input-form">
-        <div className="staff-title">Manager Checkout</div>
+        <div className="staff-title">Comptrolling Checkout</div>
         <span className="staff-form-head">Filter By Position:</span>
         <div className="field">
           <div className="control">
@@ -186,7 +186,7 @@ const Management: () => JSX.Element = () => {
             </div>
           </div>
         </div>
-
+        <span className="staff-form-head">Name:</span>
         {/* <div className="field">
               <div className="control">
                 <div className="select is-black">
@@ -200,7 +200,7 @@ const Management: () => JSX.Element = () => {
                 </div>
               </div>
             </div> */}
-        <ul className="staff-list">
+                <ul className="staff-list">
           {dummyData.map((filteredEmployees) =>
             filteredEmployees.job_role === selectedPosition ? (
               <li key={filteredEmployees.id}>
@@ -233,8 +233,8 @@ const Management: () => JSX.Element = () => {
                   {filteredEmployees.check_out.is_recieved ? (
                     <span className="has-text-success"> Recieved </span>
                   ) : (
-                      <span className="has-text-danger">Outstanding</span>
-                    )}
+                    <span className="has-text-danger">Outstanding</span>
+                  )}
                 </div>
                 <div>toggle selector here with a post button</div>
 
@@ -277,20 +277,20 @@ const Management: () => JSX.Element = () => {
                       {filteredEmployees.check_out.is_closed ? (
                         <span className="has-text-black">Closed</span>
                       ) : (
-                          <span className="has-text-info">On Shift</span>
-                        )}{" "}
+                        <span className="has-text-info">On Shift</span>
+                      )}{" "}
                       -
                       {filteredEmployees.check_out.is_verified ? (
                         <span className="has-text-info"> Verified </span>
                       ) : (
-                          <span className="has-text-danger"> Unverified</span>
-                        )}{" "}
+                        <span className="has-text-danger">Unverified</span>
+                      )}{" "}
                       -
                       {filteredEmployees.check_out.is_recieved ? (
                         <span className="has-text-success"> Recieved </span>
                       ) : (
-                          <span className="has-text-danger"> Outstanding</span>
-                        )}
+                        <span className="has-text-danger"> Outstanding</span>
+                      )}
                     </div>
                   </p>
                   <div className="panel-block">
@@ -350,8 +350,8 @@ const Management: () => JSX.Element = () => {
                     </div>
                   </a>
                   <a className="panel-block">
-                    {filteredEmployees.check_out.is_verified === false && filteredEmployees.check_out.is_closed === true ? <button onClick={() => alert("This Employee's checkout is verified by the manager - This allows the Comptroller to Verifiy their monies")} className="button is-dark is-outlined is-halfwidth">
-                      Verify Checkout
+                  {filteredEmployees.check_out.is_verified === true && filteredEmployees.check_out.is_closed === true && filteredEmployees.check_out.is_recieved === false? <button onClick={() => alert("This Employees Checkouts now are verified - this completes all task for the employee and they are able to closeout on their end.")} className="button is-dark is-outlined is-halfwidth">
+                    Verify Monies
                   </button> : null}
                   </a>
                 </nav>
@@ -359,7 +359,6 @@ const Management: () => JSX.Element = () => {
             ) : null
           )}
         </ul>
-
         {/* <Link to={Routes.checkout}>
           <div className="staff-button-div">
             <button
@@ -375,4 +374,4 @@ const Management: () => JSX.Element = () => {
   );
 };
 
-export default Management;
+export default Comptrolling;

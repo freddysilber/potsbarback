@@ -8,6 +8,7 @@ import Management from './Management'
 import Checkout from './Checkout'
 import Verification from './Verification'
 import Thankyou from './Thankyou'
+import Comptrolling from './Comptrolling'
 // Styles
 import './Portal.scss'
 // Routes
@@ -37,6 +38,7 @@ const Portal: (props: PortalProps) => JSX.Element = (props: PortalProps) => {
 			<Route path={Routes.checkout} component={Checkout} />
 			<Route path={Routes.verification} component={Verification} />
 			<Route path={Routes.thankyou} component={Thankyou} />
+			<Route path={Routes.comptrolling} component={Comptrolling} />
 		</Switch>
 	)
 }
