@@ -20,11 +20,7 @@ mongoose
 		useUnifiedTopology: true
 	})
 	.then(() => console.log(colors.america('\n------------ MongoDB is connected... #Merica ------------\n')))
-	.catch((err: any) => {
-		console.log(colors.red('----------------- ERROR! -------------------'))
-		console.log('Peep the error homie -->', err)
-		console.log(colors.red('------------------------------------------------'))
-	})
+
 
 // Passport middleware
 app.use(passport.initialize())
