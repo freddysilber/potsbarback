@@ -18,6 +18,14 @@ const Verification = () => {
 	}
 	return (
 		<div className="card staff-input-form">
+			<div>
+			<Link to={Routes.management}>	
+							<button className="button login-button is-danger m-4" onClick={() => console.log("REROUTE")}>Management</button>	
+					</Link>
+					<Link to={Routes.comptrolling}>
+							<button className="button login-button is-danger m-4" onClick={() => console.log("REROUTE")}>Comptrolling</button>	
+					</Link>
+			</div>
 			<div className="staff-title">Verification</div>
 			<span className="staff-form-head">
 				Now that your check out is complete, next verify your paper and
@@ -38,7 +46,7 @@ const Verification = () => {
 					<span className="staff-form-head">All task have been completed.</span>
 				) : (
 						<span className="staff-form-head">
-							Have manager and comptroller to verify your submission to allow
+							Have your Manager and Comptroller to verify your submission to allow
 							LogOut
 						</span>
 					)}

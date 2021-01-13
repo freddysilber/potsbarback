@@ -19,8 +19,8 @@ const dummyData = [
       cash_sales: 476.98,
       credit_sales: 9889.0,
       credit_tips: 976.89,
-      is_closed: true,
-      is_verified: true,
+      is_closed: false,
+      is_verified: false,
       is_recieved: false,
       cost_center: 0,
       starting_cash: 250.0,
@@ -171,6 +171,14 @@ const Management: () => JSX.Element = () => {
   return (
     <div>
       <div className="card staff-input-form">
+      <div>
+					<Link to={Routes.comptrolling}>
+							<button className="button login-button is-danger m-4" onClick={() => console.log("REROUTE")}>Comptrolling</button>	
+					</Link>
+          <Link to={Routes.verification}>	
+							<button className="button login-button is-danger m-4" onClick={() => console.log("REROUTE")}>Employee Verification</button>	
+					</Link>
+			</div>
         <div className="staff-title">Manager Checkout</div>
         <span className="staff-form-head">Filter By Position:</span>
         <div className="field">

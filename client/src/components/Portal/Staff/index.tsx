@@ -50,7 +50,7 @@ const Staff: (props: StaffProps) => JSX.Element = (props: StaffProps) => {
 							<li>1. Perform checkout @ Cost Center</li>
 							<li>2. Perform checkout in Bak||Bar</li>
 							<li>3. Have Manager verify both checkouts</li>
-							<li>4. Deliver funds to comptroller for verification</li>
+							<li>4. Deliver funds to Comptroller for verification</li>
 						</ul>
 						<Link to={Routes.checkout}>
 							<div className="staff-button-div">
