@@ -1,4 +1,4 @@
-import { Auth } from '../'
+import { Auth } from '.'
 
 interface TouchedProps {
 	firstName: boolean,
