@@ -1,4 +1,4 @@
-import User from '../../models/User'
+// import User from '../../models/User'
 
 export { default as Login } from './Login'
 export { default as Signup } from './Signup'
