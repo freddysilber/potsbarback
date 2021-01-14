@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 // Styles
 import "./Management.scss";
 // Routes
-// import { Routes } from "../../../utils/routes";
+import { Routes } from "../../../utils/routes";
 // Components
 
 const dummyData = [
@@ -350,16 +350,12 @@ const Management: () => JSX.Element = () => {
                         100}
                     </div>
 
-                  </a>
-                  <a className="panel-block">
-                    {filteredEmployees.check_out.is_verified === false && filteredEmployees.check_out.is_closed === true ? <button onClick={() => alert("This Employee's checkout is verified by the manager - This allows the Comptroller to Verifiy their monies")} className="button is-dark is-outlined is-halfwidth">
-                      Verify Checkout
                   </div>
                   <div className="panel-block">
-                  {filteredEmployees.check_out.is_verified  === false && filteredEmployees.check_out.is_closed === true ? <button onClick={() => alert("This Employee's checkout is verified by the manager - This allows the Comptroller to Verifiy their monies")} className="button is-dark is-outlined is-halfwidth">
-                    Verify Checkout 
-
-                  </button> : null}
+                    {filteredEmployees.check_out.is_verified === false && filteredEmployees.check_out.is_closed === true ? <button onClick={() => alert("This Employee's checkout is verified by the manager - This allows the Comptroller to Verifiy their monies")} className="button is-dark is-outlined is-halfwidth">
+                      Verify Checkout
+                        </button>
+                   : null}
                   </div>
                 </nav>
               </li>
