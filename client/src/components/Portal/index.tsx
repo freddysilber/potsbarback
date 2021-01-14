@@ -14,10 +14,11 @@ import './Portal.scss'
 // Routes
 import { Routes } from '../../utils/routes'
 // Types/Interfaces
-import { Auth } from '../Auth'
+// import { Auth } from '../Auth/index.js'
 
 interface PortalProps {
-	auth: Auth,
+	auth: any,
+	// auth: Auth,
 	history: any,
 	errors: any
 }
