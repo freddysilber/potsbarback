@@ -6,7 +6,7 @@
   "scripts": {
     "deploy": "cd client && npm i && npm run build && cd ../ && git push heroku master",
     "build": "cd client && npm i && npm run build",
-    "heroku-postbuild": "npm run build",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
     "start": "node server.js",
     "client-install": "npm install --prefix client",
     "server": "node server.js",

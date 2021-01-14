@@ -17,7 +17,8 @@ const db = require('./config/keys').mongoURI
 mongoose
 	.connect(db, {
 		useNewUrlParser: true,
-		useUnifiedTopology: true
+		useUnifiedTopology: true,
+		useFindAndModify: false
 	})
 	.then(() => console.log(colors.america('\n------------ MongoDB is connected... #Merica ------------\n')))
 
@@ -43,7 +44,7 @@ app.use('/api/users', users)
 const port = process.env.PORT || 5000
 
 if (process.env.NODE_ENV == 'production') {
-	app.use(express.static('client/build'))	
+	app.use(express.static('client/build'))
 }
 
 app.listen(port, () => console.log(colors.brightBlue(`\n------------ Death to all but metal. http://localhost:${port} ------------\n`)))
