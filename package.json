@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "deploy": "cd client && npm run build && cd.. && git push heroku master",
-    "build" :"cd client && npm i && npm run build",
-    "heroku-postbuild" :"npm run build",
+    "build": "cd client && npm i && npm run build",
+    "heroku-postbuild": "npm run build",
     "start": "node server.ts",
     "client-install": "npm install --prefix client",
     "server": "nodemon server.js",
@@ -46,5 +46,5 @@
   },
   "engines": {
     "node": "10.16.0"
-}
+  }
 }
