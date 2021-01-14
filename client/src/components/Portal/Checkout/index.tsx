@@ -10,7 +10,7 @@ import { Routes } from "../../../utils/routes";
 // Redux
 import { connect } from "react-redux";
 // Types/ Interfaces
-import { Auth } from "../../Auth";
+// import { Auth } from "../../Auth/index.js";
 
 // interface ModalProps {
 // 	children: any;
@@ -51,7 +51,8 @@ import { Auth } from "../../Auth";
 // }
 
 interface CheckoutProps {
-  auth: Auth;
+  auth: any;
+  // auth: Auth;
   history: any;
   errors: any;
 }
@@ -68,27 +69,27 @@ const Checkout = (props: CheckoutProps) => {
   // 	this.toggleModal = this.toggleModal.bind(this);
   // }
 
-  const dummyData = 
-    {
-      id: 0,
-      first_name: "Andrew",
-      last_name: "Pedersen",
-      phone: "9705313993",
-      is_active: true,
-      job_role: "Bartender",
-      active_shift: true,
-      check_out: {
-        cash_sales: 476.98,
-        credit_sales: 9889.0,
-        credit_tips: 976.89,
-        is_closed: true,
-        is_verified: true,
-        is_recieved: false,
-        cost_center: "Garden Bar",
-        starting_cash: 250.0,
-      },
-    }
-  
+  const dummyData =
+  {
+    id: 0,
+    first_name: "Andrew",
+    last_name: "Pedersen",
+    phone: "9705313993",
+    is_active: true,
+    job_role: "Bartender",
+    active_shift: true,
+    check_out: {
+      cash_sales: 476.98,
+      credit_sales: 9889.0,
+      credit_tips: 976.89,
+      is_closed: true,
+      is_verified: true,
+      is_recieved: false,
+      cost_center: "Garden Bar",
+      starting_cash: 250.0,
+    },
+  }
+
 
   const toggleModal = () => {
     console.log("toggle modal");

@@ -9,10 +9,11 @@ import { Routes } from "../../../utils/routes";
 // Redux
 import { connect } from 'react-redux'
 // Types/Interfaces
-import { Auth } from '../../Auth'
+// import { Auth } from '../../Auth/index.js'
 
 interface StaffProps {
-	auth: Auth,
+	auth: any,
+	// auth: Auth,
 	history: any,
 	errors: any
 }
