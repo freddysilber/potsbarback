@@ -7,9 +7,9 @@
     "deploy": "cd client && npm run build && cd.. && git push heroku master",
     "build": "cd client && npm i && npm run build",
     "heroku-postbuild": "npm run build",
-    "start": "node server.ts",
+    "start": "node server.js",
     "client-install": "npm install --prefix client",
-    "server": "nodemon server.js",
+    "server": "node server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
