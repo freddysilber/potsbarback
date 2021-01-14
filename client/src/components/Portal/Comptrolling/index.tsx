@@ -21,7 +21,7 @@ const dummyData = [
       credit_tips: 976.89,
       is_closed: true,
       is_verified: true,
-      is_recieved: false,
+      is_recieved: true,
       cost_center: 0,
       starting_cash: 250.0,
     },
@@ -171,6 +171,14 @@ const Comptrolling: () => JSX.Element = () => {
   return (
     <div>
       <div className="card staff-input-form">
+      <div>
+			<Link to={Routes.management}>	
+							<button className="button login-button is-danger m-4" onClick={() => console.log("REROUTE")}>Management</button>	
+					</Link>
+					<Link to={Routes.verification}>
+							<button className="button login-button is-danger m-4" onClick={() => console.log("REROUTE")}>Employee Verification</button>	
+					</Link>
+			</div>
         <div className="staff-title">Comptrolling Checkout</div>
         <span className="staff-form-head">Filter By Position:</span>
         <div className="field">
