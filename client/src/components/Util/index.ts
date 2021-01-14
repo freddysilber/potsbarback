@@ -1,6 +1,6 @@
 // Components
-export { default as Logo } from './Logo'
-export { default as LogoWhite } from './LogoWhite'
-export { default as Dropdown } from './Dropdown'
+export { default as Logo } from './components/branding/Logo'
+export { default as LogoWhite } from './components/branding/LogoWhite'
+export { default as Dropdown } from './components/Dropdown'
 // Constant variables
-export * from './constants'
+export * from './providers/constants'
