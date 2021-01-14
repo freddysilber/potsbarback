@@ -2,13 +2,14 @@
   "name": "potsbarback",
   "version": "1.0.0",
   "description": "<hr>",
-  "main": "server.ts",
+  "main": "server.js",
   "scripts": {
+    "deploy": "cd client && npm run build && cd.. && heroku push master",
     "build" :"cd client && npm i && npm run build",
     "heroku-postbuild" :"npm run build",
     "start": "node server.ts",
     "client-install": "npm install --prefix client",
-    "server": "nodemon server.ts",
+    "server": "nodemon server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
