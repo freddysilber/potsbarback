@@ -4,6 +4,8 @@
   "description": "<hr>",
   "main": "server.ts",
   "scripts": {
+    "build" :"cd client && npm i && npm run build",
+    "heroku-postbuild" :"npm run build",
     "start": "node server.ts",
     "client-install": "npm install --prefix client",
     "server": "nodemon server.ts",

@@ -42,4 +42,8 @@ app.use('/api/users', users)
 // Express/ Node.js port (local dev)
 const port = process.env.PORT || 5000
 
+if (process.env.NODE_ENV == 'production') {
+	app.use(express.static('client/build'))	
+}
+
 app.listen(port, () => console.log(colors.brightBlue(`\n------------ Death to all but metal. http://localhost:${port} ------------\n`)))
