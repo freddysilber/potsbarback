@@ -302,13 +302,6 @@ const Comptrolling: () => JSX.Element = () => {
                     </div>
                   </p>
                   <div className="panel-block">
-                    <p className="control has-icons-left">
-                      <span className="icon is-left">
-                        <i className="fas fa-search" aria-hidden="true"></i>
-                      </span>
-                    </p>
-                  </div>
-                  <a className="panel-block">
                     <span className="panel-icon">
                       <i
                         className="fas fa-money-bill-alt"
@@ -318,8 +311,8 @@ const Comptrolling: () => JSX.Element = () => {
                     <div className="has-text-info">
                       Staring Cash: {filteredEmployees.check_out.starting_cash}
                     </div>
-                  </a>
-                  <a className="panel-block is-success">
+                  </div>
+                  <div className="panel-block is-success">
                     <span className="panel-icon">
                       <i
                         className="fas fa-money-bill-wave"
@@ -329,24 +322,24 @@ const Comptrolling: () => JSX.Element = () => {
                     <div className="has-text-success">
                       Cash Sales: {filteredEmployees.check_out.cash_sales}
                     </div>
-                  </a>
-                  <a className="panel-block">
+                  </div>
+                  <div className="panel-block">
                     <span className="panel-icon">
                       <i className="fas fa-credit-card" aria-hidden="true"></i>
                     </span>
                     <div className="has-text-primary">
                       Credit Sales: {filteredEmployees.check_out.credit_sales}
                     </div>
-                  </a>
-                  <a className="panel-block">
+                  </div>
+                  <div className="panel-block">
                     <span className="panel-icon">
                       <i className="fas fa-receipt" aria-hidden="true"></i>
                     </span>
                     <div className="has-text-primary">
                       Credit Tips: {filteredEmployees.check_out.credit_tips}
                     </div>
-                  </a>
-                  <a className="panel-block">
+                  </div>
+                  <div className="panel-block">
                     <span className="panel-icon">
                       <i className="fas fa-piggy-bank" aria-hidden="true"></i>
                     </span>
@@ -356,12 +349,12 @@ const Comptrolling: () => JSX.Element = () => {
                         filteredEmployees.check_out.credit_tips * 100) /
                         100}
                     </div>
-                  </a>
-                  <a className="panel-block">
+                  </div>
+                  <div className="panel-block">
                   {filteredEmployees.check_out.is_verified === true && filteredEmployees.check_out.is_closed === true && filteredEmployees.check_out.is_recieved === false? <button onClick={() => alert("This Employees Checkouts now are verified - this completes all task for the employee and they are able to closeout on their end.")} className="button is-dark is-outlined is-halfwidth">
                     Verify Monies
                   </button> : null}
-                  </a>
+                  </div>
                 </nav>
               </li>
             ) : null
