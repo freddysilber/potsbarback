@@ -3,9 +3,6 @@ const router = express.Router()
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const keys = require('../../config/keys.js')
-// const keys = require('../config/keys')
-// const passport = require('passport')
-// const colors = require('colors')
 
 // Load input validation
 const validateRegisterInput = require('../../validation/register')
@@ -105,17 +102,5 @@ router.post('/login', (req, res) => {
 		})
 	})
 })
-
-// router.get('/getUserById', (req, res) => {
-// 	const { userId } = req.query
-// 	User.findById(userId)
-// 		.then(user => {
-// 			return res.status(200).json({
-// 				success: true,
-// 				user
-// 			})
-// 		})
-// 		.catch(error => console.error(error))
-// })
 
 module.exports = router
