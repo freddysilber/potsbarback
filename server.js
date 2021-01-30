@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 // DB Config
-const db = require('./config/keys').mongoURI
+const db = require('./config/keys.js').mongoURI
 
 // Connect to MongoDB
 mongoose
@@ -19,7 +19,13 @@ mongoose
 		useNewUrlParser: true,
 		useUnifiedTopology: true
 	})
-	.then(() => console.log(colors.america('\n------------ MongoDB is connected... #Merica ------------\n')))
+	.then((response) => {
+		console.log(response)
+		console.log(colors.america('\n------------ MongoDB is connected... #Merica ------------\n'))
+	})
+	.catch(error => {
+		console.error('Error connecting to mongoDB \n', error)
+	})
 
 
 // Passport middleware

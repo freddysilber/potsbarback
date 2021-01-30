@@ -9,7 +9,7 @@
     "heroku-postbuild": "npm run build",
     "start": "node server.ts",
     "client-install": "npm install --prefix client",
-    "server": "nodemon server.js",
+    "server": "nodemon server.ts",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
