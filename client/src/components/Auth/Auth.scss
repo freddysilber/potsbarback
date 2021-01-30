@@ -1,0 +1,31 @@
+.login-class {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.login-title {
+    font-size: 24pt;
+    font-weight: bold;
+    padding: 20px 0px 20px 0;
+}
+.login-input, .login-input-form {
+    margin: 20px 0 20px 0;
+}
+.login-button-div {
+    display: flex;
+    justify-content: space-between;
+}
+.login-input-form {
+    text-align: left;
+    padding: 50px 20px 50px 20px;
+}
+.login-form-head {
+    color: grey;
+    font-weight: bold;
+}
+.fieldError {
+    color: red;
+}
+input {
+    margin: 0;
+}
