@@ -39,6 +39,8 @@ app.use(passport.initialize())
 // Passport config
 require('./config/passport')(passport)
 
+app.use(express.static('./client/build'))
+
 /**
  * API Routes
  * 
@@ -53,5 +55,10 @@ app.use('/api/users', users)
 if (process.env.NODE_ENV == 'production') {
 	app.use(express.static('client/build'))
 }
+
+app.get('/*',(req, res) => {
+	res.sendFile('index.html', {root: __dirname+ '/client/build'})
+}
+
 
 app.listen(PORT, () => console.log(colors.brightBlue(`\n------------ Death to all but metal. http://localhost:${PORT} ------------\n`)))
