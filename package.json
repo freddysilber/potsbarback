@@ -4,7 +4,7 @@
   "description": "<hr>",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "cd client && npm i && npm run build && cd ../ && npm run server",
     "client-install": "npm install --prefix client",
     "server": "node server.js",
     "client": "npm start --prefix client",
