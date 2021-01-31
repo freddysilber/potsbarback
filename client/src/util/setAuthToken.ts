@@ -12,7 +12,6 @@ export default function setAuthToken(token: string | boolean) {
 	 * 	else 
 	 * Delete Auth Header
 	 */
-	// 
 	const commonHeader: CommonHeader = axios.defaults.headers.common
 	token ? commonHeader.Authorization = token as string : delete commonHeader.Authorization
 }
