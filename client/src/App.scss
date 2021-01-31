@@ -1,6 +1,10 @@
 @import "bulma/sass/utilities/_all.sass";
 @import 'bulma';
 
+body {
+	background: black;
+}
+
 .App {
 	display: flex;
 	justify-content: center;
