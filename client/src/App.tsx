@@ -12,8 +12,7 @@ import { store } from './store'
 import './App.scss'
 import 'bulma/css/bulma.css'
 // Components
-import { Login, About, Portal, Signup } from './components'
-import { LogoWhite } from './components/Util'
+import { Login, About, Portal, Signup, LogoWhite } from './components'
 // Routes
 import { Routes } from './constants/routes'
 

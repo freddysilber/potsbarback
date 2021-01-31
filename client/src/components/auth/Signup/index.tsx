@@ -13,7 +13,7 @@ import { registerUser } from '../../../store/actions/authActions'
 // Routes
 import { Routes } from '../../../constants/routes'
 // Styles
-import './Auth.scss'
+import '../Auth.scss'
 
 const initialValues: InitialValues = {
 	firstName: '',
