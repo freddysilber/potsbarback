@@ -1,7 +1,7 @@
-import User from '../../models/User'
+import User from '../../models/User.model'
 
-export { default as Login } from './Login'
-export { default as Signup } from './Signup'
+export { default as Login } from './components/Login'
+export { default as Signup } from './components/Signup'
 
 export interface Auth {
 	isAuthenticated: boolean,

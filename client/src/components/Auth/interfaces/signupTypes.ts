@@ -1,5 +1,3 @@
-// import { Auth } from './index.js'
-
 interface TouchedProps {
 	firstName: boolean,
 	lastName: boolean,
@@ -35,5 +33,4 @@ export interface SignupProps {
 	location: any,
 	match: any,
 	auth: any
-	// auth: Auth
 }
