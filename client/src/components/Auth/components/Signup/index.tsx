@@ -4,16 +4,16 @@ import { withRouter, Link } from 'react-router-dom'
 import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
 // Models
-import User from '../../../models/User'
+import User from '../../../../models/User'
 // Types
-import { InitialValues, FormState, FormData, SignupProps } from './signupTypes'
+import { InitialValues, FormState, FormData, SignupProps } from '../../interfaces/signupTypes'
 // Redux
 import { connect } from 'react-redux'
-import { registerUser } from '../../../store/actions/authActions'
+import { registerUser } from '../../../../store/actions/authActions'
 // Routes
-import { Routes } from '../../../constants/routes'
+import { Routes } from '../../../../constants/routes'
 // Styles
-import '../Auth.scss'
+import '../../Auth.scss'
 
 const initialValues: InitialValues = {
 	firstName: '',
