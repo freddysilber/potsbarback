@@ -1,7 +1,7 @@
 {
   "name": "potsbarback",
   "version": "1.0.0",
-  "description": "<hr>",
+  "description": "Node backend for potsbarbak client",
   "main": "server.js",
   "scripts": {
     "start": "cd client && npm i && npm run build && cd ../ && npm run server",
