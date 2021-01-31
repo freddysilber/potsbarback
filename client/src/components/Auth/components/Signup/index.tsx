@@ -4,7 +4,7 @@ import { withRouter, Link } from 'react-router-dom'
 import { Formik, Form, Field } from 'formik'
 import * as Yup from 'yup'
 // Models
-import User from '../../../../models/User'
+import User from '../../../../models/User.model'
 // Types
 import { InitialValues, FormState, FormData, SignupProps } from '../../interfaces/signupTypes'
 // Redux
