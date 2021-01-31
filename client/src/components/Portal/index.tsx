@@ -12,7 +12,7 @@ import Comptrolling from './Comptrolling'
 // Styles
 import './Portal.scss'
 // Routes
-import { Routes } from '../../utils/routes'
+import { Routes } from '../../constants/routes'
 // Types/Interfaces
 // import { Auth } from '../Auth/index.js'
 

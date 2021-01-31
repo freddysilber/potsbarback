@@ -9,9 +9,9 @@ import User from '../../../models/User'
 import { InitialValues, FormState, FormData, SignupProps } from './signupTypes'
 // Redux
 import { connect } from 'react-redux'
-import { registerUser } from '../../../actions/authActions'
+import { registerUser } from '../../../store/actions/authActions'
 // Routes
-import { Routes } from '../../../utils/routes'
+import { Routes } from '../../../constants/routes'
 // Styles
 import './Auth.scss'
 

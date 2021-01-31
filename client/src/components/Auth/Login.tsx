@@ -9,9 +9,9 @@ import './Auth.scss'
 import { InitialValues, FormState, FormData, LoginProps } from './loginTypes'
 // Redux
 import { connect } from 'react-redux'
-import { loginUser } from '../../actions/authActions'
+import { loginUser } from '../../store/actions/authActions'
 // Routes
-import { Routes } from '../../utils/routes'
+import { Routes } from '../../constants/routes'
 
 const initialValues: InitialValues = {
 	email: '',

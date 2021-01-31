@@ -1,9 +1,9 @@
 import React from "react";
 import "./Thankyou.scss";
-import { logoutUser } from '../../../actions/authActions'
+import { logoutUser } from '../../../store/actions/authActions'
 import { connect } from 'react-redux'
 import { Link } from "react-router-dom";
-import { Routes } from "../../../utils/routes";
+import { Routes } from "../../../constants/routes";
 // import { Auth } from '../../Auth/index.js'
 
 interface ThankyouProps {

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 // Styles
 import "./Comptrolling.scss";
 // Routes
-import { Routes } from "../../../utils/routes";
+import { Routes } from "../../../constants/routes";
 // Components
 
 const dummyData = [
