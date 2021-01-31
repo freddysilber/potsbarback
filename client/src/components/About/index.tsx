@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 // Styles
 import './About.scss'
 // Routes
-import { Routes } from '../../utils/routes'
+import { Routes } from '../../constants'
 
 const About: () => JSX.Element = () => {
 	return (

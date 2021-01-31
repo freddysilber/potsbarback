@@ -1,13 +1,13 @@
 import axios, { AxiosError, AxiosResponse } from 'axios'
 // Redux
-import setAuthToken from '../utils/setAuthToken'
+import setAuthToken from '../../util/setAuthToken'
 import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from './actionTypes'
 // JWT
 import jwt_decode from 'jwt-decode'
 // Routes
-import { Routes } from '../utils/routes'
+import { Routes } from '../../constants'
 // Models
-import User from '../models/User'
+import User from '../../models/User.model'
 
 type ApiError = | AxiosError | Error | any
 // Register User

@@ -3,19 +3,18 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 // Auth
 import jwt_decode from 'jwt-decode'
-import setAuthToken from './utils/setAuthToken'
+import setAuthToken from './util/setAuthToken'
 // Redux
-import { logoutUser, setCurrentUser } from './actions/authActions'
+import { logoutUser, setCurrentUser } from './store/actions/authActions'
 import { Provider } from 'react-redux'
-import store from './store'
+import { store } from './store'
 // Styles
 import './App.scss'
 import 'bulma/css/bulma.css'
 // Components
-import { Login, About, Portal, Signup } from './components'
-import { LogoWhite } from './components/Util'
+import { Login, About, Portal, Signup, LogoWhite } from './components'
 // Routes
-import { Routes } from './utils/routes'
+import { Routes } from './constants'
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -34,7 +33,7 @@ if (localStorage.jwtToken) {
 		// Logout user
 		store.dispatch(logoutUser())
 		// Redirect to login
-		window.location.href = './login'
+		window.location.href = Routes.login
 	}
 }
 

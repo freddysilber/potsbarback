@@ -1,5 +1,3 @@
-import Comptrolling from "../components/Portal/Comptrolling";
-
 // Enum to store and organize our client routes
 export enum Routes {
 	// Base routes

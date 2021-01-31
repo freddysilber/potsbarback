@@ -6,7 +6,7 @@ import "./Checkout.scss";
 // Components
 // import CloseModal from "../index";
 // Routes
-import { Routes } from "../../../utils/routes";
+import { Routes } from "../../../constants";
 // Redux
 import { connect } from "react-redux";
 // Types/ Interfaces

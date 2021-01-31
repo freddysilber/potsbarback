@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom'
 import { Formik, Form, Field, FormikValues } from 'formik'
 import * as Yup from 'yup'
 // Styles
-import './Auth.scss'
+import '../../Auth.scss'
 // Types
-import { InitialValues, FormState, FormData, LoginProps } from './loginTypes'
+import { InitialValues, FormState, FormData, LoginProps } from '../../interfaces/loginTypes'
 // Redux
 import { connect } from 'react-redux'
-import { loginUser } from '../../actions/authActions'
+import { loginUser } from '../../../../store/actions/authActions'
 // Routes
-import { Routes } from '../../utils/routes'
+import { Routes } from '../../../../constants'
 
 const initialValues: InitialValues = {
 	email: '',

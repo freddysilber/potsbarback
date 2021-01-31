@@ -12,7 +12,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 const { PORT } = process.env
-// const port = process.env.PORT || 5000
 
 // DB Config
 const db = require('./config/keys.js').mongoURI
@@ -25,11 +24,11 @@ mongoose
 		useFindAndModify: false
 	})
 	.then((response) => {
-		console.log(response)
+		console.log(colors.green(response))
 		console.log(colors.america('\n------------ MongoDB is connected... #Merica ------------\n'))
 	})
 	.catch(error => {
-		console.error('Error connecting to mongoDB \n', error)
+		console.error(colors.red('Error connecting to mongoDB \n', error))
 	})
 
 

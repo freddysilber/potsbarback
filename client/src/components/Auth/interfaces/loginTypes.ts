@@ -1,5 +1,3 @@
-// import { Auth } from './index.js'
-
 interface TouchedProps {
 	email: boolean,
 	password: boolean
@@ -24,7 +22,6 @@ export interface FormData {
 export interface LoginProps {
 	loginUser: any,
 	history: any,
-	// auth: Auth,
 	auth: any,
 	errors: any
 }

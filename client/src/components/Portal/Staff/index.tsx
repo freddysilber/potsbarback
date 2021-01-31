@@ -5,7 +5,7 @@ import "./Staff.scss";
 // Components
 import { Dropdown, POSITIONS, COST_CENTERS } from '../../Util'
 // Routes
-import { Routes } from "../../../utils/routes";
+import { Routes } from "../../../constants";
 // Redux
 import { connect } from 'react-redux'
 // Types/Interfaces
