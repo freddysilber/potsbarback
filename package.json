@@ -4,9 +4,12 @@
   "description": "<hr>",
   "main": "server.js",
   "scripts": {
+<<<<<<< HEAD
     "deploy": "cd client && npm i && npm run build && cd ../ && git push heroku master",
     "build": "cd client && npm i && npm run build",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+=======
+>>>>>>> 539d0631fc469335cfc27e5e7f6c6d509af51bd2
     "start": "node server.js",
     "client-install": "npm install --prefix client",
     "server": "node server.js",
@@ -30,6 +33,7 @@
     "body-parser": "^1.19.0",
     "bulma-extensions": "^6.2.7",
     "concurrently": "^5.3.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "is-empty": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
@@ -47,4 +51,8 @@
   "engines": {
     "node": "10.16.0"
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 539d0631fc469335cfc27e5e7f6c6d509af51bd2

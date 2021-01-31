@@ -1,17 +1,21 @@
+require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const passport = require('passport')
 const users = require('./routes/api/users')
-const app = express()
-let colors = require('colors')
+const colors = require('colors')
 
+const app = express()
 // Bodyparser middleware
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+const { PORT } = process.env
+// const port = process.env.PORT || 5000
+
 // DB Config
-const db = require('./config/keys').mongoURI
+const db = require('./config/keys.js').mongoURI
 
 // Connect to MongoDB
 mongoose
@@ -20,7 +24,13 @@ mongoose
 		useUnifiedTopology: true,
 		useFindAndModify: false
 	})
-	.then(() => console.log(colors.america('\n------------ MongoDB is connected... #Merica ------------\n')))
+	.then((response) => {
+		console.log(response)
+		console.log(colors.america('\n------------ MongoDB is connected... #Merica ------------\n'))
+	})
+	.catch(error => {
+		console.error('Error connecting to mongoDB \n', error)
+	})
 
 
 // Passport middleware
@@ -40,11 +50,8 @@ require('./config/passport')(passport)
  */
 app.use('/api/users', users)
 
-// Express/ Node.js port (local dev)
-const port = process.env.PORT || 5000
-
 if (process.env.NODE_ENV == 'production') {
 	app.use(express.static('client/build'))
 }
 
-app.listen(port, () => console.log(colors.brightBlue(`\n------------ Death to all but metal. http://localhost:${port} ------------\n`)))
+app.listen(PORT, () => console.log(colors.brightBlue(`\n------------ Death to all but metal. http://localhost:${PORT} ------------\n`)))
