@@ -56,8 +56,8 @@ if (process.env.NODE_ENV == 'production') {
 }
 
 app.get('/*',(req, res) => {
-	res.sendFile('index.html', {root: __dirname+ '/client/build'})
-}
+	res.sendFile('index.html', {root: __dirname + '/client/build'})
+})
 
 
 app.listen(PORT, () => console.log(colors.brightBlue(`\n------------ Death to all but metal. http://localhost:${PORT} ------------\n`)))
