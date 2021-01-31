@@ -11,7 +11,7 @@ import { InitialValues, FormState, FormData, SignupProps } from '../../interface
 import { connect } from 'react-redux'
 import { registerUser } from '../../../../store/actions/authActions'
 // Routes
-import { Routes } from '../../../../constants/routes'
+import { Routes } from '../../../../constants'
 // Styles
 import '../../Auth.scss'
 

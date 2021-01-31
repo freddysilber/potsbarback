@@ -3,7 +3,7 @@ import "./Thankyou.scss";
 import { logoutUser } from '../../../store/actions/authActions'
 import { connect } from 'react-redux'
 import { Link } from "react-router-dom";
-import { Routes } from "../../../constants/routes";
+import { Routes } from "../../../constants";
 // import { Auth } from '../../Auth/index.js'
 
 interface ThankyouProps {

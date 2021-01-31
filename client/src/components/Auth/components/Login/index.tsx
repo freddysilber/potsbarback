@@ -11,7 +11,7 @@ import { InitialValues, FormState, FormData, LoginProps } from '../../interfaces
 import { connect } from 'react-redux'
 import { loginUser } from '../../../../store/actions/authActions'
 // Routes
-import { Routes } from '../../../../constants/routes'
+import { Routes } from '../../../../constants'
 
 const initialValues: InitialValues = {
 	email: '',

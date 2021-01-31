@@ -14,7 +14,7 @@ import 'bulma/css/bulma.css'
 // Components
 import { Login, About, Portal, Signup, LogoWhite } from './components'
 // Routes
-import { Routes } from './constants/routes'
+import { Routes } from './constants'
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {

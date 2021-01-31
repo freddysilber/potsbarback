@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // Styles
 import "./Verification.scss";
 // Routes
-import { Routes } from '../../../constants/routes'
+import { Routes } from '../../../constants'
 import { Link } from "react-router-dom";
 
 const Verification = () => {

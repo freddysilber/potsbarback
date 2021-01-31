@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 // Styles
 import "./Management.scss";
 // Routes
-import { Routes } from "../../../constants/routes";
+import { Routes } from "../../../constants";
 // Components
 
 const dummyData = [

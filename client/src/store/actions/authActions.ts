@@ -5,7 +5,7 @@ import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from './actionTypes'
 // JWT
 import jwt_decode from 'jwt-decode'
 // Routes
-import { Routes } from '../../constants/routes'
+import { Routes } from '../../constants'
 // Models
 import User from '../../models/User.model'
 
