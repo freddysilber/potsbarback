@@ -4,12 +4,6 @@
   "description": "<hr>",
   "main": "server.js",
   "scripts": {
-<<<<<<< HEAD
-    "deploy": "cd client && npm i && npm run build && cd ../ && git push heroku master",
-    "build": "cd client && npm i && npm run build",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
-=======
->>>>>>> 539d0631fc469335cfc27e5e7f6c6d509af51bd2
     "start": "node server.js",
     "client-install": "npm install --prefix client",
     "server": "node server.js",
