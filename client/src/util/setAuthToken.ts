@@ -1,13 +1,18 @@
 import axios from 'axios'
 
-const setAuthToken = (token: boolean) => {
-	if (token) {
-		// Apply authorization token to every request if logged in
-		axios.defaults.headers.common['Authorization'] = token
-	} else {
-		// Delete auth header
-		delete axios.defaults.headers.common['Authorization']
-	}
+interface CommonHeader {
+	Accept: string,
+	Authorization?: string
 }
 
-export default setAuthToken
+export default function setAuthToken(token: string | boolean) {
+	/**
+	 * 	if token
+	 * Apply authorization token to every request if logged in 
+	 * 	else 
+	 * Delete Auth Header
+	 */
+	// 
+	const commonHeader: CommonHeader = axios.defaults.headers.common
+	token ? commonHeader.Authorization = token as string : delete commonHeader.Authorization
+}
