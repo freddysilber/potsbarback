@@ -24,11 +24,11 @@ mongoose
     useUnifiedTopology: true,
     useFindAndModify: false,
   })
-  .then((response) => {
+  .then(response => {
     console.log(colors.green(response))
     console.log(colors.america('\n------------ MongoDB is connected... #Merica ------------\n'))
   })
-  .catch((error) => {
+  .catch(error => {
     console.error(colors.red('Error connecting to mongoDB \n', error))
   })
 
