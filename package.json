@@ -4,11 +4,12 @@
   "description": "Node backend for potsbarbak client",
   "main": "server.js",
   "scripts": {
+    "init": "npm i && cd client && npm i && npm run build && cd ../ && npm run dev",
     "start": "cd client && npm i && npm run build && cd ../ && npm run server",
     "client-install": "npm i --prefix client",
     "server": "node server.js",
     "client": "npm start --prefix client",
-    "dev": "node server"
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
