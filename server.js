@@ -12,14 +12,18 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(express.static('./client/build'))
 
-const { PORT } = process.env
+const { PORT, DB_CONN, DB_USER, DB_PW } = process.env
 
 // DB Config
-const db = require('./config/keys.js').mongoURI
+// const db = require('./config/keys.js').mongoURI
 
 // Connect to MongoDB
 mongoose
-  .connect(db, {
+  .connect(DB_CONN, {
+    auth: {
+      user: DB_USER,
+      password: DB_PW
+    }, 
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
@@ -31,6 +35,19 @@ mongoose
   .catch(error => {
     console.error(colors.red('Error connecting to mongoDB \n', error))
   })
+// mongoose
+//   .connect(db, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     useFindAndModify: false,
+//   })
+//   .then(response => {
+//     console.log(colors.green(response))
+//     console.log(colors.america('\n------------ MongoDB is connected... #Merica ------------\n'))
+//   })
+//   .catch(error => {
+//     console.error(colors.red('Error connecting to mongoDB \n', error))
+//   })
 
 // Passport middleware
 app.use(passport.initialize())
