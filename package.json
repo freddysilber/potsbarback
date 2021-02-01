@@ -4,12 +4,13 @@
   "description": "Node backend for potsbarbak client",
   "main": "server.js",
   "scripts": {
+    "init": "npm i && cd client && npm i && npm run build && cd ../ && npm run dev",
     "start": "cd client && npm i && npm run build && cd ../ && npm run server",
     "azure": "cd client && npm i && npm run build && cd ../ && npm run server",
     "client-install": "npm install --prefix client",
     "server": "node server.js",
     "client": "npm start --prefix client",
-    "dev": "node server"
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -36,8 +37,6 @@
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "react-router-dom": "^5.2.0",
-    "ts-node": "^9.0.0",
-    "typescript": "^4.0.5",
     "validator": "^13.1.17"
   },
   "devDependencies": {
