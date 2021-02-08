@@ -1,23 +1,14 @@
-import React from 'react'
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 // Styles
-import './Admin.scss'
+import "./Admin.scss";
+// Routes
+import { Routes } from "../../../constants";
 
-const Admin: () => JSX.Element = () => {
-	return (
-		<div className="management">
-			<div className="columns">
-				<div className="column nav_direct is-one-fifth card">
-					<ul>
-						<li>Today</li>
-						<li>Preformance</li>
-						<li>Schedule</li>
-						<li></li>
-					</ul>
-				</div>
-				<div className="column content is-two-fifths card">Two</div>
-			</div>
-		</div>
-	)
+const Admin = () => {
+    return (
+        <div>Admin</div>
+    )
 }
 
-export default Admin
+export default Admin;

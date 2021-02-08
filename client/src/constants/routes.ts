@@ -11,5 +11,10 @@ export enum Routes {
 	checkout = '/portal/checkout',
 	verification = '/portal/verification',
 	thankyou = '/portal/thankyou',
-	comptrolling = '/portal/comptrolling'
+	comptrolling = '/portal/comptrolling',
+	events = '/portal/events',
+	admin = '/portal/admin',
+	schedule = '/portal/schedule',
+	incident = '/portal/incident',
+	docs = '/portal/docs'
 }
