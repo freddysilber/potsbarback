@@ -1,6 +1,6 @@
 import React from 'react'
 // Router
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 // Auth
 import jwt_decode from 'jwt-decode'
 import setAuthToken from './util/setAuthToken'
@@ -42,7 +42,12 @@ const App = () => {
 		<Provider store={store}>
 			<Router>
 				<div className="container">
+					
 					<LogoWhite />
+					<Link className="has-text-primary-light" to={Routes.events}>EVENTS</Link>
+					<Link className="has-text-primary-light" to={Routes.schedule}>SCHEDULE</Link>
+					<Link className="has-text-primary-light" to={Routes.admin}>ADMIN</Link>
+					<Link className="has-text-primary-light" to={Routes.incident}>INCIDENT</Link>
 					<Switch>
 						<Route exact path={Routes.about} component={About} />
 						<Route path={Routes.login} component={Login} />
