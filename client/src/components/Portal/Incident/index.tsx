@@ -74,10 +74,10 @@ const Incident = () => {
     <Formik
       initialValues={initialValues}
       // validationSchema={signupValidators}
-      onSubmit={(values: any, actions: any) => {
-        const data: FormData = { actions, values };
-        handleSubmit(data);
-      }}
+    //   onSubmit={(values: any, actions: any) => {
+    //     const data: FormData = { actions, values };
+    //     handleSubmit(data);
+    //   }}
     >
       {({ errors, touched, isSubmitting }: FormState) => (
         <div className="card login-input-form">

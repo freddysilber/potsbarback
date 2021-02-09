@@ -45,12 +45,15 @@ const Navbar = () => {
         <div className="navbar-end">
           <div className="navbar-item">
             <div className="navbar-item has-dropdown is-hoverable">
-              <a className="navbar-link">Managment</a>
+              <a className="navbar-link">Admin</a>
 
               <div className="navbar-dropdown">
-                <a className="navbar-item">About</a>
-                <a className="navbar-item">Jobs</a>
-                <a className="navbar-item">Contact</a>
+                <Link to="/portal/management" className="navbar-item">Management</Link>
+                <Link to="/portal/comptrolling" className="navbar-item">Comptrolling</Link>
+                <Link to="/portal/admin/scheduleadmin" className="navbar-item">Schedules Admin</Link>
+                <Link to="/portal/admin/eventsadmin" className="navbar-item">Events Admin</Link>
+                <Link to="/portal/admin/employeeadmin" className="navbar-item">Employee Admin</Link>
+
 
                 <a className="navbar-item">Report an issue</a>
               </div>

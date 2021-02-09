@@ -16,5 +16,11 @@ export enum Routes {
 	admin = '/portal/admin',
 	schedule = '/portal/schedule',
 	incident = '/portal/incident',
-	docs = '/portal/docs'
+	docs = '/portal/docs',
+	dataadmin = '/portal/admin/datadmin',
+	employeeadmin ='/portal/admin/employeeadmin',
+	eventsadmin = '/portal/admin/eventsadmin',
+	scheduleadmin ='/portal/admin/scheduleadmin'
+
+
 }
