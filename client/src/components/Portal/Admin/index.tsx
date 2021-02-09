@@ -1,23 +1,26 @@
-import React from 'react'
+import React, { useState } from "react";
+import { Link, Route, Switch } from "react-router-dom";
 // Styles
-import './Admin.scss'
+import "./Admin.scss";
+// Routes
+import { Routes } from "../../../constants";
+import Dataadmin from "./Dataadmin"
+import Employeeadmin from "./Employeeadmin"
+import Scheduleadmin from "./Scheduleadmin"
+import Eventsadmin from "./Eventsadmin"
 
-const Admin: () => JSX.Element = () => {
-	return (
-		<div className="management">
-			<div className="columns">
-				<div className="column nav_direct is-one-fifth card">
-					<ul>
-						<li>Today</li>
-						<li>Preformance</li>
-						<li>Schedule</li>
-						<li></li>
-					</ul>
-				</div>
-				<div className="column content is-two-fifths card">Two</div>
-			</div>
-		</div>
-	)
+const Admin = () => {
+    return (
+        <div>
+        <Switch>
+        <Route path={Routes.dataadmin} component={Dataadmin} />
+        <Route path={Routes.employeeadmin} component={Employeeadmin} />
+        <Route path={Routes.eventsadmin} component={Eventsadmin} />
+        <Route path={Routes.scheduleadmin} component={Scheduleadmin} />
+        </Switch>
+
+        </div>
+    )
 }
 
-export default Admin
+export default Admin;

@@ -171,14 +171,6 @@ const Management: () => JSX.Element = () => {
   return (
     <div>
       <div className="card staff-input-form">
-      <div>
-					<Link to={Routes.comptrolling}>
-							<button className="button login-button is-danger m-4" onClick={() => console.log("REROUTE")}>Comptrolling</button>	
-					</Link>
-          <Link to={Routes.verification}>	
-							<button className="button login-button is-danger m-4" onClick={() => console.log("REROUTE")}>Employee Verification</button>	
-					</Link>
-			</div>
         <div className="staff-title">Manager Checkout</div>
         <span className="staff-form-head">Filter By Position:</span>
         <div className="field">
