@@ -15,7 +15,8 @@ import { Routes } from "../../../constants";
 // Styles
 // import '../../Auth.scss'
 
-const initialValues: InitialValues = {
+// const initialValues: InitialValues = {
+const initialValues = {
   firstName: "",
   lastName: "",
   email: "",
@@ -26,35 +27,35 @@ const initialValues: InitialValues = {
 
 type UserIncident = object | undefined;
 
-const incidentValidators: Yup.ObjectSchema<
-  Yup.Shape<
-    UserIncident,
-    {
-      location: string;
-      named_parties: string;
-      parties_contact: string;
-      description: string;
-    }
-  >,
-  object
-> = Yup.object().shape({
-  named_parties: Yup.string().required("Named Parties cannot be empty"),
-  parties_contact_phone: Yup.string().required("Last name cannot be empty"),
-  parties_contact_email: Yup.string()
-    .email("Invalid email")
-    .required("Email is required"),
-  description: Yup.string()
-    .oneOf([Yup.ref("email"), null || ""], "Emails must match!")
-    .required("Confirm Email is required"),
-  // password: Yup.string()
-  // 	.min(2, 'Your password is too short!')
-  // 	.max(50, 'Your password is too long')
-  // 	.required('A password is required'),
-  // confirmPassword: Yup.string()
-  // 	.oneOf([Yup.ref('password'), null || ''], 'Passwords must match!')
-  // 	.max(50, 'Your password is too long')
-  // 	.required('A password is required'),
-});
+// const incidentValidators: Yup.ObjectSchema<
+//   Yup.Shape<
+//     UserIncident,
+//     {
+//       location: string;
+//       named_parties: string;
+//       parties_contact: string;
+//       description: string;
+//     }
+//   >,
+//   object
+// > = Yup.object().shape({
+//   named_parties: Yup.string().required("Named Parties cannot be empty"),
+//   parties_contact_phone: Yup.string().required("Last name cannot be empty"),
+//   parties_contact_email: Yup.string()
+//     .email("Invalid email")
+//     .required("Email is required"),
+//   description: Yup.string()
+//     .oneOf([Yup.ref("email"), null || ""], "Emails must match!")
+//     .required("Confirm Email is required"),
+//   // password: Yup.string()
+//   // 	.min(2, 'Your password is too short!')
+//   // 	.max(50, 'Your password is too long')
+//   // 	.required('A password is required'),
+//   // confirmPassword: Yup.string()
+//   // 	.oneOf([Yup.ref('password'), null || ''], 'Passwords must match!')
+//   // 	.max(50, 'Your password is too long')
+//   // 	.required('A password is required'),
+// });
 
 const Incident = () => {
   // : (props: IncidentProps) => JSX.Element = (props: IncidentProps) => {
@@ -65,21 +66,21 @@ const Incident = () => {
   // 	}
   // })
 
-  // const handleSubmit = (data: FormData) => {
-  // 	const user: User = data.values
-  // 	props.registerUser(user, props.history)
-  // }
+  const handleSubmit = (data: FormData) => {
+    // const user: User = data.values
+    // props.registerUser(user, props.history)
+  }
 
   return (
     <Formik
       initialValues={initialValues}
       // validationSchema={signupValidators}
-    //   onSubmit={(values: any, actions: any) => {
-    //     const data: FormData = { actions, values };
-    //     handleSubmit(data);
-    //   }}
+      onSubmit={(values: any, actions: any) => {
+        const data: FormData | any = { actions, values };
+        handleSubmit(data);
+      }}
     >
-      {({ errors, touched, isSubmitting }: FormState) => (
+      {({ errors, touched, isSubmitting }: any) => (
         <div className="card login-input-form">
           <div className="title mb-2">Incident Report</div>
           <div>Use this form to report an incident, please fill out the fields as thoroughly as possible.</div>
