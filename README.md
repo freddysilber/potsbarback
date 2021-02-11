@@ -1,15 +1,5 @@
-# Pots Bak||Bar
+# Azure-MERN-Boilerplate
+A very basic boilerplate for an Azure ready MERN app
 
-## About
-Application for Potbellies sales and inventory management 
-
-## Contents
-* [Getting Started](#Getting-Started)
-
-<img width="500" src="client/src/assets/bakbar.png"/>
-
-## Getting Started
-1. run ```npm i``` in the root directory
-2. ```cd``` into the 'client' directory and run ```npm i```
-3. ```cd``` back to the root directory and run ```npm run dev```
-	* This will start the Express server and React app together and launch the app in a local host
+The tutorial for deploying this boilerplate can be found here:
+https://medium.com/@tuna.sogut/how-to-deploy-a-mern-stack-app-to-azure-via-continuous-integration-a3a551526e26?sk=0fc4fa9d7c7072ad7e95b94d7e5733e4
