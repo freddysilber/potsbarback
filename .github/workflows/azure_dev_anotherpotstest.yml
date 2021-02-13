@@ -13,10 +13,8 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
-
     steps:
-    - uses: actions/checkout/@v2
-    # - uses: actions/checkout@azure-dev
+    - uses: actions/checkout@azure-dev
 
     - name: Set up Node.js version
       uses: actions/setup-node@v1
