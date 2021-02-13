@@ -9,7 +9,7 @@ const passport = require('passport')
 // Passport config
 const users = require('./routes/api/users')
 require('./config/passport')(passport)
-// const mongoose = require('mongoose')
+const mongoose = require('mongoose')
 
 const app = express()
 // Bodyparser middleware
@@ -72,6 +72,22 @@ app.use(function (err, req, res, next) {
 //   .catch(error => {
 //     console.error(colors.red('Error connecting to mongoDB \n', error))
 //   })
+
+// DB Config
+const db = require('./config/keys.js').mongoURI
+mongoose
+    .connect(db, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useFindAndModify: false,
+    })
+    .then(response => {
+        console.log(colors.green(response))
+        console.log(colors.america('\n------------ MongoDB is connected... #Merica ------------\n'))
+    })
+    .catch(error => {
+        console.error(colors.red('Error connecting to mongoDB \n', error))
+    })
 
 app.listen(app.get('port'), function () {
     console.log(colors.green('Express server listening on port ' + app.get('port')))
