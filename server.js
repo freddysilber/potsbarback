@@ -1,4 +1,3 @@
-// require('dotenv').config()
 const createError = require('http-errors')
 const express = require('express')
 const path = require('path')
@@ -8,6 +7,7 @@ const colors = require('colors')
 const bodyParser = require('body-parser')
 const passport = require('passport')
 // Passport config
+const users = require('./routes/api/users')
 require('./config/passport')(passport)
 // const mongoose = require('mongoose')
 
@@ -15,10 +15,9 @@ const app = express()
 // Bodyparser middleware
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-// app.use(express.static('./client/build'))
+
 // Passport middleware
 app.use(passport.initialize())
-
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
@@ -34,7 +33,7 @@ app.use(cookieParser())
 app.use(express.static('./client/build'))
 
 app.use('/api/data', require('./routes/new-index.js'))
-app.use('/api/users', require('./routes/api/users'))
+app.use('/api/users', users)
 
 app.get("*", (req, res) => { //our GET route needs to point to the index.html in our build
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"))

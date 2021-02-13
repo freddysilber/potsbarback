@@ -14,6 +14,7 @@ const { username, password } = TEST_USER
 
 const MongoClient = require('mongodb').MongoClient
 const url = `mongodb+srv://${username}:${password}@cluster0.slci9.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`
+// const url = `mongodb+srv://Andrew:Hellosickmoney@cluster0.slci9.mongodb.net/pots_bak_bar?retryWrites=true&w=majority`
 
 console.log(MongoClient)
 
@@ -22,6 +23,7 @@ router.get('/', (req, res, next) => {
 		if (err) throw err
 		const dbo = db.db('mongodb')
 		dbo.collection('collection1').find({}).toArray(function (err, result) {
+			console.log(colors.blue(result))
 			if (err) throw err
 			console.log(colors.red('Mongo data coming in hot'))
 			console.log('RESULT -->', result)
