@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express')
+const router = express.Router()
 const colors = require('colors')
 
 const DB_NAME = 'pots_bak_bar' // Name of the database to use
@@ -12,26 +12,23 @@ const TEST_USER = {
 const { username, password } = TEST_USER
 
 
-var MongoClient = require('mongodb').MongoClient;
-// var url = "mongodb+srv://Andrew:Hellosickmoney@<cluster>-vgz77.azure.mongodb.net/test?retryWrites=true&w=majority";
-var url = `mongodb+srv://${username}:${password}@cluster0.slci9.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`;
+const MongoClient = require('mongodb').MongoClient
+const url = `mongodb+srv://${username}:${password}@cluster0.slci9.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`
 
-// mongodb+srv://${username}:${password}@cluster0.slci9.mongodb.net/${DB_NAME}?retryWrites=true&w=majority
-// mongodb://mongopots:BxpYBQ06UuWt7S8KD9wyVQ5N4kesVb7Ib8zaC5xAubmzwz6Cq2qk1u5X8UHHMqb2sYnMhnrJNIr8kPEpNsUrKQ==@mongopots.mongo.cosmos.azure.com:10255/?ssl=true&appName=@mongopots@
 console.log(MongoClient)
 
 router.get('/', (req, res, next) => {
 	MongoClient.connect(url, function(err, db) {
-		if (err) throw err;
-		var dbo = db.db("mongodb");
-		dbo.collection("collection1").find({}).toArray(function(err, result) {
-			if (err) throw err;
+		if (err) throw err
+		const dbo = db.db('mongodb')
+		dbo.collection('collection1').find({}).toArray(function (err, result) {
+			if (err) throw err
 			console.log(colors.red('Mongo data coming in hot'))
-    		console.log(result);
+			console.log(result)
     		res.json(result)
-    		db.close();
-    	});
-	}); 
-});
+			db.close()
+		})
+	})
+})
 
-module.exports = router;
+module.exports = router
