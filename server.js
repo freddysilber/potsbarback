@@ -6,10 +6,10 @@ const logger = require('morgan')
 const colors = require('colors')
 const bodyParser = require('body-parser')
 const passport = require('passport')
-// Passport config
 const users = require('./routes/api/users')
-require('./config/passport')(passport)
 const mongoose = require('mongoose')
+// Passport config
+require('./config/passport')(passport)
 
 const app = express()
 // Bodyparser middleware
@@ -53,25 +53,6 @@ app.use(function (err, req, res, next) {
     res.status(err.status || 500)
     res.render('error')
 })
-
-// const { PORT, DB_CONN, DB_USER, DB_PW } = process.env
-// mongoose
-//   .connect(DB_CONN, {
-//     auth: {
-//       user: DB_USER,
-//       password: DB_PW
-//     }, 
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//     useFindAndModify: false,
-//   })
-//   .then(response => {
-//     console.log(colors.green(response))
-//     console.log(colors.america('\n------------ MongoDB is connected... #Merica ------------\n'))
-//   })
-//   .catch(error => {
-//     console.error(colors.red('Error connecting to mongoDB \n', error))
-//   })
 
 // DB Config
 const db = require('./config/keys.js').mongoURI
