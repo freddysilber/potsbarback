@@ -17,9 +17,6 @@ jobs:
     steps:
     - uses: actions/checkout/@v2
     # - uses: actions/checkout@azure-dev
-    - uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
 
     - name: Set up Node.js version
       uses: actions/setup-node@v1
@@ -37,5 +34,5 @@ jobs:
       with:
         app-name: 'potsbarbak'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_e9ca6938524e4896a881ae3ed49090ca }}
+        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_93C8595036F6461A92881AF45AE705E3 }}
         package: .
