@@ -6,7 +6,8 @@ name: Build and deploy Node.js app to Azure Web App - potsbarbak
 on:
 	push:
 		branches:
-			- master
+			# - master
+			- azure-dev
 	workflow_dispatch:
 
 jobs:
