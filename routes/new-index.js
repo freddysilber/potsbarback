@@ -1,6 +1,7 @@
 
 var express = require('express');
 var router = express.Router();
+// const colors = require('colors')
 
 const TEST_USER = {
 	username: 'Andrew',
