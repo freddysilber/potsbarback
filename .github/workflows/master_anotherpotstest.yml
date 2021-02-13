@@ -4,34 +4,33 @@
 name: Build and deploy Node.js app to Azure Web App - potsbarbak
 
 on:
-	push:
-		branches:
-			- master
-	workflow_dispatch:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
 
 jobs:
-	build-and-deploy:
-		runs-on: ubuntu-latest
+  build-and-deploy:
+    runs-on: ubuntu-latest
 
-		steps:
-		- uses: actions/checkout@master
+    steps:
+    - uses: actions/checkout@master
 
-		- name: Set up Node.js version
-			uses: actions/setup-node@v1
-			with:
-				node-version: '14.x'
+    - name: Set up Node.js version
+      uses: actions/setup-node@v1
+      with:
+        node-version: '14.x'
 
-		# - name: npm install, build, and test
-		- name: npm install, build
-				# npm run test --if-present
-			run: |
-				npm install
-				npm run build --if-present
-
-		- name: 'Deploy to Azure Web App'
-			uses: azure/webapps-deploy@v2
-			with:
-				app-name: 'potsbarbak'
-				slot-name: 'production'
-				publish-profile: ${{ secrets.AzureAppService_PublishProfile_e9ca6938524e4896a881ae3ed49090ca }}
-				package: .
+    # - name: npm install, build, and test
+    - name: npm install, build
+        # npm run test --if-present
+      run: |
+        npm install
+        npm run build --if-present
+    - name: 'Deploy to Azure Web App'
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'potsbarbak'
+        slot-name: 'production'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_e9ca6938524e4896a881ae3ed49090ca }}
+        package: .
