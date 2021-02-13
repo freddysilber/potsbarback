@@ -6,7 +6,7 @@ name: Build and deploy Node.js app to Azure Web App - potsbarbak
 on:
   push:
     branches:
-      - azure-dev
+      - master
   workflow_dispatch:
 
 jobs:
@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@azure-dev
+    - uses: actions/checkout@master
 
     - name: Set up Node.js version
       uses: actions/setup-node@v1
