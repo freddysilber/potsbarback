@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-// const colors = require('colors')
+const colors = require('colors')
+
 const DB_NAME = 'pots_bak_bar' // Name of the database to use
 
 const TEST_USER = {
@@ -25,7 +26,7 @@ router.get('/', (req, res, next) => {
 		var dbo = db.db("mongodb");
 		dbo.collection("collection1").find({}).toArray(function(err, result) {
 			if (err) throw err;
-			console.log('Mongo data coming in hot')
+			console.log(colors.red('Mongo data coming in hot'))
     		console.log(result);
     		res.json(result)
     		db.close();

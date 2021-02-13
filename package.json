@@ -18,5 +18,8 @@
     "path": "^0.12.7",
     "pug": "^2.0.4",
     "react-share": "^3.0.1"
+  },
+  "devDependencies": {
+    "colors": "^1.4.0"
   }
 }
