@@ -1,0 +1,26 @@
+@import "bulma/sass/utilities/_all.sass";
+@import 'bulma';
+
+body {
+	background: black;
+}
+
+.App {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	height: 100vh;
+	width: 100vw;
+}
+.nav .button {
+	margin: 0 50px 0 50px;
+	padding: 0 20px 0 20px;
+}
+
+.container {
+	height: 100vh;
+	width: 100vw;
+	background-image: url("assets/oasisBackground.jpg");
+	background-repeat: repeat-y;
+	padding: 50px
+}
