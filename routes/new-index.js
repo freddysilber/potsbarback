@@ -24,11 +24,12 @@ router.get('/', (req, res, next) => {
 		dbo.collection('collection1').find({}).toArray(function (err, result) {
 			if (err) throw err
 			console.log(colors.red('Mongo data coming in hot'))
-			console.log(result)
+			console.log('RESULT -->', result)
     		res.json(result)
 			db.close()
 		})
 	})
 })
+
 
 module.exports = router
