@@ -7,7 +7,7 @@ import jwt_decode from 'jwt-decode'
 // Routes
 import { Routes } from '../../constants'
 // Models
-import User from '../../models/User.model'
+import User from '../../models/user.model'
 
 type ApiError = | AxiosError | Error | any
 // Register User
