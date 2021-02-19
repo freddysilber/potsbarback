@@ -4,23 +4,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
-      <div className="navbar-brand">
-        <a className="navbar-item" href="https://bulma.io">
-          <div className="title ml-4"> nav</div>
-        </a>
-
-        <a
-          role="button"
-          className="navbar-burger"
-          aria-label="menu"
-          aria-expanded="false"
-          data-target="navbarBasicExample"
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
+      
 
       <div id="navbarBasicExample" className="navbar-menu">
         <div className="navbar-start">
@@ -36,7 +20,6 @@ const Navbar = () => {
           <Link to="/portal/incident" className="navbar-item">
             Incident
           </Link>
-
           <Link to="/portal/docs" className="navbar-item">
             Documentation
           </Link>
@@ -48,12 +31,78 @@ const Navbar = () => {
               <a className="navbar-link">Admin</a>
 
               <div className="navbar-dropdown">
-                <Link to="/portal/management" className="navbar-item">Management</Link>
-                <Link to="/portal/comptrolling" className="navbar-item">Comptrolling</Link>
-                <Link to="/portal/admin/scheduleadmin" className="navbar-item">Schedules Admin</Link>
-                <Link to="/portal/admin/eventsadmin" className="navbar-item">Events Admin</Link>
-                <Link to="/portal/admin/employeeadmin" className="navbar-item">Employee Admin</Link>
+              <Link to="/portal/staff" className="navbar-item is-hidden-desktop">
+              Shift
+            </Link>
+            <Link to="/portal/events" className="navbar-item is-hidden-desktop">
+              Events
+            </Link>
+            <Link to="/portal/schedule" className="navbar-item is-hidden-desktop">
+              Schedule
+            </Link>
+            <Link to="/portal/incident" className="navbar-item is-hidden-desktop">
+              Incident
+            </Link>
+            <Link to="/portal/docs" className="navbar-item is-hidden-desktop">
+              Documentation
+            </Link>
 
+                <Link to="/portal/management" className="navbar-item">
+                  Management
+                </Link>
+                <Link to="/portal/comptrolling" className="navbar-item">
+                  Comptrolling
+                </Link>
+                <Link to="/portal/admin/scheduleadmin" className="navbar-item">
+                  Schedules Admin
+                </Link>
+                <Link to="/portal/admin/eventsadmin" className="navbar-item">
+                  Events Admin
+                </Link>
+                <Link to="/portal/admin/employeeadmin" className="navbar-item">
+                  Employee Admin
+                </Link>
+
+                <a className="navbar-item">Report an issue</a>
+              </div>
+            </div>
+          </div>
+          <div className="navbar-item is-hidden-desktop">
+            <div className="navbar-item has-dropdown is-hoverable is-hidden-desktop">
+              <a className="navbar-link">Menu</a>
+
+              <div className="navbar-dropdown">
+              <Link to="/portal/staff" className="navbar-item is-hidden-desktop">
+              Shift
+            </Link>
+            <Link to="/portal/events" className="navbar-item is-hidden-desktop">
+              Events
+            </Link>
+            <Link to="/portal/schedule" className="navbar-item is-hidden-desktop">
+              Schedule
+            </Link>
+            <Link to="/portal/incident" className="navbar-item is-hidden-desktop">
+              Incident
+            </Link>
+            <Link to="/portal/docs" className="navbar-item is-hidden-desktop">
+              Documentation
+            </Link>
+
+                <Link to="/portal/management" className="navbar-item">
+                  Management
+                </Link>
+                <Link to="/portal/comptrolling" className="navbar-item">
+                  Comptrolling
+                </Link>
+                <Link to="/portal/admin/scheduleadmin" className="navbar-item">
+                  Schedules Admin
+                </Link>
+                <Link to="/portal/admin/eventsadmin" className="navbar-item">
+                  Events Admin
+                </Link>
+                <Link to="/portal/admin/employeeadmin" className="navbar-item">
+                  Employee Admin
+                </Link>
 
                 <a className="navbar-item">Report an issue</a>
               </div>

@@ -22,7 +22,7 @@ app.use(passport.initialize())
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
 
-app.set('port', process.env.PORT || 80)
+app.set('port', process.env.PORT || 5000)
 console.log(colors.blue('----------------------------- ' + app.get('port')))
 
 app.use(logger('dev'))
