@@ -32,5 +32,5 @@ jobs:
       with:
         app-name: 'potbellys'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_2d8328f4d9b349c89fac95fe1448425b }}
+        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2D8328F4D9B349C89FAC95FE1448425B }}
         package: .
