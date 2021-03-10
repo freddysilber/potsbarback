@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Calendar from "react-calendar";
 import { Link } from "react-router-dom";
 import "react-calendar/dist/Calendar.css";
-import Bar from './Bar'
+// import Bar from './Bar'
 // Styles
 import "./Events.scss";
 // Routes
@@ -37,7 +37,7 @@ const Events = () => {
       <div className="card px-4 py-4">
         <div className="title">Events</div>
         <Calendar onChange={onChange} value={value} />
-		<Bar />
+		{/* <Bar /> */}
       </div>
         
 
