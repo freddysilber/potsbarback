@@ -34,6 +34,6 @@ jobs:
         # Name of the Azure App Service connected to this repository
         app-name: 'potbellys'
         slot-name: 'production'
-        # Azure secret generated from the App Service when you link the App Service to this repository in 'Deployment Center'
+        # Azure secret generated from the App Service when you link the App Service to this repository in 'Deployment Centeer'
         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2D8328F4D9B349C89FAC95FE1448425B }}
         package: .
