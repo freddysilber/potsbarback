@@ -1,10 +1,11 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Web App - potbellys2
+name: Deploy app to production - potsbarbak2
 
 on:
   push:
+    # Choose banch to deploy from
     branches:
       - master
   workflow_dispatch:
@@ -14,22 +15,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@master
+    - name:  Checkout Github Action
+      uses: actions/checkout@master
 
     - name: Set up Node.js version
       uses: actions/setup-node@v1
       with:
         node-version: '14.x'
 
-    - name: npm install, build, and test
+    - name: Install dependencies and build client
+      # Install deps in root and in client directory, then build the client for production
       run: |
-        npm install
-        npm run build --if-present
-        npm run test --if-present
-    - name: 'Deploy to Azure Web App'
+        npm run production-build
+        
+    - name: Deploy to Azure
       uses: azure/webapps-deploy@v2
       with:
+        # Name of the Azure App Service connected to this repository
         app-name: 'potbellys2'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_5f0d99164f504d60b729f89dc8ea9a38 }}
-        package: . 
+        # Azure secret generated from the App Service when you link the App Service to this repository in 'Deployment Centeer'
+        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2D8328F4D9B349C89FAC95FE1448425B }}
+        package: .
