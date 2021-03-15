@@ -23,4 +23,4 @@ thub.com/freddysilber/potsbarback/workflows/Build%20and%20deploy%20Node.js%20app
 2. start: script for production
 3. client-install: installs deps in the client folder
 4. server: starts the node server
-5. dev: runs the node server and the frontend server simultaniously for development
+5. dev: runs the node server and the frontend server simultaniously for development.
