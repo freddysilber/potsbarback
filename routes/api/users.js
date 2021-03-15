@@ -9,12 +9,15 @@ const validateRegisterInput = require('../../validation/register')
 const validateLoginInput = require('../../validation/login')
 // Load User model
 const User = require('../../models/User')
+
+console.log('USER api', User)
 /**
  * @route POST api/users/register
  * @description Register user
  * @access Public
  */
 router.post('/register', (req, res) => {
+	console.log('ROUTER/POST/REGISTER')
 	// Form validation
 	const { errors, isValid } = validateRegisterInput(req.body)
 	// Check validation
@@ -22,6 +25,7 @@ router.post('/register', (req, res) => {
 		return res.status(400).json(errors)
 	}
 	User.findOne({ email: req.body.email }).then(user => {
+		console.log(user)
 		if (user) {
 			return res.status(400).json({ email: 'Email already exists' })
 		} else {
@@ -46,6 +50,8 @@ router.post('/register', (req, res) => {
 				})
 			})
 		}
+	}).catch(error => {
+		console.error(error)
 	})
 })
 /**
