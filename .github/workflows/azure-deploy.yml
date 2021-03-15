@@ -32,8 +32,8 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         # Name of the Azure App Service connected to this repository
-        app-name: 'potbellys2'
+        app-name: 'potsbarbak2'
         slot-name: 'production'
         # Azure secret generated from the App Service when you link the App Service to this repository in 'Deployment Centeer'
-        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5F0D99164F504D60B729F89DC8EA9A38 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_14e2092a73a84d51a01c9767388a583d }}
         package: .
