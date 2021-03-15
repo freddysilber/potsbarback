@@ -32,6 +32,7 @@ app.use(cookieParser())
 
 app.use(express.static('./client/build'))
 
+
 // app.use('/api/data', require('./routes/new-index.js'))
 app.use('/api/users', users)
 
@@ -57,6 +58,19 @@ app.use(function (err, req, res, next) {
 // DB Config
 const db = require('./config/keys.js').mongoURI
 mongoose.connect(db, {
+const { PORT, DB_CONN, DB_USER, DB_PW } = process.env
+
+// DB Config
+// const db = require('./config/keys.js').mongoURI
+
+// Connect to MongoDB
+mongoose
+  .connect(DB_CONN, {
+    auth: {
+      user: DB_USER,
+      password: DB_PW
+    }, 
+
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
@@ -66,6 +80,43 @@ mongoose.connect(db, {
 }).catch(error => {
     console.error(colors.red('Error connecting to mongoDB \n', error))
 })
+
+  })
+// mongoose
+//   .connect(db, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     useFindAndModify: false,
+//   })
+//   .then(response => {
+//     console.log(colors.green(response))
+//     console.log(colors.america('\n------------ MongoDB is connected... #Merica ------------\n'))
+//   })
+//   .catch(error => {
+//     console.error(colors.red('Error connecting to mongoDB \n', error))
+//   })
+
+// Passport middleware
+app.use(passport.initialize())
+
+// Passport config
+require('./config/passport')(passport)
+
+/**
+ * API Routes
+ *
+ * add paths to EXPRESS routes here
+ *
+ * Note:
+ * These are not UI routes, these are routes for express to be used
+ * as endpoints from the UI to execute actions in mongo
+ */
+app.use('/api/users', users)
+
+if (process.env.NODE_ENV == 'production') {
+  app.use(express.static('client/build'))
+}
+
 
 app.listen(app.get('port'), function () {
     console.log(colors.green('Express server listening on port ' + app.get('port')))
