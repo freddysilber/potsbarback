@@ -592,7 +592,7 @@ const Eventadmin = () => {
                 Break Even
               </div>
               <div className="is-flex is-align-content-center">
-                <button className="mb-2 button is-danger is-small">SAVE</button>
+                <button className="mb-2 button is-danger is-small">SAVE.</button>
               </div>
             </div>
             <div className="columns is-multiline p-4">
