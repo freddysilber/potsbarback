@@ -29,5 +29,6 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'potsbarbak2'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_38637e204ce94f7a8affa1012c5824cd }}
+        slot-name: 'production'
+        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_38637E204CE94F7A8AFFA1012C5824CD }}
         package: .
